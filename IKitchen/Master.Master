@@ -12,7 +12,6 @@
     <form id="form1" runat="server">
     <div>
         blaf,jhjlbalba <br />
-        blalbalba 123 <br />
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
