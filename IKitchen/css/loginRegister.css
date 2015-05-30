@@ -1,0 +1,53 @@
+﻿body {
+    position:relative
+}
+
+.logReg {
+    height:400px;
+    width:500px;
+    font-size:3.5em;
+    text-align:center;
+    background-color:#8c6060;
+}
+#loginCell {
+    position:absolute;
+    right:490px;
+    top:200px;
+}
+
+#registerCell {
+    position:absolute;
+    right:1000px;
+    top:200px;
+}
+
+.content {
+    height: 300px;
+    width: 470px;
+    background-color:white;
+
+}
+#loginContent {
+    position:absolute;
+    text-align:center;
+    font-size:1.5em;
+    top:285px;
+    right:505px;
+}
+
+#registerContent {
+    position:absolute;
+    text-align:center;
+    font-size:2em;
+    top:285px;
+    right:1015px;
+}
+
+.input {
+    width:250px
+}
+.btn {
+    color: white;
+    width:150px;
+    background:black;
+}
