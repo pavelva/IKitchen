@@ -9,16 +9,23 @@
 </head>
 <body>
     <header>אני מטבח</header>
+    <div id="line"></div>
     <form id="form1" runat="server">
         <div id="loginCell" class="logReg">
             התחברות
         </div>
         <div id="loginContent" class="content">
-            <p>שם משתמש :
+            <p>
+                <span class="inputText">
+                    שם משתמש :
+                </span>
                 <br />
                 <asp:TextBox id="userNameInput" CssClass="loginInput input" runat="server"></asp:TextBox>
             </p>
-            <p>סיסמא :
+            <p>
+                <span class="inputText">
+                    סיסמא :
+                </span>
                 <br />
                 <asp:TextBox ID="passwordInput" CssClass="loginInput input" runat="server"></asp:TextBox>
             </p>
@@ -31,8 +38,8 @@
         </div>
         <div id="registerContent" class="content">
             <p>חדש באתר ?</p>
-            <p>התחבר עכשיו, זה מהיר ופשוט !</p>
-            <asp:Button ID="registerBtn" class="btn" runat="server" Text="הרשם" />
+            <p>הרשם עכשיו, זה מהיר ופשוט !</p>
+            <asp:Button ID="registerBtn" class="btn" runat="server" Text="להרשמה" />
         </div>
     </form>
 </body>

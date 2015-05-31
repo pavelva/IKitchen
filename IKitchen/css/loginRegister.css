@@ -5,10 +5,18 @@
 
 header {
     font-size:5em;
-    background-color:black;
-    color:white;
+    background-color:rgb(62, 57, 57);
+    color:rgb(255, 106, 0);
     text-align:center;
     height:150px;
+}
+
+#line {
+    position:absolute;
+    top:200px;
+    background:red;
+    height:30px;
+    margin-top:5px    
 }
 
 .logReg {
@@ -17,6 +25,7 @@ header {
     font-size:3.5em;
     text-align:center;
     background-color:rgb(255, 106, 0);
+    color:rgb(62, 57, 57);
 }
 #loginCell {
     position:absolute;
@@ -37,7 +46,7 @@ header {
 
 }
 #loginContent {
-    background-color:rgb(194, 155, 126);
+    background-color:white;
     position:absolute;
     text-align:center;
     font-size:1.7em;
@@ -53,13 +62,24 @@ header {
     right:985px;
 }
 
+.inputText {
+    float:right;
+    margin-right:95px;
+}
+
 .input {
     width:280px;
     border: 3px solid;
     border-radius: 5px;
     height:25px;
-    font-size:1em;
+    font-size:0.8em;
+    padding-right:2px;
 }
+    .input:focus {
+        outline:0;
+        border-color:rgb(128, 128, 128);
+    }
+
 .btn {
     color: white;
     width:150px;
@@ -68,6 +88,16 @@ header {
     height:50px;
     font-size:1em;
     box-shadow:rgb(128, 128, 128) 2px 2px 5px;
+    outline:0;
+}
+    .btn:hover {
+        background-color:rgb(128, 128, 128);
+        cursor:pointer;
+    }
+
+#registerBtn {
+    height:60px;
+    width:180px;
 }
 #UserNameRequiredFieldValidator {
     position:absolute;
