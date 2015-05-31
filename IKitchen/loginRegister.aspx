@@ -8,6 +8,7 @@
     <link href="css/loginRegister.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <header>אני מטבח</header>
     <form id="form1" runat="server">
         <div id="loginCell" class="logReg">
             התחברות
@@ -15,14 +16,16 @@
         <div id="loginContent" class="content">
             <p>שם משתמש :
                 <br />
-                <asp:TextBox ID="userNameInput" class="input" runat="server"></asp:TextBox>
+                <asp:TextBox id="userNameInput" CssClass="loginInput input" runat="server"></asp:TextBox>
             </p>
             <p>סיסמא :
                 <br />
-                <asp:TextBox ID="passwordInput" class="input" runat="server"></asp:TextBox>
+                <asp:TextBox ID="passwordInput" CssClass="loginInput input" runat="server"></asp:TextBox>
             </p>
             <asp:Button ID="loginBtn" CssClass="btn" runat="server" Text="התחבר" />
         </div>
+        <asp:RequiredFieldValidator ID="UserNameRequiredFieldValidator" ControlToValidate="userNameInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="PasswordRequiredFieldValidator" ControlToValidate="passwordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
         <div id="registerCell" class="logReg">
             הרשמה
         </div>

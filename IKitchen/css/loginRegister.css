@@ -1,5 +1,14 @@
 ﻿body {
-    position:relative
+    position:relative;
+    font-family:'Angsana New';
+}
+
+header {
+    font-size:5em;
+    background-color:black;
+    color:white;
+    text-align:center;
+    height:150px;
 }
 
 .logReg {
@@ -7,17 +16,17 @@
     width:500px;
     font-size:3.5em;
     text-align:center;
-    background-color:#8c6060;
+    background-color:rgb(255, 106, 0);
 }
 #loginCell {
     position:absolute;
-    right:490px;
+    right:430px;
     top:200px;
 }
 
 #registerCell {
     position:absolute;
-    right:1000px;
+    right:970px;
     top:200px;
 }
 
@@ -28,26 +37,50 @@
 
 }
 #loginContent {
+    background-color:rgb(194, 155, 126);
     position:absolute;
     text-align:center;
-    font-size:1.5em;
+    font-size:1.7em;
     top:285px;
-    right:505px;
+    right:445px;
 }
-
+    
 #registerContent {
     position:absolute;
     text-align:center;
     font-size:2em;
     top:285px;
-    right:1015px;
+    right:985px;
 }
 
 .input {
-    width:250px
+    width:280px;
+    border: 3px solid;
+    border-radius: 5px;
+    height:25px;
+    font-size:1em;
 }
 .btn {
     color: white;
     width:150px;
     background:black;
+    border-radius:7px;
+    height:50px;
+    font-size:1em;
+    box-shadow:rgb(128, 128, 128) 2px 2px 5px;
+}
+#UserNameRequiredFieldValidator {
+    position:absolute;
+    right:520px;
+    top:348px;
+    color:red;
+    font-size:1.5em;
+}
+
+#PasswordRequiredFieldValidator {
+    position:absolute;
+    right:520px;
+    top:448px;
+    color:red;
+    font-size:1.5em;
 }
