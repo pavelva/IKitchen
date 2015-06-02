@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
 <head runat="server">
     <title></title>
-    <link href="css/loginRegister.css" rel="stylesheet" type="text/css" />
+    <link href="style/loginRegister.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header>אני מטבח</header>

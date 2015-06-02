@@ -1,2 +1,63 @@
-﻿body {
+﻿@import url(http://fonts.googleapis.com/css?family=Droid+Serif|Montserrat);
+
+*{padding:0;margin:0;border:none;border-collapse:collapse;text-decoration:none;list-style:none; outline:0;}
+a,.a{transition: all .2s linear;-o-transition: all .2s linear;-moz-transition: all .2s linear;-webkit-transition: all .2s linear}
+
+body {
+    font-family:'Segoe UI',Tahoma,Helvetica,Sans-Serif;
+    width:100%;
+}
+
+header{
+    width:calc(100% - 10px);
+    height:80px;
+    background:#3e3939; 
+    color:white;
+    padding-right: 10px;
+    border-bottom:3px solid rgba(0,0,0,0.1);
+}
+
+#logo{
+    font-family:'Montserrat', sans-serif;
+    font-size:4em;
+}
+
+#logo_content{
+    color:#ff6a00;
+}
+
+nav{
+    width:calc(100% - 25px);
+    line-height:40px;
+    background: rgba(62, 57, 57, 0.8);
+    font-size:1.7em;
+    color:white;
+    padding-right: 25px;
+}
+
+nav a{
+    padding-right:5px;
+}
+nav a:hover{
+    color: #ff6a00;
+    cursor:pointer;
+}
+
+
+#user{
+    float:left;
+}
+
+#user #userName{
+    color:white;
+}
+
+#user #userName:hover{
+    color:#ff6a00;
+}
+
+#user #logout{
+    float:left;
+    margin:0 5px;
+    text-decoration:underline;
 }

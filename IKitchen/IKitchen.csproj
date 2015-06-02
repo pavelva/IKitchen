@@ -59,7 +59,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="loginRegister.aspx" />
-    <Content Include="css\loginRegister.css" />
+    <Content Include="Style\loginRegister.css" />
     <Content Include="Master.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -97,6 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="css\" />
     <Folder Include="Script\" />
   </ItemGroup>
   <PropertyGroup>

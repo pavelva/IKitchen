@@ -13,7 +13,20 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        blalbalba 123 <br />
+        <header>
+            <span id=logo>
+                I<span id="logo_content">Kitchen</span>
+            </span>
+            <span id="user">
+                <asp:LinkButton ID="userName" CssClass="userName" runat="server" Text="רפי גינת"></asp:LinkButton>
+                <asp:LinkButton ID="logout" runat="server" Text="התנתק"></asp:LinkButton>
+            </span>
+        </header>
+        <nav>
+            <a>עמוד 1</a> 
+            <a>עמוד 2</a> 
+            <a>עמוד 3</a> 
+        </nav>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
