@@ -23,9 +23,10 @@
             </span>
         </header>
         <nav>
-            <a>עמוד 1</a> 
-            <a>עמוד 2</a> 
-            <a>עמוד 3</a> 
+            <asp:LinkButton CssClass="a" runat="server">עמוד 1</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server">עמוד 2</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server">עמוד 3</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server">עמוד 4</asp:LinkButton>
         </nav>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
