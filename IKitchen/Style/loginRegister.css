@@ -1,14 +1,43 @@
-﻿body {
+﻿*{padding:0;margin:0;border:none;border-collapse:collapse;text-decoration:none;list-style:none; outline:0;}
+a,.a{transition: all .2s linear;-o-transition: all .2s linear;-moz-transition: all .2s linear;-webkit-transition: all .2s linear}
+
+body {
     position:relative;
-    font-family:'Angsana New';
+    /*font-family:'Angsana New';*/
 }
 
-header {
-    font-size:5em;
-    background-color:rgb(62, 57, 57);
-    color:rgb(255, 106, 0);
-    text-align:center;
-    height:150px;
+header{
+    width:calc(100% - 10px);
+    height:80px;
+    background:#3e3939; 
+    color:white;
+    padding-right: 10px;
+    border-bottom:3px solid rgba(0,0,0,0.1);
+}
+
+#logo{
+    font-family:'Montserrat', sans-serif;
+    font-size:4em;
+}
+
+#logo_content{
+    color:#ff6a00;
+}
+
+nav{
+    width:calc(100% - 25px);
+    height:40px;
+    background: rgba(62, 57, 57, 0.8);
+    font-size:1.7em;
+    color:white;
+    padding-right: 25px;
+}
+
+#form1 {
+    margin:0 auto;
+    width:800px;
+    height:280px;
+    margin-top:1%;
 }
 
 #line {
@@ -20,58 +49,84 @@ header {
 }
 
 .logReg {
-    height:400px;
-    width:500px;
-    font-size:3.5em;
-    text-align:center;
-    background-color:rgb(255, 106, 0);
+    height:200px;
+    width:220px;
     color:rgb(62, 57, 57);
 }
 #loginCell {
-    position:absolute;
-    right:430px;
-    top:200px;
-}
+    margin-right:20%;
+ }
 
 #registerCell {
-    position:absolute;
-    right:970px;
-    top:200px;
+    margin-left:20%;
+    float:left;
+}
+
+.contentHeader {
+    
+    background-color:#ff6a00;
+    height:17%;
+    font-size:1.6em;
+    color:black;
+    text-align:center;
+    border-top-left-radius:7px;
+    border-top-right-radius:7px;
 }
 
 .content {
-    height: 300px;
-    width: 470px;
-    background-color:white;
-
+    padding-top:5%;
+    background-color: rgba(62, 57, 57, 0.8);
+    height:150px;
+    border-bottom-left-radius:7px;
+    border-bottom-right-radius:7px;
+    color:white;
 }
+
 #loginContent {
-    background-color:white;
-    position:absolute;
     text-align:center;
-    font-size:1.7em;
-    top:285px;
-    right:445px;
+    font-size:1em;
+    height:172.7px;
 }
     
 #registerContent {
-    position:absolute;
     text-align:center;
-    font-size:2em;
-    top:285px;
-    right:985px;
+    font-size:1.2em;
+    padding-top:15%;
+}
+    #registerContent > p:nth-of-type(1){
+        margin-bottom:3%;
+    }
+
+#signUpContent {
+    display:none;
+    text-align:center;
+    font-size:1em;
+    height:400px;
 }
 
 .inputText {
     float:right;
-    margin-right:95px;
+    margin-right:14%;
+    margin-top:6px;
 }
 
+#forgotPassword {
+    font-size:0.6em;
+    float:left;
+    margin-left:15%;
+    margin-top:5%;
+}
+
+    #forgotPassword:hover {
+        cursor:pointer;
+        color:rgb(30, 10, 129)
+    }
+
 .input {
-    width:280px;
-    border: 3px solid;
+    width:72%;
+    border: 2px solid;
     border-radius: 5px;
-    height:25px;
+    height:20px;
     font-size:0.8em;
     padding-right:2px;
 }
@@ -80,13 +135,22 @@ header {
         border-color:rgb(128, 128, 128);
     }
 
+#listOfQestions {
+    width:75%;
+    border: 2px solid;
+    border-radius: 5px;
+    height:23px;
+    font-size:0.8em;
+    padding-right:2px;
+}
+
 .btn {
     color: white;
-    width:150px;
+    width:30%;
     background:black;
     border-radius:7px;
-    height:50px;
-    font-size:1em;
+    height:25px;
+    font-size:0.7em;
     box-shadow:rgb(128, 128, 128) 2px 2px 5px;
     outline:0;
 }
@@ -95,22 +159,36 @@ header {
         cursor:pointer;
     }
 
-#registerBtn {
-    height:60px;
-    width:180px;
+#loginBtn {
+    margin-top:7%;
+    font-size:0.8em;
 }
+#registerBtn {
+    height:35px;
+    width:40%;
+    font-size:0.8em;
+    margin-top:4%;
+}
+
+#signUpBtn {
+    margin-top:7%;
+    font-size:0.8em;
+
+}
+
 #UserNameRequiredFieldValidator {
     position:absolute;
-    right:520px;
-    top:348px;
+    right:415px;
+    top:210px;
+    float:right;
     color:red;
-    font-size:1.5em;
+    font-size:1em;
 }
 
 #PasswordRequiredFieldValidator {
     position:absolute;
-    right:520px;
-    top:448px;
+    right:415px;
+    top:260px;
     color:red;
-    font-size:1.5em;
+    font-size:1em;
 }
