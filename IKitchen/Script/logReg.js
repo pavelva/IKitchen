@@ -11,9 +11,12 @@ function makeRegisterDetailes()
 
 function forgotPasswordPopUp()
 {
-    $(function () {
-        $("#forgotPasswordDialog").dialog();
-    });
+    $("#forgotPasswordDialog").show();
+    $("body").css("background-color", "rgba(0,0,0,0.5)");
+}
 
-    //$("#forgotPasswordDialog").dialog();
+function closeDialog()
+{
+    $("#forgotPasswordDialog").hide();
+    $("body").css("background-color", "");
 }

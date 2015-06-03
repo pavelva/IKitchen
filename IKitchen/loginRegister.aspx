@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
     <link href="style/loginRegister.css" rel="stylesheet" type="text/css" />
 
@@ -127,9 +127,39 @@
                 </p>
             </div>
         </div>
-
         <div id="forgotPasswordDialog" title="Basic dialog">
-
+             <div class="dialogHeader contentHeader">
+                אחזור סיסמא
+            </div>
+             <p>
+                <span class="inputText">
+                    דואר אלקטרוני :
+                </span>
+                <br />
+                <asp:TextBox id="emailForgotPass" CssClass="input" runat="server"></asp:TextBox>
+            </p>
+             <p>
+                <span class="inputText">
+                    שאלה לאחזור סיסמא :
+                </span>
+                <br />
+                <asp:DropDownList ID="forgotListOfQestions" runat="server">
+                    <asp:ListItem Text="שם של החבר/ה שלך" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="שם של הכלב שלך" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="שם משפחה קודם" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="ארץ לידה" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="קורס שנהנית בו" Value="4"></asp:ListItem>
+                </asp:DropDownList>
+            </p>
+             <p>
+                <span class="inputText">
+                    תשובה לשאלה :
+                </span>
+                <br />
+                <asp:TextBox id="answerForgatPass" CssClass="registerInput input" runat="server"></asp:TextBox>
+            </p>
+              <asp:Button ID="ForgatBtn" class="btn" runat="server" Text="שלח" style="margin-left:10%"/>
+                <asp:Button ID="closeDialogBtn" class="btn" runat="server" Text="סגור" OnClientClick="closeDialog()" />
         </div>
     </form>
 </body>
