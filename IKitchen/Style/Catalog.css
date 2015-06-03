@@ -6,7 +6,7 @@ h2{
     margin-bottom:15px;
 }
 .catalogItem{
-    float:left;
+    float:right;
     border:1px solid black; 
     margin:5px; 
     width:23%;

@@ -22,6 +22,9 @@ namespace IKitchen
             //FillCatalog(sqlCatalog);
             //if(!IsPostBack)
             FillProductTypes();
+
+            if (Session["sql"] != null)
+                FillCatalog(Session["sql"].ToString());
         }
 
         private void FillCatalog(string sql)
@@ -55,6 +58,7 @@ namespace IKitchen
                 c.CheckedChanged += new EventHandler(Product_CheckedChanged);
                 itemTypePicker.Controls.Add(c);
             }
+
         }
 
         protected void Product_CheckedChanged(object sender, EventArgs e)
@@ -77,11 +81,11 @@ namespace IKitchen
 
             string sql = "select product_id, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
-                                "Where app_name in ('" + string.Join("','", products) + "') " + 
+                                "Where app_name in (N'" + string.Join("',N'", products) + "') " + 
                                 " order by company_name";
+            Session.Add("sql", sql);
             a++;
-            FillCatalog(sql);
-            
+            FillCatalog(sql);            
         } 
     }
 }
