@@ -15,6 +15,22 @@ namespace IKitchen
             ((TextBox)form1.FindControl("passwordInput")).Attributes["type"] = "password";
             ((TextBox)form1.FindControl("regPasswordInput")).Attributes["type"] = "password";
             ((TextBox)form1.FindControl("regConfirmPasswordInput")).Attributes["type"] = "password";
+            if (!Page.IsPostBack)
+            {
+                if (Request.Cookies["userName"] != null)
+                    Response.Redirect("Catalog.aspx");
+            }
+        }
+
+        protected void loginBtn_Click(object sender, EventArgs e)
+        {
+            HttpCookie userName = new HttpCookie("userName", loginEmailInput.Text.ToString());
+            userName.Expires = DateTime.Now.AddDays(1);
+
+            Response.Cookies.Add(userName);
+
+            //redirect to welcome  
+            Response.Redirect("Catalog.aspx"); 
         }
     }
 }

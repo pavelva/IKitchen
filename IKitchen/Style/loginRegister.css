@@ -35,8 +35,8 @@ nav{
 
 #form1 {
     margin:0 auto;
-    width:800px;
-    height:280px;
+    width:1200px;
+    height:470px;
     margin-top:1%;
 }
 
@@ -50,16 +50,16 @@ nav{
 
 .logReg {
     height:200px;
-    width:270px;
+    width:320px;
     color:rgb(62, 57, 57);
 }
 #loginCell {
     position:relative;
-    margin-right:15%;
+    margin-right:20%;
  }
 
 #registerCell {
-    margin-left:15%;
+    margin-left:20%;
     float:left;
 }
 
@@ -113,10 +113,9 @@ nav{
 }
 
 #forgotPassword {
-    font-size:0.6em;
+    font-size:0.8em;
     float:left;
     margin-left:15%;
-    margin-top:5%;
 }
 
     #forgotPassword:hover {
@@ -148,10 +147,10 @@ nav{
 
 .btn {
     color: white;
-    width:30%;
+    width:25%;
     background:black;
     border-radius:7px;
-    height:25px;
+    height:30px;
     font-size:0.7em;
     box-shadow:rgb(128, 128, 128) 2px 2px 5px;
     outline:0;
@@ -177,6 +176,8 @@ nav{
     font-size:0.8em;
 
 }
+
+/*--------------------------------Validators----------------------------------------*/
 
 #UserNameRequiredFieldValidator {
     position:absolute;
@@ -257,4 +258,11 @@ nav{
     top:213.8px;
     color:red;
     font-size:0.8em;
+}
+
+/*------------------------------------------------------------------------*/
+
+#forgotPasswordDialog {
+    height:300px;
+    width:300px;
 }

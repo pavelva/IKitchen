@@ -8,3 +8,12 @@ function makeRegisterDetailes()
         $("#signUpContent").slideDown(700);
     });
 }
+
+function forgotPasswordPopUp()
+{
+    $(function () {
+        $("#forgotPasswordDialog").dialog();
+    });
+
+    //$("#forgotPasswordDialog").dialog();
+}
