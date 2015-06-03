@@ -50,16 +50,16 @@ nav{
 
 .logReg {
     height:200px;
-    width:220px;
+    width:270px;
     color:rgb(62, 57, 57);
 }
 #loginCell {
     position:relative;
-    margin-right:20%;
+    margin-right:15%;
  }
 
 #registerCell {
-    margin-left:20%;
+    margin-left:15%;
     float:left;
 }
 
@@ -86,7 +86,7 @@ nav{
 #loginContent {
     text-align:center;
     font-size:1em;
-    height:172.7px;
+    height:177px;
 }
     
 #registerContent {
@@ -180,8 +180,8 @@ nav{
 
 #UserNameRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:73px;
+    right:25px;
+    top:75px;
     float:right;
     color:red;
     font-size:1em;
@@ -189,72 +189,72 @@ nav{
 
 #PasswordRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:123px;
+    right:25px;
+    top:125px;
     color:red;
     font-size:1em;
 }
 
 #FirstNameRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:41px;
+    right:25px;
+    top:43px;
     color:red;
     font-size:1em;
 }
 
 #LastNameRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:89px;
+    right:25px;
+    top:91px;
     color:red;
     font-size:1em;
 }
 
 #RegEmailRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:136px;
+    right:25px;
+    top:138px;
     color:red;
     font-size:1em;
 }
 
 #RegPasswordRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:184px;
+    right:25px;
+    top:186px;
     color:red;
     font-size:1em;
 }
 
 #RegConfirmPasswordRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:232px;
+    right:25px;
+    top:234px;
     color:red;
     font-size:1em;
 }
 
 #AnswerRequiredFieldValidator {
     position:absolute;
-    right:15px;
-    top:329px;
+    right:25px;
+    top:331px;
     color:red;
     font-size:1em;
 }
 
 #PasswordRegularExpressionValidator {
     position:absolute;
-    right:78px;
-    top:164px;
+    right: 87px;
+    top:165.8px;
     color:red;
     font-size:0.8em;
 }
+
 #RegConfirmCompareValidator {
     position:absolute;
-    right:110px;
-    top:211px;
+    right:118px;
+    top:213.8px;
     color:red;
     font-size:0.8em;
-
 }
