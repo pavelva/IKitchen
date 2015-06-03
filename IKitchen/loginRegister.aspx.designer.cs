@@ -40,6 +40,15 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.TextBox firstNameInput;
         
         /// <summary>
+        /// FirstNameRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator FirstNameRequiredFieldValidator;
+        
+        /// <summary>
         /// lastNameInput control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox lastNameInput;
+        
+        /// <summary>
+        /// LastNameRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LastNameRequiredFieldValidator;
         
         /// <summary>
         /// emailInput control.
@@ -58,6 +76,15 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.TextBox emailInput;
         
         /// <summary>
+        /// RegEmailRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RegEmailRequiredFieldValidator;
+        
+        /// <summary>
         /// regPasswordInput control.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,24 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.TextBox regPasswordInput;
         
         /// <summary>
+        /// RegPasswordRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RegPasswordRequiredFieldValidator;
+        
+        /// <summary>
+        /// PasswordRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordRegularExpressionValidator;
+        
+        /// <summary>
         /// regConfirmPasswordInput control.
         /// </summary>
         /// <remarks>
@@ -74,6 +119,24 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox regConfirmPasswordInput;
+        
+        /// <summary>
+        /// RegConfirmPasswordRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RegConfirmPasswordRequiredFieldValidator;
+        
+        /// <summary>
+        /// RegConfirmCompareValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator RegConfirmCompareValidator;
         
         /// <summary>
         /// listOfQestions control.
@@ -92,6 +155,15 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox answer;
+        
+        /// <summary>
+        /// AnswerRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator AnswerRequiredFieldValidator;
         
         /// <summary>
         /// signUpBtn control.

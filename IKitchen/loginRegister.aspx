@@ -37,6 +37,7 @@
                     </span>
                     <br />
                     <asp:TextBox id="firstNameInput" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="FirstNameRequiredFieldValidator" ControlToValidate="firstNameInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>                    
                 </p>
                 <p>
                     <span class="inputText">
@@ -44,6 +45,7 @@
                     </span>
                     <br />
                     <asp:TextBox id="lastNameInput" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="LastNameRequiredFieldValidator" ControlToValidate="lastNameInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>                    
                 </p>
                 <p>
                     <span class="inputText">
@@ -51,6 +53,7 @@
                     </span>
                     <br />
                     <asp:TextBox id="emailInput" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RegEmailRequiredFieldValidator" ControlToValidate="emailInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>                    
                 </p>
                 <p>
                     <span class="inputText">
@@ -58,6 +61,8 @@
                     </span>
                     <br />
                     <asp:TextBox id="regPasswordInput" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RegPasswordRequiredFieldValidator" ControlToValidate="regPasswordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator" ControlToValidate="regPasswordInput" ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{1,100})$" runat="server" ErrorMessage="סיסמא חייבת להכיל ספרה"></asp:RegularExpressionValidator>
                 </p>
                 <p>
                     <span class="inputText">
@@ -65,6 +70,8 @@
                     </span>
                     <br />
                     <asp:TextBox id="regConfirmPasswordInput" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RegConfirmPasswordRequiredFieldValidator" ControlToValidate="regConfirmPasswordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="RegConfirmCompareValidator" runat="server" ControlToValidate="regConfirmPasswordInput" ControlToCompare="regPasswordInput" ErrorMessage="לא תואם לסיסמא"></asp:CompareValidator>
                 </p>
                 <p>
                     <span class="inputText">
@@ -85,6 +92,7 @@
                     </span>
                     <br />
                     <asp:TextBox id="answer" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="AnswerRequiredFieldValidator" ControlToValidate="answer" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>                    
                 </p>
                 <asp:Button ID="signUpBtn" class="btn" runat="server" Text="הרשם" />
             </div>
