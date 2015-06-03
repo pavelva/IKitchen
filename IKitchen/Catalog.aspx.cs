@@ -14,7 +14,7 @@ namespace IKitchen
 
             string sqlCatalog = "select product_id, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
-                                " where company_id = '2' order by company_name";
+                                " order by company_name";
 
             CatalogDataSource.SelectCommand = sqlCatalog;
             CatalogDataSource.DataBind();

@@ -1,26 +1,31 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Catalog.aspx.cs" Inherits="IKitchen.Catalog" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" type="text/css" href="Style/Catalog.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:ListView runat="server" DataSourceID="CatalogDataSource">
         <LayoutTemplate>
-            <table cellpadding="2" runat="server" id="tblEmployees" 
-                style="width:460px">
-              <tr runat="server" id="itemPlaceholder">
-              </tr>
-            </table>
-            <asp:DataPager runat="server" ID="DataPager" PageSize="5">
-              <Fields>
-                <asp:NumericPagerField
-                  ButtonCount="5"
-                  PreviousPageText="<--"
-                  NextPageText="-->" />
-              </Fields>
-            </asp:DataPager>
+            <div runat="server" id="itemPlaceHolder"></div>
+            <div id="catalogPager"dir="ltr">
+                <asp:DataPager runat="server" ID="DataPager" PageSize="12" >
+                  <Fields>
+                    <asp:NumericPagerField 
+                      ButtonCount="5"
+                      PreviousPageText="<--"
+                      NextPageText="-->" />
+                  </Fields>
+                </asp:DataPager>
+            </div>
         </LayoutTemplate>
         <ItemTemplate>
-            <tr><td style="float:left;border:1px solid black; margin:0 5px; width:30%"><%#Eval("product_model") %></td></tr>
+            <div class="catalogItem">
+                <span class="productType" >דגם: <%#Eval("product_model") %></span>
+                <span class="productModel" >דגם: <%#Eval("product_model") %></span>
+
+                <asp:Button Text="Buy" runat="server" />
+            </div>
+            
         </ItemTemplate>
     </asp:ListView>
 
