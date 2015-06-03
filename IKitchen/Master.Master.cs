@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,20 @@ namespace IKitchen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string linkID = Request.Url.AbsolutePath.Replace("/", "");
+            linkID = linkID.Replace(".aspx", "");
+            linkID = "link" + linkID;
 
+            var link = ((LinkButton)this.FindControl(linkID));
+            link.Enabled = false;
+            link.ForeColor = Color.FromArgb(255, 106, 0);
+            link.CssClass += " aActive";
+        }
+        protected void redirect(object sender, EventArgs e)
+        {
+            WebControl element = ((WebControl)sender);
+            var url = element.ID.Replace("link", "") + ".aspx";
+            Response.Redirect(url + "?id=" + Session["userID"]);
         }
     }
 }

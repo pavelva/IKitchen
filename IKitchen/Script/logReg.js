@@ -1,5 +1,6 @@
 ﻿
 
+
 function makeRegisterDetailes()
 {
     $.when($("#registerContent").slideUp(700)).then(function () {

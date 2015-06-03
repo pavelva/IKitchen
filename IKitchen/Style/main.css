@@ -37,14 +37,18 @@ nav{
 
 nav .a{
     padding-right:5px;
+    margin-left: 20px;
     color:white;
 }
+
 nav .a:hover{
     color: #ff6a00;
     cursor:pointer;
 }
 
-
+nav .aActive:hover{
+    cursor:default !important;
+}
 #user{
     float:left;
 }
@@ -61,4 +65,9 @@ nav .a:hover{
     float:left;
     margin:0 5px;
     text-decoration:underline;
+}
+
+#content{
+    width:800px;
+    margin: 0 auto;
 }

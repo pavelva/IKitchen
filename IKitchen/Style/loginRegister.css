@@ -192,3 +192,59 @@ nav{
     color:red;
     font-size:1em;
 }
+
+#FirstNameRequiredFieldValidator {
+    position:absolute;
+    right:675px;
+    top:211px;
+    color:red;
+    font-size:1em;
+}
+
+#LastNameRequiredFieldValidator {
+    position:absolute;
+    right:675px;
+    top:259px;
+    color:red;
+    font-size:1em;
+}
+
+#RegEmailRequiredFieldValidator {
+    position:absolute;
+    right:675px;
+    top:307px;
+    color:red;
+    font-size:1em;
+}
+
+#RegPasswordRequiredFieldValidator {
+    position:absolute;
+    right:675px;
+    top:355px;
+    color:red;
+    font-size:1em;
+}
+
+#RegConfirmPasswordRequiredFieldValidator {
+    position:absolute;
+    right:675px;
+    top:402px;
+    color:red;
+    font-size:1em;
+}
+
+#AnswerRequiredFieldValidator {
+    position:absolute;
+    right:675px;
+    top:500px;
+    color:red;
+    font-size:1em;
+}
+
+#PasswordRegularExpressionValidator {
+    position:absolute;
+    right:875px;
+    top:355px;
+    color:red;
+    font-size:0.7em;
+}

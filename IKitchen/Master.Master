@@ -23,14 +23,16 @@
             </span>
         </header>
         <nav>
-            <asp:LinkButton CssClass="a" runat="server">עמוד 1</asp:LinkButton>
-            <asp:LinkButton CssClass="a" runat="server">עמוד 2</asp:LinkButton>
-            <asp:LinkButton CssClass="a" runat="server">עמוד 3</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server" ID="linkDefault" OnClick="redirect">ראשי</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server" ID="linkCatalog" OnClick="redirect">קטלוג</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server" ID="linkMyPurchases" OnClick="redirect">הרכישות שלי</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server">עמוד 4</asp:LinkButton>
         </nav>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <div id="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
-        </asp:ContentPlaceHolder>
+            </asp:ContentPlaceHolder>
+        </div>
     </div>
     </form>
 </body>
