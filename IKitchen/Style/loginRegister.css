@@ -177,6 +177,8 @@ nav{
 
 }
 
+/*--------------------------------Validators----------------------------------------*/
+
 #UserNameRequiredFieldValidator {
     position:absolute;
     right:25px;
@@ -256,4 +258,11 @@ nav{
     top:213.8px;
     color:red;
     font-size:0.8em;
+}
+
+/*------------------------------------------------------------------------*/
+
+#forgotPasswordDialog {
+    height:300px;
+    width:300px;
 }

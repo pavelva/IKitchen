@@ -103,29 +103,33 @@
                 התחברות
             </div>
             <div id="loginContent" class="content">
-            <p>
-                <span class="inputText">
-                    שם משתמש :
-                </span>
-                <br />
-                <asp:TextBox id="userNameInput" CssClass="loginInput input" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="UserNameRequiredFieldValidator" ControlToValidate="userNameInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
-            </p>
-            <p>
-                <span class="inputText">
-                    סיסמא :
-                </span>
-                <br />
-                <asp:TextBox ID="passwordInput" CssClass="loginInput input" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="PasswordRequiredFieldValidator" ControlToValidate="passwordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
-            </p>
-            <asp:Button ID="loginBtn" CssClass="btn" runat="server" Text="התחבר" />
-            <p>
-                <span id="forgotPassword" class="inputText">
-                    שכחתי סיסמא
-                </span>
-            </p>
+                <p>
+                    <span class="inputText">
+                        דואר אלקטרוני :
+                    </span>
+                    <br />
+                    <asp:TextBox id="loginEmailInput" CssClass="loginInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="UserNameRequiredFieldValidator" ControlToValidate="loginEmailInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </p>
+                <p>
+                    <span class="inputText">
+                        סיסמא :
+                    </span>
+                    <br />
+                    <asp:TextBox ID="passwordInput" CssClass="loginInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="PasswordRequiredFieldValidator" ControlToValidate="passwordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </p>
+                    <asp:Button ID="loginBtn" CssClass="btn" runat="server" Text="התחבר" OnClientClick="loginBtn_Click" OnClick="loginBtn_Click" />
+                <p>
+                    <span id="forgotPassword" class="inputText" onclick="forgotPasswordPopUp()">
+                        שכחתי סיסמא
+                    </span>
+                </p>
+            </div>
         </div>
+
+        <div id="forgotPasswordDialog" title="Basic dialog">
+
         </div>
     </form>
 </body>
