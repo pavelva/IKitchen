@@ -64,6 +64,7 @@
     <Content Include="loginRegister.aspx" />
     <Content Include="Script\logReg.js" />
     <Content Include="MyPurchases.aspx" />
+    <Content Include="Style\Catalog.css" />
     <Content Include="Style\loginRegister.css" />
     <Content Include="Master.Master" />
     <None Include="Web.Debug.config">

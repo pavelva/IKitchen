@@ -1,0 +1,15 @@
+﻿body {
+}
+
+.catalogItem{
+    float:left;
+    border:1px solid black; 
+    margin:0 5px; 
+    width:30%
+}
+
+#catalogPager{
+    clear:both; 
+    margin:0 auto; 
+    width:15%;
+}
