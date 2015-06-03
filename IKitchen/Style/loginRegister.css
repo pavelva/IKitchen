@@ -54,6 +54,7 @@ nav{
     color:rgb(62, 57, 57);
 }
 #loginCell {
+    position:relative;
     margin-right:20%;
  }
 
@@ -98,6 +99,7 @@ nav{
     }
 
 #signUpContent {
+    position:relative;
     display:none;
     text-align:center;
     font-size:1em;
@@ -178,8 +180,8 @@ nav{
 
 #UserNameRequiredFieldValidator {
     position:absolute;
-    right:415px;
-    top:210px;
+    right:15px;
+    top:73px;
     float:right;
     color:red;
     font-size:1em;
@@ -187,64 +189,72 @@ nav{
 
 #PasswordRequiredFieldValidator {
     position:absolute;
-    right:415px;
-    top:260px;
+    right:15px;
+    top:123px;
     color:red;
     font-size:1em;
 }
 
 #FirstNameRequiredFieldValidator {
     position:absolute;
-    right:675px;
-    top:211px;
+    right:15px;
+    top:41px;
     color:red;
     font-size:1em;
 }
 
 #LastNameRequiredFieldValidator {
     position:absolute;
-    right:675px;
-    top:259px;
+    right:15px;
+    top:89px;
     color:red;
     font-size:1em;
 }
 
 #RegEmailRequiredFieldValidator {
     position:absolute;
-    right:675px;
-    top:307px;
+    right:15px;
+    top:136px;
     color:red;
     font-size:1em;
 }
 
 #RegPasswordRequiredFieldValidator {
     position:absolute;
-    right:675px;
-    top:355px;
+    right:15px;
+    top:184px;
     color:red;
     font-size:1em;
 }
 
 #RegConfirmPasswordRequiredFieldValidator {
     position:absolute;
-    right:675px;
-    top:402px;
+    right:15px;
+    top:232px;
     color:red;
     font-size:1em;
 }
 
 #AnswerRequiredFieldValidator {
     position:absolute;
-    right:675px;
-    top:500px;
+    right:15px;
+    top:329px;
     color:red;
     font-size:1em;
 }
 
 #PasswordRegularExpressionValidator {
     position:absolute;
-    right:875px;
-    top:355px;
+    right:78px;
+    top:164px;
     color:red;
-    font-size:0.7em;
+    font-size:0.8em;
+}
+#RegConfirmCompareValidator {
+    position:absolute;
+    right:110px;
+    top:211px;
+    color:red;
+    font-size:0.8em;
+
 }
