@@ -13,6 +13,15 @@ namespace IKitchen {
     public partial class Catalog {
         
         /// <summary>
+        /// itemTypePicker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl itemTypePicker;
+        
+        /// <summary>
         /// CatalogDataSource control.
         /// </summary>
         /// <remarks>
