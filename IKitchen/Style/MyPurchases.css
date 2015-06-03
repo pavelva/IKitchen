@@ -1,8 +1,12 @@
 ﻿body {
 }
 
+.MyPurchasesTable{
+    margin-top:15px;
+}
+
 .MyPurchasesTable td{
-    padding-bottom:100px;
+    padding:15px;
     vertical-align:top;
 }
 
@@ -10,5 +14,10 @@
     color: #307bd4;
     min-width:100px;
     text-align:right;
+    border-bottom:2px solid rgba(0,0,0,0.2);
+    padding: 0 15px;
 }
 
+.myPurchasesRow{
+    border-bottom:2px solid rgba(0,0,0,0.2);
+}

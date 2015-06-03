@@ -12,9 +12,7 @@ namespace IKitchen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string linkID = Request.Url.AbsolutePath.Replace("/", "");
-            linkID = linkID.Replace(".aspx", "");
-            linkID = "link" + linkID;
+            string linkID = "link" + Request.Url.AbsolutePath.Replace("/", "").Replace(".aspx", "");
 
             var link = ((LinkButton)this.FindControl(linkID));
             link.Enabled = false;
