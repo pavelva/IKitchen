@@ -83,7 +83,7 @@
                         <asp:ListItem Text="שם של הכלב שלך" Value="1"></asp:ListItem>
                         <asp:ListItem Text="שם משפחה קודם" Value="2"></asp:ListItem>
                         <asp:ListItem Text="ארץ לידה" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="קורס שנהנית בו" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="קורס שאהבת" Value="4"></asp:ListItem>
                     </asp:DropDownList>
                 </p>
                 <p>
@@ -119,6 +119,7 @@
                     <asp:TextBox ID="passwordInput" CssClass="loginInput input" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="PasswordRequiredFieldValidator" ControlToValidate="passwordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
                 </p>
+                    <asp:Label ID="errorLbl" Text="הפרטים אינם נכונים" runat="server"></asp:Label>
                     <asp:Button ID="loginBtn" CssClass="btn" runat="server" Text="התחבר" OnClientClick="loginBtn_Click" OnClick="loginBtn_Click" />
                 <p>
                     <span id="forgotPassword" class="inputText" onclick="forgotPasswordPopUp()">
@@ -127,39 +128,41 @@
                 </p>
             </div>
         </div>
-        <div id="forgotPasswordDialog" title="Basic dialog">
-             <div class="dialogHeader contentHeader">
-                אחזור סיסמא
+        <div class="divFordialog">
+            <div id="forgotPasswordDialog" title="Basic dialog">
+                 <div class="dialogHeader contentHeader">
+                    אחזור סיסמא
+                </div>
+                 <p>
+                    <span class="inputText">
+                        דואר אלקטרוני :
+                    </span>
+                    <br />
+                    <asp:TextBox id="emailForgotPass" CssClass="input" runat="server"></asp:TextBox>
+                </p>
+                 <p>
+                    <span class="inputText">
+                        שאלה לאחזור סיסמא :
+                    </span>
+                    <br />
+                    <asp:DropDownList ID="forgotListOfQestions" runat="server">
+                        <asp:ListItem Text="שם של החבר/ה שלך" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="שם של הכלב שלך" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="שם משפחה קודם" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="ארץ לידה" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="קורס שאהבת" Value="4"></asp:ListItem>
+                    </asp:DropDownList>
+                </p>
+                 <p>
+                    <span class="inputText">
+                        תשובה לשאלה :
+                    </span>
+                    <br />
+                    <asp:TextBox id="answerForgatPass" CssClass="registerInput input" runat="server"></asp:TextBox>
+                </p>
+                  <asp:Button ID="ForgatBtn" class="btn" runat="server" Text="שלח" style="margin-left:10%"/>
+                    <asp:Button ID="closeDialogBtn" class="btn" runat="server" Text="סגור" OnClientClick="closeDialog()" />
             </div>
-             <p>
-                <span class="inputText">
-                    דואר אלקטרוני :
-                </span>
-                <br />
-                <asp:TextBox id="emailForgotPass" CssClass="input" runat="server"></asp:TextBox>
-            </p>
-             <p>
-                <span class="inputText">
-                    שאלה לאחזור סיסמא :
-                </span>
-                <br />
-                <asp:DropDownList ID="forgotListOfQestions" runat="server">
-                    <asp:ListItem Text="שם של החבר/ה שלך" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="שם של הכלב שלך" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="שם משפחה קודם" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="ארץ לידה" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="קורס שנהנית בו" Value="4"></asp:ListItem>
-                </asp:DropDownList>
-            </p>
-             <p>
-                <span class="inputText">
-                    תשובה לשאלה :
-                </span>
-                <br />
-                <asp:TextBox id="answerForgatPass" CssClass="registerInput input" runat="server"></asp:TextBox>
-            </p>
-              <asp:Button ID="ForgatBtn" class="btn" runat="server" Text="שלח" style="margin-left:10%"/>
-                <asp:Button ID="closeDialogBtn" class="btn" runat="server" Text="סגור" OnClientClick="closeDialog()" />
         </div>
     </form>
 </body>

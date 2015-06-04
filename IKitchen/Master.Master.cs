@@ -29,7 +29,7 @@ namespace IKitchen
 
                 if (user.Rows.Count != 1)
                     Response.Redirect("~/loginRegister.aspx");
-
+                
                 userName.Text = user.Rows[0][1].ToString() + " " + user.Rows[0][2].ToString();
                 login.Style.Add("display", "none");
             }
@@ -45,7 +45,6 @@ namespace IKitchen
             link.Enabled = false;
             link.ForeColor = Color.FromArgb(255, 106, 0);
             link.CssClass += " aActive";
-
         }
         protected void redirect(object sender, EventArgs e)
         {

@@ -24,6 +24,7 @@
                 <asp:LinkButton ID="logout" runat="server" Text="התנתק"></asp:LinkButton>
                 <asp:LinkButton ID="login" runat="server" Text="התחבר" PostBackUrl="~/loginRegister.aspx" ></asp:LinkButton>
             </span>
+
         </header>
         <nav>
             <asp:LinkButton CssClass="a" runat="server" ID="linkDefault" OnClick="redirect">ראשי</asp:LinkButton>
