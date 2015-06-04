@@ -66,7 +66,28 @@ namespace IKitchen
                     lNAme = sqlData["user_lastName"].ToString();
                 }
             }
+            con.Close();
             return fName + " " + lNAme;
         }
+
+        protected void registerBtn_Click(object sender, EventArgs e)
+        {
+            //int id = 3;
+            string fName = firstNameInput.Text.ToString();
+            string lName = lastNameInput.Text.ToString();
+            string email = emailInput.Text.ToString();
+            string pass = regPasswordInput.Text.ToString();
+            int question = listOfQestions.SelectedIndex;
+            string ans = answer.Text.ToString();
+            SqlDataReader sqlData = null;
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+            string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer)"+
+                            "VALUES ('" + fName + "','" + lName + "','" + email + "','" + pass + "'," + question + ",'" + ans + "')";
+            con.Open();
+            SqlCommand command = new SqlCommand(sql, con);
+            command.ExecuteNonQuery();
+            con.Close();
+        }
+    
     }
 }

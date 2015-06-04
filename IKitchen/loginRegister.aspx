@@ -94,7 +94,7 @@
                     <asp:TextBox id="answer" CssClass="registerInput input" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="AnswerRequiredFieldValidator" ControlToValidate="answer" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>                    
                 </p>
-                <asp:Button ID="signUpBtn" class="btn" runat="server" Text="הרשם" />
+                <asp:Button ID="signUpBtn" class="btn" runat="server" Text="הרשם" OnClientClick="registerBtn_Click" OnClick="registerBtn_Click"/>
             </div>
         </div>
 
