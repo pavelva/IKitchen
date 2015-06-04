@@ -19,8 +19,8 @@ namespace IKitchen
             ((TextBox)form1.FindControl("regConfirmPasswordInput")).Attributes["type"] = "password";
             if (!Page.IsPostBack)
             {
-                if (Request.Cookies["email"] != null){
-                    string name = getUserNameFromDB(Request.Cookies["email"].Value.ToString());
+                if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null){
+                    string name = getUserNameFromDB(Request.Cookies["email"].Value.ToString(), Request.Cookies["pass"].Value.ToString());
                     Response.Redirect("Catalog.aspx?name=" + name);
                 }
             }
@@ -28,12 +28,17 @@ namespace IKitchen
 
         protected void loginBtn_Click(object sender, EventArgs e)
         {
-            string name = getUserNameFromDB(loginEmailInput.Text.ToString());
+            string name = getUserNameFromDB(loginEmailInput.Text.ToString(), passwordInput.Text.ToString());
             if (name != " ")
             {
                 HttpCookie userEmail = new HttpCookie("email", loginEmailInput.Text.ToString());
                 userEmail.Expires = DateTime.Now.AddDays(1);
+                
+                HttpCookie userPassword = new HttpCookie("pass", passwordInput.Text.ToString());
+                userPassword.Expires = DateTime.Now.AddDays(1);
+
                 Response.Cookies.Add(userEmail);
+                Response.Cookies.Add(userPassword);
 
                 Response.Redirect("Catalog.aspx?name=" + name);
             }
@@ -43,13 +48,13 @@ namespace IKitchen
             }
         }
 
-        protected string getUserNameFromDB(string email)
+        protected string getUserNameFromDB(string email, string pass)
         {
             string fName = "";
             string lNAme = "";
             SqlDataReader sqlData = null; 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            string sql = "select * from users where user_email= '" + email + "'";
+            string sql = "select * from users where user_email= '" + email + "' AND user_password= '" + pass + "'";
             con.Open();
             SqlCommand command = new SqlCommand(sql, con);
             sqlData = command.ExecuteReader();
