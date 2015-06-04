@@ -179,6 +179,15 @@ nav{
 
 }
 
+#errorLbl {
+    position:absolute;
+    right:105px;
+    top:147px;
+    float:right;
+    color:red;
+    font-size:1em;
+    display:none;
+}
 /*--------------------------------Validators----------------------------------------*/
 
 #UserNameRequiredFieldValidator {
@@ -264,18 +273,25 @@ nav{
 
 /*------------------------------------------------------------------------*/
 
+.divFordialog {
+    position:absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.5);
+    display:none;
+}
+
 #forgotPasswordDialog {
     text-align:center;
-    position:absolute;
-    top:28%;
-    right:35%;
     height:300px;
     width:400px;
+    margin-right:35%;
+    margin-top:13.2%;
     background:white;
     border:1px solid black;
     border-radius:10px;
-    z-index:100;
-    display:none;
 }
 
 .dialogHeader {

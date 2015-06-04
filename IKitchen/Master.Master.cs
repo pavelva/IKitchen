@@ -18,6 +18,8 @@ namespace IKitchen
             link.Enabled = false;
             link.ForeColor = Color.FromArgb(255, 106, 0);
             link.CssClass += " aActive";
+            LinkButton userName = (LinkButton)form1.FindControl("userName");
+            userName.Text = Request.QueryString["name"].ToString();
         }
         protected void redirect(object sender, EventArgs e)
         {
