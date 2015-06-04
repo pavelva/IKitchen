@@ -7,6 +7,7 @@
     <title>IKitchen</title>
     
     <link rel="stylesheet" type="text/css" href="Style/main.css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -21,13 +22,13 @@
             <span id="user">
                 <asp:LinkButton ID="userName" CssClass="userName" runat="server" Text="רפי גינת"></asp:LinkButton>
                 <asp:LinkButton ID="logout" runat="server" Text="התנתק"></asp:LinkButton>
+                <asp:LinkButton ID="login" runat="server" Text="התחבר" PostBackUrl="~/loginRegister.aspx" ></asp:LinkButton>
             </span>
         </header>
         <nav>
             <asp:LinkButton CssClass="a" runat="server" ID="linkDefault" OnClick="redirect">ראשי</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkCatalog" OnClick="redirect">קטלוג</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkMyPurchases" OnClick="redirect">הרכישות שלי</asp:LinkButton>
-            <asp:LinkButton CssClass="a" runat="server">עמוד 4</asp:LinkButton>
         </nav>
         <div id="content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

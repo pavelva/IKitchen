@@ -40,12 +40,13 @@ h2{
 .catalogChk:nth-last-of-type(5){
     margin-bottom:20px;
 }
+
 .productImg {
     display:block;
     margin: 10px auto;
     text-align:center;
     width:200px;
-    height:200px;
+    height:170px;
 }
 .productImg img{
     max-width:200px;
@@ -69,4 +70,13 @@ h2{
     clear:both; 
     margin:0 auto; 
     width:15%;
+}
+
+.btnProduct{
+    display:block;
+    background:rgba(200,0,0,0.8);
+    color:white;
+    width:100px;
+    height:30px;
+    margin: 25px auto;
 }

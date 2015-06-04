@@ -1,18 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Catalog.aspx.cs" Inherits="IKitchen.Catalog" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <link rel="stylesheet" type="text/css" href="Style/Catalog.css" />
+
+    <script type="text/javascript" src="Script/catalog.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>קטלוג מוצרים</h2>
     <div id="itemTypePicker" class="itemTypePicker" runat="server">
-        <h3>בחר מוצא:</h3>
+        <h3>בחר מוצר:</h3>
     </div>
-    
+    <input type="button" value="TEST" onclick="run()" />
     <asp:ListView runat="server" DataSourceID="CatalogDataSource">
         <LayoutTemplate>
             <div runat="server" id="itemPlaceHolder"></div>
-            <div id="catalogPager"dir="ltr">
-                <asp:DataPager runat="server" ID="DataPager" PageSize="12" >
+            <%--<div id="catalogPager" runat="server" dir="ltr">
+                <asp:DataPager runat="server" ID="DataPager" PageSize="12">
                   <Fields>
                     <asp:NumericPagerField 
                       ButtonCount="5"
@@ -20,7 +24,7 @@
                       NextPageText="-->" />
                   </Fields>
                 </asp:DataPager>
-            </div>
+            </div>--%>
         </LayoutTemplate>
         <ItemTemplate>
             <div class="catalogItem">
@@ -30,7 +34,7 @@
                     <span class="productCompany" ><%#Eval("company_name") %></span>
                 </h3>
                 <span class="productImg" > <img src="Images/Big/<%#Eval("product_model") %>.jpg" /></span>
-                <asp:Button Text="הוסף לעגלה" runat="server" />
+                <asp:Button Text="הוסף לעגלה" runat="server" CssClass="btnProduct"/>
             </div>
             
         </ItemTemplate>

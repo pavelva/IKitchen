@@ -580,6 +580,8 @@
     <Content Include="Images\VG55AVX.jpg" />
     <Content Include="Images\WQP6-3305.jpg" />
     <Content Include="loginRegister.aspx" />
+    <Content Include="Script\catalog.js" />
+    <Content Include="Style\default.css" />
     <Content Include="Script\logReg.js" />
     <Content Include="MyPurchases.aspx" />
     <Content Include="Style\Catalog.css" />
