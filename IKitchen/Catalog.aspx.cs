@@ -12,13 +12,56 @@ namespace IKitchen
 {
     public partial class Catalog : System.Web.UI.Page
     {
-        int a = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            FillProductTypes();
+            if(Request.QueryString["func"] != null)
+            {
+                switch (Request.QueryString["func"]){
+                    case "getItems":
+                        List<string> apps;
+                        List<string> companys;
 
+                        if(Request.QueryString["apps"] != null)
+                        {
+                            apps = arrayStringToList("apps");
+                        }
+                        else
+                        {
+                            apps = new List<string>();
+                        }
+
+                        if (Request.QueryString["companys"] != null)
+                        {
+                            companys = arrayStringToList("companys");
+                        }
+                        else
+                        {
+                            companys = new List<string>();
+                        }
+
+                        List<string> items = getItems(apps, companys);
+
+                        Response.Write(string.Join("\n", items));
+
+                        break;
+                        
+                }
+
+
+
+                Response.End();
+                return;
+            }
+
+            FillProductTypes();
+            fillCompanys();
             if (Session["sql"] != null)
                 FillCatalog(Session["sql"].ToString());
+        }
+
+        private List<string> arrayStringToList(string id)
+        {
+            return Request.QueryString[id].ToString().Replace("[", "").Replace("]", "").Split(',').ToList();;
         }
 
         private void FillCatalog(string sql)
@@ -45,15 +88,37 @@ namespace IKitchen
                 string text = r[1].ToString();
 
                 CheckBox c = new CheckBox();
-                c.ID = "chk_" + value;
-                c.CssClass = "catalogChk";
+                c.CssClass = "catalogChk app";
                 c.Text = text;
-                c.AutoPostBack = true;
-                c.CheckedChanged += new EventHandler(Product_CheckedChanged);
                 itemTypePicker.Controls.Add(c);
                 
             }
+            con.Close();
+        }
 
+        private void fillCompanys()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+            string sql = "select * from companys";
+            con.Open();
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+            DataTable comp = new DataTable();
+            adapter.Fill(comp);
+
+            foreach (DataRow r in comp.Rows)
+            {
+                int value = int.Parse(r[0].ToString());
+                string text = r[1].ToString();
+
+                CheckBox c = new CheckBox();
+                c.CssClass = "catalogChk company";
+                c.Text = text;
+                CompanyPIcker.Controls.Add(c);
+
+            }
+            con.Close();
         }
 
         protected void Product_CheckedChanged(object sender, EventArgs e)
@@ -88,8 +153,52 @@ namespace IKitchen
                                 "Where app_name in (N'" + string.Join("',N'", products) + "') " +
                                 " order by company_name";
             Session.Add("sql", sql);
-            a++;
             FillCatalog(sql);
-        } 
+        }
+
+
+        public static List<string> getItems(List<string> apps, List<string> companys){
+
+            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name " +
+                                "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id ";
+            
+                                
+
+            if(apps.Count > 0 || companys.Count > 0)
+            {
+                sql +="Where " ;
+                sql += (apps.Count >0 ? "app_name in (N'" + string.Join("',N'", apps) + "') " + (companys.Count > 0? " AND " : ""): "");
+                sql += (companys.Count > 0? "company_name in (N'" + string.Join("',N'", companys) + "') " : "");
+            }
+
+            sql+=" order by app_name";
+
+            SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+            sqlCon.Open();
+            SqlCommand comm = new SqlCommand(sql, sqlCon);
+            SqlDataAdapter adapter = new SqlDataAdapter(comm);
+
+            DataTable tbl = new DataTable();
+            adapter.Fill(tbl);
+
+            List<string> items = new List<string>();
+            
+            foreach(DataRow r in tbl.Rows)
+            {
+                string item = "<div class='catalogItem'> " + 
+                "<h3>"+
+                    "<span class='productType' >" + r[5].ToString() + "</span><br /> " +
+                    "<span class='productModel' >" +  r[1].ToString() + "</span> " +
+                    "<span class='productCompany' >" + r[7].ToString() + "</span> "+
+                "</h3>"+
+                "<span class='productImg' > <img src='Images/Big/" + r[1].ToString() + ".jpg' /></span> " +
+                "<input type='button' value='הוסף לעגלה' class='btnProduct'/> " + 
+                "</div>";
+
+                items.Add(item);
+            }
+
+            return items;
+        }
     }
 }

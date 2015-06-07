@@ -8,23 +8,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>קטלוג מוצרים</h2>
-    <div id="itemTypePicker" class="itemTypePicker" runat="server">
+    <div id="itemTypePicker" class="itemTypePicker" runat="server" >
         <h3>בחר מוצר:</h3>
     </div>
-    <input type="button" value="TEST" onclick="run()" />
-    <asp:ListView runat="server" DataSourceID="CatalogDataSource">
+    <div id="CompanyPIcker" class="itemTypePicker" runat="server">
+        <h3>בחר חברה:</h3>
+    </div>
+    
+    <div id="catalog">
+
+    </div>
+
+   <%-- <asp:ListView runat="server" DataSourceID="CatalogDataSource">
         <LayoutTemplate>
             <div runat="server" id="itemPlaceHolder"></div>
-            <%--<div id="catalogPager" runat="server" dir="ltr">
-                <asp:DataPager runat="server" ID="DataPager" PageSize="12">
-                  <Fields>
-                    <asp:NumericPagerField 
-                      ButtonCount="5"
-                      PreviousPageText="<--"
-                      NextPageText="-->" />
-                  </Fields>
-                </asp:DataPager>
-            </div>--%>
         </LayoutTemplate>
         <ItemTemplate>
             <div class="catalogItem">
@@ -38,7 +35,7 @@
             </div>
             
         </ItemTemplate>
-    </asp:ListView>
+    </asp:ListView>--%>
 
     <asp:SqlDataSource ID="CatalogDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IKitchenDB %>">
     </asp:SqlDataSource>
