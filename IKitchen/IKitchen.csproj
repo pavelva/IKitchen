@@ -582,6 +582,8 @@
     <Content Include="loginRegister.aspx" />
     <Content Include="packages.config" />
     <Content Include="Script\catalog.js" />
+    <Content Include="Script\global.js" />
+    <Content Include="Script\main.js" />
     <Content Include="Style\default.css" />
     <Content Include="Script\logReg.js" />
     <Content Include="MyPurchases.aspx" />

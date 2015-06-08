@@ -18,31 +18,27 @@ namespace IKitchen
             {
                 switch (Request.QueryString["func"]){
                     case "getItems":
-                        List<string> apps;
-                        List<string> companys;
-
-                        if(Request.QueryString["apps"] != null)
+                        getItems();
+                        break;
+                    case "addToCart":
+                        if (Session["userID"] == null)
                         {
-                            apps = arrayStringToList("apps");
+                            Response.Redirect("loginRedister");
+                            break;
+                        }
+                        if ( Request.QueryString["pID"] != null)
+                        {
+                            if(Session["cart"] == null)
+                                Session["cart"] = new List<string>();
+
+                            ((List<string>)Session["cart"]).Add(Request.QueryString["pID"].ToString());
                         }
                         else
-                        {
-                            apps = new List<string>();
-                        }
+                            Response.Status = 400 + "";
 
-                        if (Request.QueryString["companys"] != null)
-                        {
-                            companys = arrayStringToList("companys");
-                        }
-                        else
-                        {
-                            companys = new List<string>();
-                        }
-
-                        List<string> items = getItems(apps, companys);
-
-                        Response.Write(string.Join("\n", items));
-
+                        break;
+                    default:
+                        Response.Status = 400 + "";
                         break;
                         
                 }
@@ -57,6 +53,34 @@ namespace IKitchen
             fillCompanys();
             if (Session["sql"] != null)
                 FillCatalog(Session["sql"].ToString());
+        }
+
+        private void getItems()
+        {
+            List<string> apps;
+            List<string> companys;
+
+            if (Request.QueryString["apps"] != null)
+            {
+                apps = arrayStringToList("apps");
+            }
+            else
+            {
+                apps = new List<string>();
+            }
+
+            if (Request.QueryString["companys"] != null)
+            {
+                companys = arrayStringToList("companys");
+            }
+            else
+            {
+                companys = new List<string>();
+            }
+
+            List<string> items = extractItems(apps, companys);
+
+            Response.Write(string.Join("\n", items));
         }
 
         private List<string> arrayStringToList(string id)
@@ -121,43 +145,7 @@ namespace IKitchen
             con.Close();
         }
 
-        protected void Product_CheckedChanged(object sender, EventArgs e)
-        {
-            updateList();
-            
-            
-            //DataPager pager = ((DataPager)Page.FindControl("DataPager"));
-            //pager.SetPageProperties(0, pager.PageSize, true);
-        }
-
-        private void updateList()
-        {
-            List<string> products = new List<string>();
-
-            foreach (Control c in itemTypePicker.Controls)
-            {
-                if (c.GetType().Equals(typeof(CheckBox)))
-                {
-                    if (((CheckBox)c).Checked)
-                    {
-                        //string id = c.ID.Substring(c.ID.IndexOf("chk_") + 1);
-                        string name = ((CheckBox)c).Text;
-                        products.Add(name);
-                    }
-
-                }
-            }
-
-            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name " +
-                                "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
-                                "Where app_name in (N'" + string.Join("',N'", products) + "') " +
-                                " order by company_name";
-            Session.Add("sql", sql);
-            FillCatalog(sql);
-        }
-
-
-        public static List<string> getItems(List<string> apps, List<string> companys){
+        public static List<string> extractItems(List<string> apps, List<string> companys){
 
             string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id ";
@@ -193,6 +181,7 @@ namespace IKitchen
                 "</h3>"+
                 "<span class='productImg' > <img src='Images/Big/" + r[1].ToString() + ".jpg' /></span> " +
                 "<input type='button' value='הוסף לעגלה' class='btnProduct'/> " + 
+                "<span class='productId' style='display:none'>" + r[0].ToString() + "</span>" +
                 "</div>";
 
                 items.Add(item);
