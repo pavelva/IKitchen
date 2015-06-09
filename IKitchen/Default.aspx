@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="stylesheet" type="text/css" href="Style/catalog.css" />
+    <script type="text/javascript" src="Script/main.js"></script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -22,7 +23,8 @@
                     <span class="productCompany" ><%#Eval("company_name") %></span>
                 </h3>
                 <span class="productImg" > <img src="Images/Big/<%#Eval("product_model") %>.jpg" /></span>
-                <asp:Button Text="הוסף לעגלה" runat="server" CssClass="btnProduct" />
+                <input type='button'"  value='הוסף לעגלה' class='btnProduct'/> 
+                <span class='productId' style='display:none'> <%#Eval("product_id") %></span>
             </div>
         </ItemTemplate>
     </asp:ListView>
