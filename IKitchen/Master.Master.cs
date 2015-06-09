@@ -17,20 +17,22 @@ namespace IKitchen
         {
             if (Session["userID"] != null)
             {
-                int id = int.Parse(Session["userID"].ToString());
+                //int id = int.Parse(Session["userID"].ToString());
 
-                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                //SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
 
-                string sqlUSerDetails = "Select * from users where user_id = " + id;
-                SqlCommand command = new SqlCommand(sqlUSerDetails, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable user = new DataTable();
-                adapter.Fill(user);
+                //string sqlUSerDetails = "Select * from users where user_id = " + id;
+                //SqlCommand command = new SqlCommand(sqlUSerDetails, connection);
+                //SqlDataAdapter adapter = new SqlDataAdapter(command);
+                //DataTable user = new DataTable();
+                //adapter.Fill(user);
 
-                if (user.Rows.Count != 1)
-                    Response.Redirect("~/loginRegister.aspx");
+                //if (user.Rows.Count != 1)
+                //    Response.Redirect("~/loginRegister.aspx");
                 
-                userName.Text = user.Rows[0][1].ToString() + " " + user.Rows[0][2].ToString();
+                //userName.Text = user.Rows[0][1].ToString() + " " + user.Rows[0][2].ToString();
+
+                userName.Text = Session["firstName"] + " " + Session["lastName"];
                 login.Style.Add("display", "none");
             }
             else
@@ -50,7 +52,7 @@ namespace IKitchen
         {
             WebControl element = ((WebControl)sender);
             var url = element.ID.Replace("link", "") + ".aspx";
-            Response.Redirect(url + "?id=" + Session["userID"]);
+            Response.Redirect(url);
         }
     }
 }

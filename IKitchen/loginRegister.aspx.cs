@@ -20,16 +20,16 @@ namespace IKitchen
             if (!Page.IsPostBack)
             {
                 if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null){
-                    string name = getUserNameFromDB(Request.Cookies["email"].Value.ToString(), Request.Cookies["pass"].Value.ToString());
-                    Response.Redirect("Catalog.aspx?name=" + name);
+                    getUserIDFromDB(Request.Cookies["email"].Value.ToString(), Request.Cookies["pass"].Value.ToString());
+                    Response.Redirect("Catalog.aspx");
                 }
             }
         }
 
         protected void loginBtn_Click(object sender, EventArgs e)
         {
-            string name = getUserNameFromDB(loginEmailInput.Text.ToString(), passwordInput.Text.ToString());
-            if (name != " ")
+            int id = getUserIDFromDB(loginEmailInput.Text.ToString(), passwordInput.Text.ToString());
+            if (id != -1)
             {
                 HttpCookie userEmail = new HttpCookie("email", loginEmailInput.Text.ToString());
                 userEmail.Expires = DateTime.Now.AddDays(1);
@@ -39,8 +39,7 @@ namespace IKitchen
 
                 Response.Cookies.Add(userEmail);
                 Response.Cookies.Add(userPassword);
-
-                Response.Redirect("Catalog.aspx?name=" + name);
+                Response.Redirect("Catalog.aspx");
             }
             else
             {
@@ -48,10 +47,11 @@ namespace IKitchen
             }
         }
 
-        protected string getUserNameFromDB(string email, string pass)
+        protected int getUserIDFromDB(string email, string pass)
         {
+            int id = -1;
             string fName = "";
-            string lNAme = "";
+            string lName = "";
             SqlDataReader sqlData = null; 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
             string sql = "select * from users where user_email= '" + email + "' AND user_password= '" + pass + "'";
@@ -62,12 +62,16 @@ namespace IKitchen
             {
                 if (sqlData.Read())
                 {
+                    id = int.Parse(sqlData["user_id"].ToString());
                     fName = sqlData["user_firstName"].ToString();
-                    lNAme = sqlData["user_lastName"].ToString();
+                    lName = sqlData["user_lastName"].ToString();
+                    Session.Add("firstName", fName);
+                    Session.Add("lastName", lName);
+                    Session.Add("userID", id);
                 }
             }
             con.Close();
-            return fName + " " + lNAme;
+            return id;
         }
 
         protected void registerBtn_Click(object sender, EventArgs e)
