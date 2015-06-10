@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <span id=logo>
+        <span id="logo">
             I<span id="logo_content">Kitchen</span>
         </span>
     </header>
