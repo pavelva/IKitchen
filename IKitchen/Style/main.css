@@ -7,6 +7,18 @@ a,.a{transition: all .2s linear;-o-transition: all .2s linear;-moz-transition: a
     clear:both;
 }
 
+.btn{
+    display:block;
+    background:rgba(200,0,0,0.8);
+    color:white;
+}
+
+.btn:hover{
+    cursor:pointer;
+    box-shadow: 2px 2px rgba(0,0,0,0.2), inset 2px 2px rgba(0,0,0,0.2);
+    color:#307bd4;
+}
+
 body {
     font-family:'Segoe UI',Tahoma,Helvetica,Sans-Serif;
     width:100%;

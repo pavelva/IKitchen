@@ -19,24 +19,6 @@
 
     </div>
 
-   <%-- <asp:ListView runat="server" DataSourceID="CatalogDataSource">
-        <LayoutTemplate>
-            <div runat="server" id="itemPlaceHolder"></div>
-        </LayoutTemplate>
-        <ItemTemplate>
-            <div class="catalogItem">
-                <h3>
-                    <span class="productType" ><%#Eval("app_name") %></span><br />
-                    <span class="productModel" > <%#Eval("product_model") %></span>
-                    <span class="productCompany" ><%#Eval("company_name") %></span>
-                </h3>
-                <span class="productImg" > <img src="Images/Big/<%#Eval("product_model") %>.jpg" /></span>
-                <asp:Button Text="הוסף לעגלה" runat="server" CssClass="btnProduct"/>
-            </div>
-            
-        </ItemTemplate>
-    </asp:ListView>--%>
-
     <asp:SqlDataSource ID="CatalogDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IKitchenDB %>">
     </asp:SqlDataSource>
             
