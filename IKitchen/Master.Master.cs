@@ -15,8 +15,16 @@ namespace IKitchen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string userCss = ".user{display:none}";
+            string adminCss = ".admin{display:none}";
+
             if (Session["userID"] != null)
             {
+                
+                if (bool.Parse(Session["isAdmin"].ToString()))
+                    adminCss = "";
+                else
+                    userCss = "";
 
                 if (Session["firstName"] == null|| Session["lastName"] == null)
                     Response.Redirect("~/loginRegister.aspx");
@@ -29,9 +37,10 @@ namespace IKitchen
             {
                 userName.Style.Add("display", "none");
                 logout.Style.Add("display", "none");
-                linkMyPurchases.Style.Add("display", "none");
+                login.Style.Add("display", "block");
             }
 
+            Page.Header.Controls.Add(new LiteralControl("<style type='text/css'>" + userCss + "\n" + adminCss + "</style>"));
 
             string linkID = "link" + Request.Url.AbsolutePath.Replace("/", "").Replace(".aspx", "");
             LinkButton link;
