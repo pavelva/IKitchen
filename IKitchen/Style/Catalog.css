@@ -127,3 +127,33 @@ h2{
     width:20%;
     margin:2% 5% 2% 0;
 }
+
+/*------------------------------ For Admin ------------------------------*/
+#adminPlace {
+    background-color:green;
+    height:60px;
+}
+#quantity {
+    background-color:yellow;
+    text-align:center !important;
+}
+.adminButton {
+    margin:0 !important;
+    background-color:blue !important;
+}
+
+.adminButton:first-of-type{
+    float:right;
+    margin-right:15px !important;
+}
+
+.adminButton:last-of-type{
+    float:left;
+    margin-left:15px !important;
+}
+#removeButton {
+    float:right;
+    margin-right:15px;
+}
+#editButton {
+}
