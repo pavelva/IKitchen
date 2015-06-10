@@ -28,8 +28,8 @@
 
         </header>
         <nav>
-            <asp:LinkButton CssClass="a" runat="server" ID="linkDefault" OnClick="redirect">ראשי</asp:LinkButton>
-            <asp:LinkButton CssClass="a user" runat="server" ID="linkCatalog" OnClick="redirect">קטלוג</asp:LinkButton>
+            <asp:LinkButton CssClass="a user" runat="server" ID="linkDefault" OnClick="redirect">ראשי</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server" ID="linkCatalog" OnClick="redirect">קטלוג</asp:LinkButton>
             <asp:LinkButton CssClass="a admin" runat="server" ID="linkCatalog2" OnClick="redirect">ניהול מוצרים</asp:LinkButton>
             <asp:LinkButton CssClass="a user" runat="server" ID="linkMyPurchases" OnClick="redirect">הרכישות שלי</asp:LinkButton>
             <asp:LinkButton CssClass="a admin" runat="server" ID="linkManageUsers" OnClick="redirect">ניהול משתמשים</asp:LinkButton>

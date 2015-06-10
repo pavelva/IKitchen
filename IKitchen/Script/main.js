@@ -28,9 +28,4 @@ function initButtons(){
                     alert("בעיית תקשורת");
             });
     });
-
-    $(".catalogItem").click(function(){
-        var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");
-        window.location = "Item.aspx?item=" + productId.toString();
-    });
 }
