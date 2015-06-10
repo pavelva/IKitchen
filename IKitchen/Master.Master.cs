@@ -29,6 +29,7 @@ namespace IKitchen
             {
                 userName.Style.Add("display", "none");
                 logout.Style.Add("display", "none");
+                linkMyPurchases.Style.Add("display", "none");
             }
 
 

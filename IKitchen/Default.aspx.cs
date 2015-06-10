@@ -20,9 +20,10 @@ namespace IKitchen
 
 
                 SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-                string sqlUserPurchases = "select purchase_userid, product_type " +
-                                           "from purchases join products on purchase_productId = product_id " +
-                                           "where purchase_userid = " + id;
+
+                string sqlUserPurchases = "select sale_userId, product_type " +
+                                           "from (sales join purchases on sale_Id = purchase_saleId) join products on purchase_productId = product_id " +
+                                           "where sale_userId = " + id;
 
                 SqlCommand command = new SqlCommand(sqlUserPurchases, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
