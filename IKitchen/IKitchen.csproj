@@ -579,10 +579,12 @@
     <Content Include="Images\Veronica.jpg" />
     <Content Include="Images\VG55AVX.jpg" />
     <Content Include="Images\WQP6-3305.jpg" />
+    <Content Include="Item.aspx" />
     <Content Include="loginRegister.aspx" />
     <Content Include="packages.config" />
     <Content Include="Script\catalog.js" />
     <Content Include="Script\global.js" />
+    <Content Include="Script\item.js" />
     <Content Include="Script\main.js" />
     <Content Include="Style\default.css" />
     <Content Include="Script\logReg.js" />
@@ -629,6 +631,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Item.aspx.cs">
+      <DependentUpon>Item.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Item.aspx.designer.cs">
+      <DependentUpon>Item.aspx</DependentUpon>
     </Compile>
     <Compile Include="loginRegister.aspx.cs">
       <DependentUpon>loginRegister.aspx</DependentUpon>

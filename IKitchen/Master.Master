@@ -17,7 +17,7 @@
     <asp:ScriptManager runat="server"></asp:ScriptManager>        
     <div>
         <header>
-            <span id=logo>
+            <span id="logo">
                 I<span id="logo_content">Kitchen</span>
             </span>
             <span id="user">
@@ -31,6 +31,7 @@
             <asp:LinkButton CssClass="a" runat="server" ID="linkDefault" OnClick="redirect">ראשי</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkCatalog" OnClick="redirect">קטלוג</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkMyPurchases" OnClick="redirect">הרכישות שלי</asp:LinkButton>
+            <asp:LinkButton CssClass="a" runat="server" ID="linkAbout" OnClick="redirect">אודות</asp:LinkButton>
         </nav>
         <div id="content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

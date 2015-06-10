@@ -1,7 +1,11 @@
 ﻿@import url(http://fonts.googleapis.com/css?family=Droid+Serif|Montserrat);
 
-*{padding:0;margin:0;border:none;border-collapse:collapse;text-decoration:none;list-style:none; outline:0;}
+*{padding:0;margin:0;border:none;border-collapse:collapse;text-decoration:none; outline:0;}
 a,.a{transition: all .2s linear;-o-transition: all .2s linear;-moz-transition: all .2s linear;-webkit-transition: all .2s linear}
+.clear{
+    display:block;
+    clear:both;
+}
 
 body {
     font-family:'Segoe UI',Tahoma,Helvetica,Sans-Serif;

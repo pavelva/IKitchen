@@ -13,10 +13,10 @@
         <LayoutTemplate>
 
             <div runat="server" id="itemPlaceHolder"></div>
-
+            <div>
         </LayoutTemplate>
         <ItemTemplate>
-            <div class="catalogItem">
+            <div class="catalogItem" id="item_<%#Eval("product_id")%>" style="position:relative">
                 <h3>
                     <span class="productType" ><%#Eval("app_name") %></span><br />
                     <span class="productModel" > <%#Eval("product_model") %></span>

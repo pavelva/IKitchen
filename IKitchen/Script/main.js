@@ -3,6 +3,13 @@
 });
 
 function initButtons(){
+    $(".catalogItem").click(function(e){
+        if(e.toElement.className == 'btnProduct')
+            return;
+        var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");
+        window.location = "Item.aspx?item=" + productId.toString();
+    });
+
     $(".btnProduct").click(function(){
         var productId = $(this).parent().children(".productId")[0].innerHTML;
         var url = "Catalog.aspx?func=addToCart&pID=" + productId;
@@ -20,5 +27,10 @@ function initButtons(){
                 else
                     alert("בעיית תקשורת");
             });
+    });
+
+    $(".catalogItem").click(function(){
+        var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");
+        window.location = "Item.aspx?item=" + productId.toString();
     });
 }

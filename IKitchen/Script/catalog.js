@@ -4,7 +4,15 @@ $(document).ready(function () {
 });
 
 function initButtons(){
-    $(".btnProduct").click(function(){
+    $(".catalogItem").click(function(e){
+        if(e.toElement.className == 'btnProduct')
+            return;
+        var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");
+        window.location = "Item.aspx?item=" + productId.toString();
+    });
+
+    $(".btnProduct").click(function(e){
+        var a = e;
         var productId = $(this).parent().children(".productId")[0].innerHTML;
         var url = "Catalog.aspx?func=addToCart&pID=" + productId;
 
@@ -22,6 +30,8 @@ function initButtons(){
                 alert("בעיית תקשורת");
         });
     });
+
+
 }
 function initSearch() {
     getCatalodItems();
