@@ -581,6 +581,7 @@
     <Content Include="Images\WQP6-3305.jpg" />
     <Content Include="Item.aspx" />
     <Content Include="loginRegister.aspx" />
+    <Content Include="manageUsers.aspx" />
     <Content Include="packages.config" />
     <Content Include="Script\catalog.js" />
     <Content Include="Script\global.js" />
@@ -602,6 +603,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Style\main.css" />
+    <Content Include="Style\manageUsers.css" />
     <Content Include="Style\MyPurchases.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -645,6 +647,13 @@
     </Compile>
     <Compile Include="loginRegister.aspx.designer.cs">
       <DependentUpon>loginRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageUsers.aspx.cs">
+      <DependentUpon>manageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageUsers.aspx.designer.cs">
+      <DependentUpon>manageUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>

@@ -1,0 +1,19 @@
+﻿body {
+}
+
+#manageUserContent {
+    align-content:center !important;
+    background-color:pink !important;
+    text-align:right;
+}
+
+#manageUserTable {
+    text-align:center;
+}
+.tableRow {
+    width:100%;
+}
+.tableCell {
+    width:20%;
+    border:1px solid black;
+}

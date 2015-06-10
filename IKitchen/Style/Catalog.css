@@ -130,16 +130,13 @@ h2{
 
 /*------------------------------ For Admin ------------------------------*/
 #adminPlace {
-    background-color:green;
     height:60px;
 }
 #quantity {
-    background-color:yellow;
     text-align:center !important;
 }
 .adminButton {
-    margin:0 !important;
-    background-color:blue !important;
+    margin:5px !important;
 }
 
 .adminButton:first-of-type{

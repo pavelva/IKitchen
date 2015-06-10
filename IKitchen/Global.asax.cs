@@ -17,9 +17,9 @@ namespace IKitchen
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session.Add("userID", "1");
-            Session.Add("firstName", "Alex");
-            Session.Add("lastName", "Zeltser");
+            //Session.Add("userID", "1");
+            //Session.Add("firstName", "Alex");
+            //Session.Add("lastName", "Zeltser");
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
