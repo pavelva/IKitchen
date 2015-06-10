@@ -13,13 +13,13 @@ namespace IKitchen {
     public partial class MyPurchases {
         
         /// <summary>
-        /// MyPurchasesTable control.
+        /// MySalesTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView MyPurchasesTable;
+        protected global::System.Web.UI.WebControls.GridView MySalesTable;
         
         /// <summary>
         /// MyPurchasesDataSource control.
@@ -29,5 +29,41 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource MyPurchasesDataSource;
+        
+        /// <summary>
+        /// saleWrapper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl saleWrapper;
+        
+        /// <summary>
+        /// saleGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView saleGrid;
+        
+        /// <summary>
+        /// backToMyPurcases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button backToMyPurcases;
+        
+        /// <summary>
+        /// SalesQuery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SalesQuery;
     }
 }
