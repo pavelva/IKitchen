@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminPage.aspx" />
+    <Content Include="Cart.aspx" />
     <Content Include="Catalog.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -587,6 +588,7 @@
     <Content Include="Script\global.js" />
     <Content Include="Script\item.js" />
     <Content Include="Script\main.js" />
+    <Content Include="Style\cart.css" />
     <Content Include="Style\default.css" />
     <Content Include="Script\logReg.js" />
     <Content Include="MyPurchases.aspx" />
@@ -616,6 +618,13 @@
     </Compile>
     <Compile Include="AdminPage.aspx.designer.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalog.aspx.cs">
       <DependentUpon>Catalog.aspx</DependentUpon>
