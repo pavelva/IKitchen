@@ -29,7 +29,7 @@ namespace IKitchen
                         if ( Request.QueryString["pID"] != null)
                         {
                             if(Session["cart"] == null)
-                                Session["cart"] = new List<string>();
+                                Session.Add("cart", new List<string>());
 
                             ((List<string>)Session["cart"]).Add(Request.QueryString["pID"].ToString());
                         }
