@@ -218,18 +218,18 @@ namespace IKitchen
                 string txtColor = (quantity > 3) ? "black" : "red";
                 bool admin = bool.Parse(Session["isAdmin"].ToString());
                 if (!admin)
-                    return "<input type='button' value='הוסף לעגלה' class='btnProduct'/> ";
+                    return "<input type='button' value='הוסף לעגלה' class='btn'/> ";
                 else
                 {
                     return "<div id=adminPlace>" +
                                 "<p id=quantity style=\"color:" + txtColor + "\">" + "כמות במלאי : " + quantity + "</p>" +
-                                "<input id=removeButton type='button' value='מחק מוצר' class='btnProduct adminButton'/> " +
-                                "<input id=editButton type='button' value='ערוך מוצר' class='btnProduct adminButton' onclick=function(){window.location = '?updateID = 5'}/>" +
+                                "<input id=removeButton type='button' value='מחק מוצר' class='btn adminButton'/> " +
+                                "<input id=editButton type='button' value='ערוך מוצר' class='btn adminButton' onclick=function(){window.location = '?updateID = 5'}/>" +
                             "</div>";
                 }
             }
             else
-                return "<input type='button' value='הוסף לעגלה' class='btnProduct'/> ";
+                return "<input type='button' value='הוסף לעגלה' class='btn'/> ";
         }
 
         protected void OpenPopup_click(object sender, EventArgs e)

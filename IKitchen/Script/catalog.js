@@ -5,13 +5,13 @@ $(document).ready(function () {
 
 function initButtons(){
     $(".catalogItem").click(function(e){
-        if(e.toElement.className == 'btnProduct')
+        if(e.toElement.className == 'btn')
             return;
         var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");
         window.location = "Item.aspx?item=" + productId.toString();
     });
 
-    $(".btnProduct").click(function(e){
+    $(".btn").click(function(e){
         var productId = $(this).parent().children(".productId")[0].innerHTML;
         addToCart(productId);
     });

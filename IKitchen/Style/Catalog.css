@@ -69,7 +69,7 @@ h2{
     text-shadow: 1px 1px rgba(0,0,0,0.2);
 }
 
-.btnProduct{
+.btn{
     display:block;
     background:rgba(200,0,0,0.8);
     color:white;
@@ -79,7 +79,7 @@ h2{
     z-index:5;
 }
 
-.btnProduct:hover{
+.btn:hover{
     cursor:pointer;
     box-shadow: 2px 2px rgba(0,0,0,0.2), inset 2px 2px rgba(0,0,0,0.2);
     color:#307bd4;
@@ -123,7 +123,7 @@ h2{
     
 }
 
-#itemContent .btnProduct{
+#itemContent .btn{
     float:right;
     width:20%;
     margin:2% 5% 2% 0;

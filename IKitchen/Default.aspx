@@ -23,7 +23,7 @@
                     <span class="productCompany" ><%#Eval("company_name") %></span>
                 </h3>
                 <span class="productImg" > <img src="Images/Big/<%#Eval("product_model") %>.jpg" /></span>
-                <input type='button'"  value='הוסף לעגלה' class='btnProduct'/> 
+                <input type='button'"  value='הוסף לעגלה' class='btn'/> 
                 <span class='productId' style='display:none'> <%#Eval("product_id") %></span>
             </div>
         </ItemTemplate>

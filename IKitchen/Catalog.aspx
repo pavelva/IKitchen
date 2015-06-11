@@ -15,7 +15,7 @@
         <h3>בחר חברה:</h3>
     </div>
     <asp:Label ID="newItem" ClientIDMode="Static" runat="server">
-        <asp:Button ID="AddNewItemButton" ClientIDMode="Static" CssClass="btnProduct adminButton" OnClick="OpenPopup_click"  runat="server" Text="הוסף מוצר" />
+        <asp:Button ID="AddNewItemButton" ClientIDMode="Static" CssClass="btn adminButton" OnClick="OpenPopup_click"  runat="server" Text="הוסף מוצר" />
     </asp:Label>
     
     <div id="catalog">
@@ -73,8 +73,8 @@
             <asp:TextBox ID="ProductDescription" CssClass="popupInputText" TextMode="MultiLine" runat="server"></asp:TextBox>
         </div>
         <div class="popupRow">
-            <asp:Button ID="createBtn" ClientIDMode="Static" CssClass="btnProduct adminButton" runat="server" Text="הוסף מוצר" />
-            <asp:Button ID="closePopupBtn" ClientIDMode="Static" CssClass="btnProduct adminButton" runat="server" Text="סגור" />
+            <asp:Button ID="createBtn" ClientIDMode="Static" CssClass="btn adminButton" runat="server" Text="הוסף מוצר" />
+            <asp:Button ID="closePopupBtn" ClientIDMode="Static" CssClass="btn adminButton" runat="server" Text="סגור" />
         </div>
     </div>
 </asp:Content>

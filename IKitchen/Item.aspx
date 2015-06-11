@@ -23,8 +23,8 @@
             </div>
             <asp:Image ID="img" runat="server" />
             <span class="clear"></span>
-            <input type="button" id="btnProduct" class="btnProduct" value="הוסף לעגלה" />
-            <asp:Button ID="back" CssClass="btnProduct" runat="server" OnClick="backToCatalog" Text="בחזרה לקטלוג" />
+            <input type="button" id="btnProduct" class="btn" value="הוסף לעגלה" />
+            <asp:Button ID="back" CssClass="btn" runat="server" OnClick="backToCatalog" Text="בחזרה לקטלוג" />
             <span class="clear"></span>
             <asp:HiddenField ID="productId" ClientIDMode="Static"  runat="server" />
         </div>

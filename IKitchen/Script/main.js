@@ -4,13 +4,13 @@
 
 function initButtons(){
     $(".catalogItem").click(function(e){
-        if (e.toElement.className != 'catalogItem')
+        if (e.toElement.className == 'btn')
             return;
         var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");
         window.location = "Item.aspx?item=" + productId.toString();
     });
 
-    $(".btnProduct").click(function(){
+    $(".btn").click(function(){
         var productId = $(this).parent().children(".productId")[0].innerHTML;
         addToCart(productId);
 
