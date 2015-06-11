@@ -14,6 +14,8 @@ namespace IKitchen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             if(Request.QueryString["func"] != null)
             {
                 switch (Request.QueryString["func"]){
@@ -61,14 +63,17 @@ namespace IKitchen
                 return;
             }
 
+            addNewItemPopUp.Style.Add("display", "none");
+
             FillProductTypes();
             fillCompanys();
             if (Session["isAdmin"] != null && bool.Parse(Session["isAdmin"].ToString()))
             {
+                CatalogHeader.InnerText = "ניהול מוצרים";
                 newItem.Style.Add("display", "block");
             }
-            if (Session["sql"] != null)
-                FillCatalog(Session["sql"].ToString());
+            //if (Session["sql"] != null)
+            //    FillCatalog(Session["sql"].ToString());
         }
 
         private void getItems()
@@ -219,12 +224,70 @@ namespace IKitchen
                     return "<div id=adminPlace>" +
                                 "<p id=quantity style=\"color:" + txtColor + "\">" + "כמות במלאי : " + quantity + "</p>" +
                                 "<input id=removeButton type='button' value='מחק מוצר' class='btnProduct adminButton'/> " +
-                                "<input id=editButton type='button' value='ערוך מוצר' class='btnProduct adminButton'/>" +
+                                "<input id=editButton type='button' value='ערוך מוצר' class='btnProduct adminButton' onclick=function(){window.location = '?updateID = 5'}/>" +
                             "</div>";
                 }
             }
             else
                 return "<input type='button' value='הוסף לעגלה' class='btnProduct'/> ";
         }
+
+        protected void OpenPopup_click(object sender, EventArgs e)
+        {
+            addNewItemPopUp.Style.Add("display", "block");
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+            fillCompanysDropDownList(con);
+            fillCategorysDropDownList(con);
+            fillSubCatDropDownList(con);
+            if (!sender.ToString().Equals("הוסף מוצר")) 
+           { 
+            }
+        }
+
+        private void fillSubCatDropDownList(SqlConnection con)
+        {
+            string com = "Select * from applience_types";
+            SqlDataAdapter adpt = new SqlDataAdapter(com, con);
+            DataTable dt = new DataTable();
+            adpt.Fill(dt);
+
+            ProductSubCategory.DataSource = dt;
+            ProductSubCategory.DataBind();
+            ProductSubCategory.DataTextField = "appType_name";
+            ProductSubCategory.DataValueField = "appType_id";
+            ProductSubCategory.DataBind();
+        }
+
+        private void fillCategorysDropDownList(SqlConnection con)
+        {
+            string com = "Select * from applience";
+            SqlDataAdapter adpt = new SqlDataAdapter(com, con);
+            DataTable dt = new DataTable();
+            adpt.Fill(dt);
+
+            ProductCategory.DataSource = dt;
+            ProductCategory.DataBind();
+            ProductCategory.DataTextField = "app_name";
+            ProductCategory.DataValueField = "app_id";
+            ProductCategory.DataBind();
+        }
+
+        private void fillCompanysDropDownList(SqlConnection con)
+        {
+
+            string com = "Select * from companys";
+            SqlDataAdapter adpt = new SqlDataAdapter(com, con);
+            DataTable dt = new DataTable();
+            adpt.Fill(dt);
+
+            CompanyName.DataSource = dt;
+            CompanyName.DataBind();
+            CompanyName.DataTextField = "company_name";
+            CompanyName.DataValueField = "company_id";
+            CompanyName.DataBind();
+        }
+
     }
+
 }
