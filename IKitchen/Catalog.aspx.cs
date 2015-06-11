@@ -201,7 +201,7 @@ namespace IKitchen
                     "<span class='productCompany' >" + r[7].ToString() + "</span> "+
                 "</h3>"+
                 "<span class='productImg' > <img src='Images/Big/" + r[1].ToString() + ".jpg' /></span> " +
-                addButtons(int.Parse(r[8].ToString())) +
+                addButtons(int.Parse(r[8].ToString()), r[0].ToString()) +
                 "<span class='productId' style='display:none'>" + r[0].ToString() + "</span>" +
                 "</div>";
 
@@ -211,7 +211,7 @@ namespace IKitchen
             return items;
         }
 
-        private string addButtons(int quantity)
+        private string addButtons(int quantity, string pId)
         {
             if (Session["isAdmin"] != null)
             {
@@ -224,7 +224,7 @@ namespace IKitchen
                     return "<div id=adminPlace>" +
                                 "<p id=quantity style=\"color:" + txtColor + "\">" + "כמות במלאי : " + quantity + "</p>" +
                                 "<input id=removeButton type='button' value='מחק מוצר' class='btn adminButton'/> " +
-                                "<input id=editButton type='button' value='ערוך מוצר' class='btn adminButton' onclick=function(){window.location = '?updateID = 5'}/>" +
+                                "<input id=editButton type='button' value='ערוך מוצר' class='btn adminButton' onclick=\"updateItem(" + pId + ")\" />" +
                             "</div>";
                 }
             }

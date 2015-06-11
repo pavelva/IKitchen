@@ -31,6 +31,10 @@ function initSearch() {
     });
 }
 
+function updateItem(id) {
+    window.location = "?updateId=" + id;
+}
+
 function getCatalodItems(apps, companys) {
     $("body").css("cursor", "wait");
     $(".catalogChk :checkbox").prop('disabled', true);
