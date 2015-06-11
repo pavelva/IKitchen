@@ -51,6 +51,10 @@ namespace IKitchen
 
             FillProductTypes();
             fillCompanys();
+            if (Session["isAdmin"] != null && bool.Parse(Session["isAdmin"].ToString()))
+            {
+                newItem.Style.Add("display", "block");
+            }
             if (Session["sql"] != null)
                 FillCatalog(Session["sql"].ToString());
         }
@@ -145,9 +149,9 @@ namespace IKitchen
             con.Close();
         }
 
-        public static List<string> extractItems(List<string> apps, List<string> companys){
+        public List<string> extractItems(List<string> apps, List<string> companys){
 
-            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name " +
+            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name, product_inventory " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id ";
             
                                 
@@ -180,7 +184,7 @@ namespace IKitchen
                     "<span class='productCompany' >" + r[7].ToString() + "</span> "+
                 "</h3>"+
                 "<span class='productImg' > <img src='Images/Big/" + r[1].ToString() + ".jpg' /></span> " +
-                "<input type='button' value='הוסף לעגלה' class='btnProduct'/> " + 
+                addButtons(int.Parse(r[8].ToString())) +
                 "<span class='productId' style='display:none'>" + r[0].ToString() + "</span>" +
                 "</div>";
 
@@ -188,6 +192,27 @@ namespace IKitchen
             }
 
             return items;
+        }
+
+        private string addButtons(int quantity)
+        {
+            if (Session["isAdmin"] != null)
+            {
+                string txtColor = (quantity > 3) ? "black" : "red";
+                bool admin = bool.Parse(Session["isAdmin"].ToString());
+                if (!admin)
+                    return "<input type='button' value='הוסף לעגלה' class='btnProduct'/> ";
+                else
+                {
+                    return "<div id=adminPlace>" +
+                                "<p id=quantity style=\"color:" + txtColor + "\">" + "כמות במלאי : " + quantity + "</p>" +
+                                "<input id=removeButton type='button' value='מחק מוצר' class='btnProduct adminButton'/> " +
+                                "<input id=editButton type='button' value='ערוך מוצר' class='btnProduct adminButton'/>" +
+                            "</div>";
+                }
+            }
+            else
+                return "<input type='button' value='הוסף לעגלה' class='btnProduct'/> ";
         }
     }
 }
