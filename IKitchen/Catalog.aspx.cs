@@ -31,16 +31,28 @@ namespace IKitchen
                         if ( Request.QueryString["pID"] != null)
                         {
                             if(Session["cart"] == null)
-                                Session.Add("cart", new List<string>());
+                                Session.Add("cart", new Dictionary<string, int>());
 
-                            ((List<string>)Session["cart"]).Add(Request.QueryString["pID"].ToString());
+                            string pId = Request.QueryString["pID"].ToString().Replace(" ","");
+                            if (!((Dictionary<string, int>)Session["cart"]).ContainsKey(pId))
+                                ((Dictionary<string, int>)Session["cart"]).Add(pId, 1);
+                            else
+                            {
+                                if(((Dictionary<string, int>)Session["cart"])[pId] == 9){
+                                    Response.Status = "406 Not Acceptable";
+                                }
+                                else{
+                                    ((Dictionary<string, int>)Session["cart"])[pId]++;
+                                }
+                                
+                            }
                         }
                         else
-                            Response.Status = 400 + "";
+                            Response.Status = "400 Bad Request";
 
                         break;
                     default:
-                        Response.Status = 400 + "";
+                        Response.Status = "400 Bad Request";
                         break;
                         
                 }

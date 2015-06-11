@@ -16,7 +16,7 @@
     </div>
     <asp:Label ID="newItem" ClientIDMode="Static" runat="server">
         <asp:Button ID="AddNewItemButton" ClientIDMode="Static" CssClass="btnProduct adminButton" OnClick="OpenPopup_click"  runat="server" Text="הוסף מוצר" />
-         </asp:Label>
+    </asp:Label>
     
     <div id="catalog">
     

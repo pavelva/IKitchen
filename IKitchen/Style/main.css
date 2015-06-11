@@ -7,6 +7,10 @@ a,.a{transition: all .2s linear;-o-transition: all .2s linear;-moz-transition: a
     clear:both;
 }
 
+.hidden{
+    display:none !important;
+}
+
 .btn{
     display:block;
     background:rgba(200,0,0,0.8);
