@@ -46,3 +46,17 @@ function addToCart(productId, callback) {
                 alert("בעיית תקשורת");
         });
 }
+
+function initButtons(){
+    $(".catalogItem").click(function(e){
+        if(e.toElement.className.indexOf('btn') > -1)
+            return;
+        var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");
+        window.location = "Item.aspx?item=" + productId.toString();
+    });
+
+    $(".btn").click(function(e){
+        var productId = $(this).parent().children(".productId")[0].innerHTML;
+        addToCart(productId);
+    });
+}
