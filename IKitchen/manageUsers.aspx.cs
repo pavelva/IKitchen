@@ -96,13 +96,14 @@ namespace IKitchen
             try
             {
                 var btn = (Button)sender;
+                bool type = (btn.Text.ToString() == "החלף למנהל")?true:false;
                 SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
                 connection.Open();
-                string update = "Update users Set user_isAdmin = 'True' Where user_id = " + btn.CommandArgument.ToString() ;
+                string update = "Update users Set user_isAdmin = '" + type + "' Where user_id = " + btn.CommandArgument.ToString() ;
 
                 SqlCommand command = new SqlCommand(update, connection);
                 command.ExecuteNonQuery();
-
+                Response.Redirect("~/ManageUsers.aspx");
             }
             catch
             {

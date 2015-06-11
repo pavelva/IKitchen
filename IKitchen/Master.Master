@@ -22,7 +22,7 @@
             </span>
             <span id="user">
                 <asp:LinkButton ID="userName" CssClass="userName" runat="server" Text="רפי גינת"></asp:LinkButton>
-                <asp:LinkButton ID="logout" runat="server" Text="התנתק"></asp:LinkButton>
+                <asp:LinkButton ID="logout" runat="server" Text="התנתק" OnClick="disconect"></asp:LinkButton>
                 <asp:LinkButton ID="login" runat="server" Text="התחבר" PostBackUrl="~/loginRegister.aspx" ></asp:LinkButton>
             </span>
 
@@ -30,7 +30,7 @@
         <nav>
             <asp:LinkButton CssClass="a user" runat="server" ID="linkDefault" OnClick="redirect">ראשי</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkCatalog" OnClick="redirect">קטלוג</asp:LinkButton>
-            <asp:LinkButton CssClass="a admin" runat="server" ID="linkCatalog2" OnClick="redirect">ניהול מוצרים</asp:LinkButton>
+            <%--<asp:LinkButton CssClass="a admin" runat="server" ID="linkAdminCatalog" OnClick="redirect">ניהול מוצרים</asp:LinkButton>--%>
             <asp:LinkButton CssClass="a user" runat="server" ID="linkMyPurchases" OnClick="redirect">הרכישות שלי</asp:LinkButton>
             <asp:LinkButton CssClass="a admin" runat="server" ID="linkManageUsers" OnClick="redirect">ניהול משתמשים</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkAbout" OnClick="redirect">אודות</asp:LinkButton>

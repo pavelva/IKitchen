@@ -154,3 +154,13 @@ h2{
 }
 #editButton {
 }
+
+#addNewItemButton {
+    width:10%;
+    margin-left:47% !important;
+}
+#newItem {
+    display:none;
+    width:100%;
+    height:40px;
+}

@@ -14,9 +14,11 @@
     <div id="CompanyPIcker" class="itemTypePicker" runat="server">
         <h3>בחר חברה:</h3>
     </div>
-    
+    <asp:Label ID="newItem" ClientIDMode="Static" runat="server" Text="Label">
+        <input id="addNewItemButton" type="button" value='הוסף מוצר' class="btnProduct adminButton"/>
+    </asp:Label>
     <div id="catalog">
-
+    
     </div>
 
     <asp:SqlDataSource ID="CatalogDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IKitchenDB %>">

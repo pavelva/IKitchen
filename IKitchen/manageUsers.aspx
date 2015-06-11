@@ -24,7 +24,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="שנה סוג משתמש">
                 <ItemTemplate>
-                    <asp:Button ID="changeUserType" CommandArgument='<%#Eval("user_id")%>' runat="server" Text='<%# Eval("user_isAdmin").ToString()=="True"? "החלף למשתמש רגיל":"החלף למנהל" %>' OnClick="changeUserType"></asp:Button>
+                    <asp:Button ID="changeUserTypeBtn" ClientIDMode="Static" CssClass="btn" CommandArgument='<%#Eval("user_id")%>' runat="server" Text='<%# Eval("user_isAdmin").ToString()=="True"? "החלף למשתמש רגיל":"החלף למנהל" %>' OnClick="changeUserType"></asp:Button>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:HyperLinkField HeaderText="היסטוריית קניות"  DataNavigateUrlFields="user_id" DataNavigateUrlFormatString="?userID={0}" Text="רשימת קניות" />

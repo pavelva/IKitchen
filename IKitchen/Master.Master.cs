@@ -18,11 +18,19 @@ namespace IKitchen
             string userCss = ".user{display:none}";
             string adminCss = ".admin{display:none}";
 
-            if (Session["userID"] != null)
+            if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null && Session["userID"] == null)
             {
-                
+                Response.Redirect("~/loginRegister.aspx");
+            }
+
+            else if (Session["userID"] != null)
+            {
+
                 if (bool.Parse(Session["isAdmin"].ToString()))
+                {
+                    linkCatalog.Text = "ניהול מוצרים";
                     adminCss = "";
+                }
                 else
                     userCss = "";
 
@@ -64,6 +72,17 @@ namespace IKitchen
             WebControl element = ((WebControl)sender);
             var url = element.ID.Replace("link", "") + ".aspx";
             Response.Redirect(url);
+        }
+        protected void disconect(object sender, EventArgs e)
+        
+        {
+            if (Request.Cookies["pass"] != null && Request.Cookies["email"] != null)
+            {
+                Response.Cookies["pass"].Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+                Session.RemoveAll();
+                Response.Redirect("Catalog.aspx");
+            }
         }
     }
 }

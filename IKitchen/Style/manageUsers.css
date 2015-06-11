@@ -17,3 +17,10 @@
     width:20%;
     border:1px solid black;
 }
+
+#changeUserTypeBtn {
+    width:60%;
+    height:25px;
+    font-size:0.7em;
+    margin-right:0 !important;
+}

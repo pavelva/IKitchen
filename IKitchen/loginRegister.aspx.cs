@@ -17,24 +17,24 @@ namespace IKitchen
             ((TextBox)form1.FindControl("passwordInput")).Attributes["type"] = "password";
             ((TextBox)form1.FindControl("regPasswordInput")).Attributes["type"] = "password";
             ((TextBox)form1.FindControl("regConfirmPasswordInput")).Attributes["type"] = "password";
-            if (!Page.IsPostBack)
-            {
+            //if (!Page.IsPostBack)
+            //{
                 if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null)
                 {
                     getUserIDFromDB(Request.Cookies["email"].Value.ToString(), Request.Cookies["pass"].Value.ToString());
                     goToPageByUserType();
                 }
-            }
+            //}
         }
 
         private void goToPageByUserType()
         {
-                bool userIsAdmin = bool.Parse(Session["isAdmin"].ToString());
-                if(!userIsAdmin)
-                    Response.Redirect("Default.aspx");
-                else
-                    Response.Redirect("Catalog.aspx");
-             }
+            bool userIsAdmin = bool.Parse(Session["isAdmin"].ToString());
+            if(!userIsAdmin)
+                Response.Redirect("Default.aspx");
+            else
+                Response.Redirect("Catalog.aspx");
+        }
 
         protected void loginBtn_Click(object sender, EventArgs e)
         {
