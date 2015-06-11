@@ -81,7 +81,7 @@ namespace IKitchen
                 Response.Cookies["pass"].Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
                 Session.RemoveAll();
-                Response.Redirect("Catalog.aspx");
+                Response.Redirect("Default.aspx");
             }
         }
     }
