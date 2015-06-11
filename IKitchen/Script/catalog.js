@@ -83,5 +83,8 @@ function getCatalodItems(apps, companys) {
     );
 }
 
+function openPopUp() {
+    $("#addNewItemPopUp").css("display", "block");
+}
 
 

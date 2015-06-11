@@ -88,3 +88,58 @@ nav .aActive:hover{
     margin: 0 auto;
     margin-top:20px;
 }
+
+/*------------------------ popup --------------------------*/
+
+.popup {
+    position:fixed;
+    width:600px;
+    height:580px;
+    top:15px;
+    right:25%;
+    background-color:rgb(220, 219, 219);
+    border-radius: 10px;
+    border: 1px solid black;    
+}
+
+.popupHeader {
+    text-align:right;
+    padding-right:7%;
+}
+
+h4 {
+    color:#ff6a00;
+    font-size: 2em;
+}
+.popupRow {
+    text-align:right;
+    margin-top:2.5%;
+    height:4.5%;
+}
+
+.popupLabel{
+    color:#307bd4;
+    float:right;
+    font-weight:bold;
+    margin-right:8%;
+    width:20%;
+    height:100%;
+}
+
+.popupInputText {
+    margin-right:4%;
+    width:40%;
+    height:70%;
+    border: 2px solid black;
+    border-radius:5px;
+    padding-right:1%;
+}
+
+.popupDropDownList {
+    margin-right:4%;
+    width:41.7%;
+    height:83%;
+    border: 2px solid black;
+    border-radius:5px;
+    padding-right:1%;
+}

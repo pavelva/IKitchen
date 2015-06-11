@@ -55,6 +55,7 @@ h2{
 .catalogItem h3{
     color:#307bd4;
     margin-right:15px;
+    font-size:1em;
 }
 
 .catalogItem:hover{
@@ -155,7 +156,7 @@ h2{
 #editButton {
 }
 
-#addNewItemButton {
+#AddNewItemButton {
     width:10%;
     margin-left:47% !important;
 }
@@ -163,4 +164,25 @@ h2{
     display:none;
     width:100%;
     height:40px;
+}
+
+#addNewItemPopUp {
+    display:none;
+}
+
+#createBtn {
+    margin-right:7% !important;
+    float:right;
+    width:15%;
+    border-radius:3px;
+}
+
+#closePopupBtn {
+    float:right;
+    width:15%;
+    border-radius:3px;
+}
+
+#inputRowDescription {
+    height:20% !important;
 }
