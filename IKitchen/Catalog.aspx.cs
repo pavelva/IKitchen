@@ -30,10 +30,17 @@ namespace IKitchen
                         }
                         if ( Request.QueryString["pID"] != null)
                         {
-                            if(Session["cart"] == null)
+                            string pId = Request.QueryString["pID"].ToString().Replace(" ","");
+
+                            if(!isInStock(pId))
+                            {
+                                Response.Status = "410 Gone";
+                                break;
+                            }
+
+                            if (Session["cart"] == null)
                                 Session.Add("cart", new Dictionary<string, int>());
 
-                            string pId = Request.QueryString["pID"].ToString().Replace(" ","");
                             if (!((Dictionary<string, int>)Session["cart"]).ContainsKey(pId))
                                 ((Dictionary<string, int>)Session["cart"]).Add(pId, 1);
                             else
@@ -46,6 +53,11 @@ namespace IKitchen
                                 }
                                 
                             }
+                            string products = "Update products Set product_inventory = product_inventory - 1 where product_id = " + pId;
+                            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                            con.Open();
+                            SqlCommand com = new SqlCommand(products, con);
+                            com.ExecuteNonQuery();
                         }
                         else
                             Response.Status = "400 Bad Request";
@@ -74,6 +86,28 @@ namespace IKitchen
             }
             //if (Session["sql"] != null)
             //    FillCatalog(Session["sql"].ToString());
+        }
+
+        private bool isInStock(string pId)
+        {
+            string sqlStock = "Select product_inventory " + 
+                              "From products " + 
+                              "Where product_id = " + pId;
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+            con.Open();
+            SqlCommand commande = new SqlCommand(sqlStock, con);
+            SqlDataReader reader = commande.ExecuteReader();
+
+            bool ans = false;
+            
+            if (reader.Read())
+            {
+                ans = int.Parse(reader["product_inventory"].ToString()) > 0;
+            }
+
+            con.Close();
+            return ans;
         }
 
         private void getItems()

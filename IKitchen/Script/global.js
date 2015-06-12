@@ -42,6 +42,9 @@ function addToCart(productId, callback) {
             else if (err == 406) {
                 alert("לא ניתן להזמין יותר מעשרה מוצרים מאותו הסוג");
             }
+            else if( err == 410){
+                alert("המוצר חסר זמנית במלאי");
+            }
             else
                 alert("בעיית תקשורת");
         });

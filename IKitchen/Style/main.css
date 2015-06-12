@@ -11,6 +11,16 @@ a,.a{transition: all .2s linear;-o-transition: all .2s linear;-moz-transition: a
     display:none !important;
 }
 
+.error{
+    display:block;
+    color:red;
+    font-weight:bold;
+    margin:10px 0 0 0 ;
+}
+
+.error:before{
+    content:"* ";
+}
 .btn{
     display:block;
     background:rgba(200,0,0,0.8);

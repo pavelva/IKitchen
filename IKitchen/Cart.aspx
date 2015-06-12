@@ -34,6 +34,12 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:ImageField DataImageUrlField="product_model" DataImageUrlFormatString="~/Images/big/{0}.jpg" ControlStyle-Width="100px"></asp:ImageField>
+                <%--<asp:ButtonField Text="X" ItemStyle-CssClass="btnDel"/>--%>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button Text="X" CssClass="btnDel" runat="server" OnClick="btnDel_Click" ToolTip="מחק מוצר" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="product_id" HeaderText="" ReadOnly="True" SortExpression="productId">
                     <ItemStyle CssClass="hidden" />
                     <HeaderStyle CssClass="hidden" />
@@ -41,8 +47,20 @@
             </Columns>
             
         </asp:GridView>
-        <asp:Button ID="btnBuy" CssClass="btn" runat="server" Text="בצע רכישה"/>
-        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="נקה" OnClick="btnClead_Click"/>
+        <asp:Label ID="lblEmpty" runat="server">עגלת הקניות שלך ריקה</asp:Label>
+        
+        
+
+        <asp:Label ID="lblCal" CssClass="lbl" runat="server" >תאריך משלוח:</asp:Label>
+        <asp:Calendar ID="calSale" CssClass="calendar" runat="server"></asp:Calendar>
+
+        <asp:Label ID="lblComments" CssClass="lbl" runat="server" >הערות:</asp:Label>
+        <asp:TextBox ID="txtComments" TextMode="MultiLine" CssClass="txt" runat="server"></asp:TextBox>
+
+        <asp:Label ID="lblError" CssClass="error" runat="server" Visible="false"></asp:Label>
+
+        <asp:Button ID="btnBuy" CssClass="btn" runat="server" Text="בצע רכישה" OnClick="btnBuy_Click"/>
+        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="נקה" OnClick="btnClear_Click"/>
     </div>
     <asp:SqlDataSource ID="cartQuery" runat="server" ConnectionString="<%$ ConnectionStrings:IKitchenDB %>">
     </asp:SqlDataSource>

@@ -5,3 +5,37 @@
     float:left;
     margin:50px 0 0 50px;
 }
+
+.lbl{
+    color:#307bd4;
+    font-weight:bold;
+    vertical-align:top;
+    float:right;
+    margin: 20px 0 0 20px;
+}
+
+.txt{
+    display: block;
+    border: 1px solid #307bd4;
+    width:50%;
+    height:100px;
+}
+
+.calendar{
+    margin:20px 0 20px 0;
+}
+
+.btnDel{
+    display:block;
+    width:20px;
+    color:red;
+    font-weight:bold;
+    font-size:1.3em;
+    margin:0 auto;
+    background:none;
+}
+
+.btnDel:hover{
+    cursor:pointer;
+    text-shadow: 1px 1px rgba(0,0,0,0.5);
+}
