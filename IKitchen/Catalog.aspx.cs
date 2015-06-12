@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,18 +15,18 @@ namespace IKitchen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (Request.QueryString["func"] != null)
+            if(Request.QueryString["func"] != null)
             {
                 switch (Request.QueryString["func"])
                 {
                     case "getItems":
-                        if(Session["addItem"] == null && Session["editItem"] == null)
+                        if (Session["addItem"] == null && Session["editItem"] == null)
                         {
-                        getItems();
-                        break;
+                            getItems();
+                            break;
                         }
-                        else{
+                        else
+                        {
                             break;
                         }
                     case "addToCart":
@@ -36,9 +37,9 @@ namespace IKitchen
                         }
                         if (Request.QueryString["pID"] != null)
                         {
-                            string pId = Request.QueryString["pID"].ToString().Replace(" ","");
+                            string pId = Request.QueryString["pID"].ToString().Replace(" ", "");
 
-                            if(!isInStock(pId))
+                            if (!isInStock(pId))
                             {
                                 Response.Status = "410 Gone";
                                 break;
@@ -47,7 +48,6 @@ namespace IKitchen
                             if (Session["cart"] == null)
                                 Session.Add("cart", new Dictionary<string, int>());
 
-                            string pId = Request.QueryString["pID"].ToString().Replace(" ","");
                             if (!((Dictionary<string, int>)Session["cart"]).ContainsKey(pId))
                                 ((Dictionary<string, int>)Session["cart"]).Add(pId, 1);
                             else
@@ -60,7 +60,7 @@ namespace IKitchen
                                 {
                                     ((Dictionary<string, int>)Session["cart"])[pId]++;
                                 }
-                                
+
                             }
                             string products = "Update products Set product_inventory = product_inventory - 1 where product_id = " + pId;
                             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
@@ -75,10 +75,8 @@ namespace IKitchen
                     default:
                         Response.Status = "400 Bad Request";
                         break;
-                        
+
                 }
-
-
 
                 Response.End();
                 return;
@@ -98,12 +96,18 @@ namespace IKitchen
             if (Request.QueryString["updateId"] != null)
             {
                 OpenUpdatePopup(int.Parse(Request.QueryString["updateId"].ToString()));
+            }
+            
+            if (Request.QueryString["removeId"] != null)
+            {
+                removeItem(Request.QueryString["removeId"].ToString());
+            }
         }
 
         private bool isInStock(string pId)
         {
-            string sqlStock = "Select product_inventory " + 
-                              "From products " + 
+            string sqlStock = "Select product_inventory " +
+                              "From products " +
                               "Where product_id = " + pId;
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
@@ -112,7 +116,7 @@ namespace IKitchen
             SqlDataReader reader = commande.ExecuteReader();
 
             bool ans = false;
-            
+
             if (reader.Read())
             {
                 ans = int.Parse(reader["product_inventory"].ToString()) > 0;
@@ -159,7 +163,7 @@ namespace IKitchen
         {
             CatalogDataSource.SelectCommand = sql;
             CatalogDataSource.DataBind();
-            
+
         }
 
         private void FillProductTypes()
@@ -182,7 +186,7 @@ namespace IKitchen
                 c.CssClass = "catalogChk app";
                 c.Text = text;
                 itemTypePicker.Controls.Add(c);
-                
+
             }
             con.Close();
         }
@@ -212,21 +216,22 @@ namespace IKitchen
             con.Close();
         }
 
-        public List<string> extractItems(List<string> apps, List<string> companys){
+        public List<string> extractItems(List<string> apps, List<string> companys)
+        {
 
-            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name, product_inventory " +
+            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name, product_inventory, product_exist " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id ";
-            
-                                
 
-            if(apps.Count > 0 || companys.Count > 0)
+
+
+            if (apps.Count > 0 || companys.Count > 0)
             {
-                sql +="Where " ;
-                sql += (apps.Count >0 ? "app_name in (N'" + string.Join("',N'", apps) + "') " + (companys.Count > 0? " AND " : ""): "");
-                sql += (companys.Count > 0? "company_name in (N'" + string.Join("',N'", companys) + "') " : "");
+                sql += "Where ";
+                sql += (apps.Count > 0 ? "app_name in (N'" + string.Join("',N'", apps) + "') " + (companys.Count > 0 ? " AND " : "") : "");
+                sql += (companys.Count > 0 ? "company_name in (N'" + string.Join("',N'", companys) + "') " : "");
             }
 
-            sql+=" order by app_name";
+            sql += " order by app_name";
 
             SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
             sqlCon.Open();
@@ -237,24 +242,24 @@ namespace IKitchen
             adapter.Fill(tbl);
 
             List<string> items = new List<string>();
-            
+
             foreach (DataRow r in tbl.Rows)
             {
                 if (r[9].ToString().Equals("True"))
                 {
-                string item = "<div class='catalogItem'> " + 
-                    "<h3>" +
-                    "<span class='productType' >" + r[5].ToString() + "</span><br /> " +
-                        "<span class='productModel' >" + r[1].ToString() + "</span> " +
-                        "<span class='productCompany' >" + r[7].ToString() + "</span> " +
-                    "</h3>" +
-                "<span class='productImg' > <img src='Images/Big/" + r[1].ToString() + ".jpg' /></span> " +
-                addButtons(int.Parse(r[8].ToString()), r[0].ToString()) +
-                "<span class='productId' style='display:none'>" + r[0].ToString() + "</span>" +
-                "</div>";
+                    string item = "<div class='catalogItem'> " +
+                        "<h3>" +
+                        "<span class='productType' >" + r[5].ToString() + "</span><br /> " +
+                            "<span class='productModel' >" + r[1].ToString() + "</span> " +
+                            "<span class='productCompany' >" + r[7].ToString() + "</span> " +
+                        "</h3>" +
+                    "<span class='productImg' > <img src='Images/Big/" + r[1].ToString() + ".jpg' /></span> " +
+                    addButtons(int.Parse(r[8].ToString()), r[0].ToString()) +
+                    "<span class='productId' style='display:none'>" + r[0].ToString() + "</span>" +
+                    "</div>";
 
-                items.Add(item);
-            }
+                    items.Add(item);
+                }
             }
 
             return items;
@@ -298,10 +303,10 @@ namespace IKitchen
             if (!IsPostBack)
             {
                 popupHeaderText.InnerText = "עריכת מוצר";
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            fillCompanysDropDownList(con);
-            fillCategorysDropDownList(con);
-            fillSubCatDropDownList(con);
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                fillCompanysDropDownList(con);
+                fillCategorysDropDownList(con);
+                fillSubCatDropDownList(con);
                 getallProperties(con, id);
             }
             Session["editItem"] = 1;
@@ -328,7 +333,7 @@ namespace IKitchen
             SqlDataReader sqlData = command.ExecuteReader();
 
             if (sqlData.Read())
-           { 
+            {
                 ProductModel.Text = sqlData["product_model"].ToString();
                 ProductPrice.Text = sqlData["product_price"].ToString();
                 ProductInstalationPrice.Text = sqlData["product_install_price"].ToString();
@@ -339,7 +344,7 @@ namespace IKitchen
                 ProductSubCategory.SelectedValue = sqlData["product_type2"].ToString();
                 ProductInventory.Text = sqlData["product_inventory"].ToString();
             }
-            }
+        }
 
         protected void addNewDesc_Click(object sender, EventArgs e)
         {
@@ -414,12 +419,12 @@ namespace IKitchen
             string sqlString = "";
             if (Session["editItem"] != null)
             {
-                    sqlString = "Update products Set product_model='" + ProductModel.Text + "', product_made= N'" + productCountry.Text + "'" +
-                    ", product_price= '" + ProductPrice.Text + "', product_install_price= '" + ProductInstalationPrice.Text + "'" +
-                    ", product_desc= N'" + ProductDescription.InnerHtml + "', product_company= '" + CompanyName.Text + "'" +
-                    ", product_type= '" + ProductCategory.Text + "', product_type2= '" + ProductSubCategory.Text + "'" +
-                    ", product_inventory= '" + ProductInventory.Text + "', product_exist=  'True' " +
-                    "Where product_id = " + Request.QueryString["updateId"].ToString();
+                sqlString = "Update products Set product_model='" + ProductModel.Text + "', product_made= N'" + productCountry.Text + "'" +
+                ", product_price= '" + ProductPrice.Text + "', product_install_price= '" + ProductInstalationPrice.Text + "'" +
+                ", product_desc= N'" + ProductDescription.InnerHtml + "', product_company= '" + CompanyName.Text + "'" +
+                ", product_type= '" + ProductCategory.Text + "', product_type2= '" + ProductSubCategory.Text + "'" +
+                ", product_inventory= '" + ProductInventory.Text + "', product_exist=  'True' " +
+                "Where product_id = " + Request.QueryString["updateId"].ToString();
             }
             else if (Session["addItem"] != null)
             {
@@ -449,7 +454,6 @@ namespace IKitchen
                 Session.Remove("addItem");
             }
             Response.Redirect("~/Catalog.aspx");
+        }
     }
-
-}
 }
