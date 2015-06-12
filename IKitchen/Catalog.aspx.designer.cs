@@ -76,6 +76,15 @@ namespace IKitchen {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl addNewItemPopUp;
         
         /// <summary>
+        /// popupHeaderText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl popupHeaderText;
+        
+        /// <summary>
         /// ProductCategory control.
         /// </summary>
         /// <remarks>
@@ -112,13 +121,13 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.TextBox ProductModel;
         
         /// <summary>
-        /// Country control.
+        /// productCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Country;
+        protected global::System.Web.UI.WebControls.TextBox productCountry;
         
         /// <summary>
         /// ProductPrice control.
@@ -130,13 +139,13 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.TextBox ProductPrice;
         
         /// <summary>
-        /// InstalationPrice control.
+        /// ProductInstalationPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox InstalationPrice;
+        protected global::System.Web.UI.WebControls.TextBox ProductInstalationPrice;
         
         /// <summary>
         /// ProductInventory control.
@@ -148,13 +157,31 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.TextBox ProductInventory;
         
         /// <summary>
+        /// ProductNewDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ProductNewDescription;
+        
+        /// <summary>
+        /// addNewDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addNewDesc;
+        
+        /// <summary>
         /// ProductDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ProductDescription;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductDescription;
         
         /// <summary>
         /// createBtn control.

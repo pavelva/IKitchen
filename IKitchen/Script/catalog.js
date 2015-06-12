@@ -35,6 +35,10 @@ function updateItem(id) {
     window.location = "?updateId=" + id;
 }
 
+function removeItem(id) {
+    window.location = "?removeId=" + id;
+}
+
 function getCatalodItems(apps, companys) {
     $("body").css("cursor", "wait");
     $(".catalogChk :checkbox").prop('disabled', true);
@@ -61,5 +65,3 @@ function getCatalodItems(apps, companys) {
 function openPopUp() {
     $("#addNewItemPopUp").css("display", "block");
 }
-
-

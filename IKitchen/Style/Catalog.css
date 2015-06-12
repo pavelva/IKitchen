@@ -186,3 +186,32 @@ h2{
 #inputRowDescription {
     height:20% !important;
 }
+
+.descriptionContainer {
+    overflow-y:scroll;
+    padding: 0 4% 0 0;
+    margin:0 32% 0 0 !important;
+    width:56% !important;
+    height:100px;
+}
+
+#addNewDesc {
+    width:10%;
+    background:rgba(200,0,0,0.8);
+    color:white;
+    border-radius:3px;
+    height:90%;
+}
+
+    #addNewDesc:hover{
+        cursor:pointer;
+        box-shadow: 2px 2px rgba(0,0,0,0.2), inset 2px 2px rgba(0,0,0,0.2);
+        color:#307bd4;
+    }
+#ProductNewDescription {
+}
+
+#imageExplanation {
+    color:red;
+    font-size:small;
+}

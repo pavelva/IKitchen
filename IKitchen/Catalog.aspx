@@ -15,7 +15,7 @@
         <h3>בחר חברה:</h3>
     </div>
     <asp:Label ID="newItem" ClientIDMode="Static" runat="server">
-        <asp:Button ID="AddNewItemButton" ClientIDMode="Static" CssClass="btn adminButton" OnClick="OpenPopup_click"  runat="server" Text="הוסף מוצר" />
+        <asp:Button ID="AddNewItemButton" ClientIDMode="Static" CssClass="btn adminButton" OnClick="OpenPopup_click" runat="server" Text="הוסף מוצר" />
     </asp:Label>
     
     <div id="catalog">
@@ -26,8 +26,8 @@
     </asp:SqlDataSource>
             
     <div id="addNewItemPopUp" class="popup" runat="server">
-        <div class="popupHeader">
-            <h4>הוספת מוצר</h4>
+        <div  class="popupHeader" >
+            <h4 id="popupHeaderText" runat="server">הוספת מוצר</h4>
         </div>
         <div class="popupRow">
             <div class="popupLabel">קטגוריה :</div>
@@ -50,7 +50,7 @@
         </div>
         <div class="popupRow">
             <div class="popupLabel">מדינת יצור :</div>
-            <asp:TextBox ID="Country" CssClass="popupInputText" runat="server"></asp:TextBox>
+            <asp:TextBox ID="productCountry" CssClass="popupInputText" runat="server"></asp:TextBox>
         </div>
         <div class="popupRow">
             <div class="popupLabel">מחיר מוצר :</div>
@@ -58,23 +58,28 @@
         </div>
         <div class="popupRow">
             <div class="popupLabel">מחיר התקנה :</div>
-            <asp:TextBox ID="InstalationPrice" CssClass="popupInputText" runat="server"></asp:TextBox>
+            <asp:TextBox ID="ProductInstalationPrice" CssClass="popupInputText" runat="server"></asp:TextBox>
         </div>
-        <%--<div class="popupRow">
-            <div class="popupLabel">מחיר סופי :</div>
-            <asp:TextBox ID="FinalPrice" CssClass="popupInputText" runat="server"></asp:TextBox>
-        </div>--%>
         <div class="popupRow">
             <div class="popupLabel">כמות :</div>
-            <asp:TextBox ID="ProductInventory" CssClass="popupInputText" runat="server"></asp:TextBox>
-        </div>
-        <div id="inputRowDescription" class="popupRow">
-            <div class="popupLabel">תיאור :</div>
-            <asp:TextBox ID="ProductDescription" CssClass="popupInputText" TextMode="MultiLine" runat="server"></asp:TextBox>
+            <asp:TextBox ID="ProductInventory" ClientIDMode="Static" CssClass="popupInputText" runat="server"></asp:TextBox>
         </div>
         <div class="popupRow">
-            <asp:Button ID="createBtn" ClientIDMode="Static" CssClass="btn adminButton" runat="server" Text="הוסף מוצר" />
-            <asp:Button ID="closePopupBtn" ClientIDMode="Static" CssClass="btn adminButton" runat="server" Text="סגור" />
+            <div class="popupLabel">הוספת תכונה :</div>
+            <asp:TextBox id="ProductNewDescription" runat="server" class="popupInputText"></asp:TextBox>
+            <asp:Button ID="addNewDesc" ClientIDMode="Static" OnClick="addNewDesc_Click" runat="server" Text="הוסף" />
         </div>
+        <div id="inputRowDescription" class="popupRow">
+            <div class="popupLabel">תכונות :</div>
+            <div id="ProductDescription" runat="server" class="popupInputText descriptionContainer"></div>
+        </div>
+        <%--<div class="popupRow">
+            <asp:Label ID="imageExplanation" ClientIDMode="Static" runat="server" Text="*על מנת שתופיע תמונה יש לשמור תמונה עם שם הדגם בקובץ המתאים"></asp:Label>></asp:Label>
+        </div>--%>
+        <div class="popupRow">
+            <asp:Button ID="createBtn" ClientIDMode="Static" CssClass="btn adminButton" runat="server" Text="שמור" OnClick="createItem_Click"/>
+            <asp:Button ID="closePopupBtn" ClientIDMode="Static" CssClass="btn adminButton" OnClick="close_click" OnClientClick="closePopup()" runat="server" Text="סגור" />
+        </div>
+        
     </div>
 </asp:Content>
