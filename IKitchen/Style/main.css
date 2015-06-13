@@ -86,7 +86,7 @@ nav #convertor{
     display:block;
     position:relative;
     float:left;
-    width:700px;
+    width:550px;
 }
 
 nav #convertor *{
@@ -107,12 +107,13 @@ nav #lblConvertor{
 }
 
 nav .drpCurrency{
-    width:40px;
-    margin-top:11px;
+    width:30px;
+    margin-top:13px;
+    font-size:0.5em !important;
 }
 
 nav .drpCurrency *{
-    font-size:1em;
+    font-size:1em !important;
 }
 
 nav #btnConver{
@@ -120,7 +121,7 @@ nav #btnConver{
     border:1px solid black;
     background:#d23232;
     color:yellow;
-    width:50px;
+    width:35px;
     box-shadow: 1px 1px rgba(0,0,0,0.5);
 }
 
@@ -138,7 +139,7 @@ nav .txt{
     display:inline-block;
     margin-top: 11px;
     border:1px solid black;
-    width:80px;
+    width:40px;
     background:white;
 }
 

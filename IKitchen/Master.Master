@@ -36,7 +36,7 @@
             <asp:LinkButton CssClass="a" runat="server" ID="linkAbout" OnClick="redirect" CausesValidation="false">אודות</asp:LinkButton>
 
             <span id="convertor">
-                <asp:Label ID="lblConvertor" runat="server">מחשבון המרה:</asp:Label>
+                <asp:Label ID="lblConvertor" runat="server">המרה:</asp:Label>
 
                 <asp:Label ID="lblFrom" runat="server">ממטבע</asp:Label>
                 <asp:DropDownList ID="currencyFrom" CssClass="drpCurrency" runat="server">
