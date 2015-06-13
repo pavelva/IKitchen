@@ -19,6 +19,16 @@
     <asp:SqlDataSource ID="MyPurchasesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IKitchenDB %>">
     </asp:SqlDataSource>
 
+    <asp:GridView ID="saleHeader" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <h2>מספר הזמנה: <%# Container.DataItem %></h2>
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+
     <div id="saleWrapper" runat="server">
         <asp:GridView ID="saleGrid" ShowFooter="true" ClientIDMode="Static" CssClass="salesTable" runat="server" AutoGenerateColumns="False" DataKeyNames="" DataSourceID="SalesQuery" OnRowDataBound="saleGrid_RowDataBound">
             <RowStyle CssClass="mySalesRow" />
