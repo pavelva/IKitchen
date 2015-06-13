@@ -104,7 +104,7 @@
             <div id="loginContent" class="content">
                 <p>
                     <span class="inputText">
-                        דואר אלקטרוני :
+                        שם משתמש :
                     </span>
                     <br />
                     <asp:TextBox id="loginEmailInput" CssClass="loginInput input" runat="server"></asp:TextBox>
@@ -134,7 +134,7 @@
                 </div>
                  <p>
                     <span class="inputText">
-                        דואר אלקטרוני :
+                        שם משתמש :
                     </span>
                     <br />
                     <asp:TextBox id="emailForgotPass" CssClass="input" runat="server"></asp:TextBox>
@@ -174,10 +174,11 @@
                  <p>
                     <span class="inputText">
                         בחר סיסמא חדשה :
+                        <asp:RegularExpressionValidator ID="ForgotPasswordRegularExpressionValidator" ControlToValidate="newPassInput" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{5,10}$" runat="server" ErrorMessage="חייב להכיל 5-10 תווים"></asp:RegularExpressionValidator>
                     </span>
                     <br />
                     <asp:TextBox id="newPassInput" CssClass="input" runat="server"></asp:TextBox>
-                     <asp:RegularExpressionValidator ID="ForgotPasswordRegularExpressionValidator" ControlToValidate="newPassInput" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{5,10}$" runat="server" ErrorMessage="חייב להכיל 5-10 תווים"></asp:RegularExpressionValidator>
+                     
                 </p>
                 <p>
                     <asp:Label ID="newPassError" runat="server" ClientIDMode="Static"></asp:Label>

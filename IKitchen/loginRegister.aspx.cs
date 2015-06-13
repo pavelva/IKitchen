@@ -216,15 +216,19 @@ namespace IKitchen
                 forgotPassPopup.Style.Add("display", "none");
                 if (newPassInput.Text != "")
                 {
-                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-                    string sql = "Update users Set user_password = '" + newPassInput.Text + "' Where user_id = " + Session["userForgotId"];
-                    con.Open();
-                    SqlCommand command = new SqlCommand(sql, con);
-                    command.ExecuteNonQuery();
-                    Session.Remove("userForgotId");
-                    con.Close();
-                    newPasswordPopup.Style.Add("display", "none");
-                    Response.Redirect("~/loginRegister.aspx");
+                    newPassError.Text = "";
+                    if (ForgotPasswordRegularExpressionValidator.IsValid)
+                    {
+                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                        string sql = "Update users Set user_password = '" + newPassInput.Text + "' Where user_id = " + Session["userForgotId"];
+                        con.Open();
+                        SqlCommand command = new SqlCommand(sql, con);
+                        command.ExecuteNonQuery();
+                        Session.Remove("userForgotId");
+                        con.Close();
+                        newPasswordPopup.Style.Add("display", "none");
+                        Response.Redirect("~/loginRegister.aspx");
+                    }
                 }
                 else
                 {
