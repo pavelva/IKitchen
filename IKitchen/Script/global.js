@@ -51,7 +51,7 @@ function addToCart(productId, callback) {
 }
 
 function initButtons(){
-    $(".catalogItem").not(".adminItem").click(function(e){
+    $(".catalogItem").click(function(e){
         if(e.toElement.className.indexOf('btn') > -1)
             return;
         var productId = $(this).children(".productId")[0].innerHTML.replace(" ","");

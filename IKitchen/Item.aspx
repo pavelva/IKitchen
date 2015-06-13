@@ -23,7 +23,7 @@
             </div>
             <asp:Image ID="img" runat="server" />
             <span class="clear"></span>
-            <input type="button" id="btnProduct" class="btn" value="הוסף לעגלה" />
+            <input type="button" id="btnProduct" class="btn" value="הוסף לעגלה" <%if (Session["isAdmin"] != null && bool.Parse(Session["isAdmin"].ToString())) Response.Write("style='display:none'"); %> />
             <asp:Button ID="back" CssClass="btn" runat="server" OnClick="backToCatalog" Text="בחזרה לקטלוג" />
             <span class="clear"></span>
             <asp:HiddenField ID="productId" ClientIDMode="Static"  runat="server" />
