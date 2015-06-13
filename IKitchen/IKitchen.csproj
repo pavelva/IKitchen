@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About.aspx" />
     <Content Include="AdminPage.aspx" />
     <Content Include="Cart.aspx" />
     <Content Include="Catalog.aspx" />
@@ -588,6 +589,7 @@
     <Content Include="Script\global.js" />
     <Content Include="Script\item.js" />
     <Content Include="Script\main.js" />
+    <Content Include="Style\about.css" />
     <Content Include="Style\cart.css" />
     <Content Include="Style\default.css" />
     <Content Include="Script\logReg.js" />
@@ -596,6 +598,7 @@
     <Content Include="Style\loginRegister.css" />
     <Content Include="Master.Master" />
     <Content Include="Images\big\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\IKitchen.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -612,6 +615,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPage.aspx.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

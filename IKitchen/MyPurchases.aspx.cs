@@ -40,6 +40,8 @@ namespace IKitchen
             SalesQuery.SelectCommand = sqlSale;
             
             SalesQuery.DataBind();
+            saleHeader.DataSource = new List<int>() { saleId };
+            saleHeader.DataBind();
         }
 
         private void fillSalesTable()

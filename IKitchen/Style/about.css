@@ -1,0 +1,25 @@
+﻿body {
+}
+
+#aboutContent{
+    font-size:1.5em;
+}
+
+h2{
+    color:#307bd4;
+    font-size:1.8em;
+}
+
+ul{
+    margin:15px 70px;
+}
+
+a{
+    color:#ff6a00;
+}
+
+#packMan{
+    display:block;
+    margin: 30px 5px 0 0;
+    color:#307bd4;
+}

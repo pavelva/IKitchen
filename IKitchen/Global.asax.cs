@@ -39,18 +39,22 @@ namespace IKitchen
 
         protected void Session_End(object sender, EventArgs e)
         {
-            Dictionary<string, int> products = (Dictionary<string, int>)Session["cart"];
-
-            string updateInventory = "";
-            foreach (string pId in products.Keys)
+            if (Session["cart"] != null)
             {
-                updateInventory += "Update products Set product_inventory = product_inventory + " + products[pId] + " Where product_id = " + pId + "; ";
-            }
+                Dictionary<string, int> products = (Dictionary<string, int>)Session["cart"];
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            con.Open();
-            SqlCommand com = new SqlCommand(updateInventory, con);
-            com.ExecuteNonQuery();
+                string updateInventory = "";
+                foreach (string pId in products.Keys)
+                {
+                    updateInventory += "Update products Set product_inventory = product_inventory + " + products[pId] + " Where product_id = " + pId + "; ";
+                }
+
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                con.Open();
+                SqlCommand com = new SqlCommand(updateInventory, con);
+                com.ExecuteNonQuery();
+            }
+            
         }
 
         protected void Application_End(object sender, EventArgs e)

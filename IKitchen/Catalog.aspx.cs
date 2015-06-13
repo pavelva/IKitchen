@@ -247,7 +247,7 @@ namespace IKitchen
             {
                 if (r[9].ToString().Equals("True"))
                 {
-                    string item = "<div class='catalogItem'> " +
+                    string item = "<div class='catalogItem" + (Session["isAdmin"] != null && bool.Parse(Session["isAdmin"].ToString()) ? " adminItem" : "") + " '> " +
                         "<h3>" +
                         "<span class='productType' >" + r[5].ToString() + "</span><br /> " +
                             "<span class='productModel' >" + r[1].ToString() + "</span> " +
