@@ -90,15 +90,16 @@ namespace IKitchen
 
         protected void btnConver_Click(object sender, EventArgs e)
         {
+            txtResult.Text = "";
             txtConvert.Style.Add("color", "black");
             txtConvert.Style.Add("font-weight", "normal");
             string from = currencyFrom.SelectedValue;
             string to = currencyTo.SelectedValue;
-            int amount;
+            double amount;
 
             try
             {
-                amount = int.Parse(txtConvert.Text);
+                amount = double.Parse(txtConvert.Text);
             }
             catch
             {
@@ -110,15 +111,15 @@ namespace IKitchen
             txtResult.Text = Convert(from, to, amount).ToString("f2");
         }
 
-        private double Convert(string from, string to, int amount)
+        private double Convert(string from, string to, double amount)
         {
             if (from == "shekel" && to != from)
             {
-                return amount * 3.85;
+                return amount / 3.85;
             }
             else if (from == "dollar" && to != from)
             {
-                return amount / 3.85;
+                return amount * 3.85;
             }
             else
                 return amount;
