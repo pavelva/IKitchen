@@ -34,6 +34,30 @@
             <asp:LinkButton CssClass="a user" runat="server" ID="linkMyPurchases" OnClick="redirect" CausesValidation="false">הרכישות שלי</asp:LinkButton>
             <asp:LinkButton CssClass="a admin" runat="server" ID="linkManageUsers" OnClick="redirect" CausesValidation="false">ניהול משתמשים</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkAbout" OnClick="redirect" CausesValidation="false">אודות</asp:LinkButton>
+
+            <span id="convertor">
+                <asp:Label ID="lblConvertor" runat="server">מחשבון המרה:</asp:Label>
+
+                <asp:Label ID="lblFrom" runat="server">ממטבע</asp:Label>
+                <asp:DropDownList ID="currencyFrom" CssClass="drpCurrency" runat="server">
+                    <asp:ListItem Value="shekel" Selected="True">₪</asp:ListItem>
+                    <asp:ListItem Value="dollar">$</asp:ListItem>
+                </asp:DropDownList>
+
+                <asp:Label ID="lblTo" runat="server">למטבע</asp:Label>
+                <asp:DropDownList ID="currencyTo" CssClass="drpCurrency" runat="server">
+                    <asp:ListItem Value="shekel">₪</asp:ListItem>
+                    <asp:ListItem Value="dollar" Selected="True">$</asp:ListItem>
+                </asp:DropDownList>
+
+                <asp:Label ID="lblTxt" runat="server">סכום:</asp:Label>
+                <asp:TextBox ID="txtConvert" CssClass="txt" runat="server"></asp:TextBox>
+
+                <asp:Button ID="btnConver" Text="המר" runat="server" OnClick="btnConver_Click" />
+
+                <asp:Label ID="lblResultHeader" runat="server">המרה:</asp:Label>
+                <asp:TextBox ID="txtResult" CssClass="txt" runat="server" Enabled="false"></asp:TextBox>
+            </span>
         </nav>
         <div id="content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

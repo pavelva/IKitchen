@@ -54,6 +54,7 @@ header{
 
 #logo_content{
     color:#ff6a00;
+    text-shadow:3px 3px black;
 }
 
 nav{
@@ -79,6 +80,70 @@ nav .a:hover{
 nav .aActive:hover{
     cursor:default !important;
 }
+
+/*------------Convertor-------------*/
+nav #convertor{
+    display:block;
+    position:relative;
+    float:left;
+    width:700px;
+}
+
+nav #convertor *{
+    font-size:0.6em;
+    display:block;
+    float:right;
+    margin-left:10px;
+}
+
+nav #lblConvertor{
+    color:#ff6a00;
+    font-weight:bold;
+}
+
+[id ^= lbl]{
+    text-shadow:1px 1px black;
+    font-size:0.7em;
+}
+
+nav .drpCurrency{
+    width:40px;
+    margin-top:11px;
+}
+
+nav .drpCurrency *{
+    font-size:1em;
+}
+
+nav #btnConver{
+    margin:11px 5px 0 10px;
+    border:1px solid black;
+    background:#d23232;
+    color:yellow;
+    width:50px;
+    box-shadow: 1px 1px rgba(0,0,0,0.5);
+}
+
+nav #btnConver:active{
+    box-shadow: inset 1px 1px rgba(0,0,0,0.5);
+    color:white;
+}
+
+nav #btnConver:hover{
+    cursor:pointer;
+    background: rgba(210,50,50,0.8);
+}
+
+nav .txt{
+    display:inline-block;
+    margin-top: 11px;
+    border:1px solid black;
+    width:80px;
+    background:white;
+}
+
+/*-------------End Convertor-------------*/
+
 #user{
     float:left;
 }
