@@ -19,8 +19,13 @@ namespace IKitchen
             regConfirmPasswordInput.Attributes["type"] = "password";
             if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null)
             {
-                getUserIDFromDB(Request.Cookies["email"].Value.ToString(), Request.Cookies["pass"].Value.ToString());
-                goToPageByUserType();
+                if (getUserIDFromDB(Request.Cookies["email"].Value.ToString(), Request.Cookies["pass"].Value.ToString()) == -1)
+                {
+                    Response.Cookies["pass"].Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
+                }
+                else
+                    goToPageByUserType();
             }
         }
 

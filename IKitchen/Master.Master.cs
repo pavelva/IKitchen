@@ -87,5 +87,41 @@ namespace IKitchen
                 Response.Redirect("Default.aspx");
             }
         }
+
+        protected void btnConver_Click(object sender, EventArgs e)
+        {
+            txtConvert.Style.Add("color", "black");
+            txtConvert.Style.Add("font-weight", "normal");
+            string from = currencyFrom.SelectedValue;
+            string to = currencyTo.SelectedValue;
+            int amount;
+
+            try
+            {
+                amount = int.Parse(txtConvert.Text);
+            }
+            catch
+            {
+                txtConvert.Style.Add("color", "red");
+                txtConvert.Style.Add("font-weight", "bold");
+                return;
+            }
+
+            txtResult.Text = Convert(from, to, amount).ToString("f2");
+        }
+
+        private double Convert(string from, string to, int amount)
+        {
+            if (from == "shekel" && to != from)
+            {
+                return amount * 3.85;
+            }
+            else if (from == "dollar" && to != from)
+            {
+                return amount / 3.85;
+            }
+            else
+                return amount;
+        }
     }
 }
