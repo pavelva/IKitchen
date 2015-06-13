@@ -11,14 +11,7 @@
     <div id="registerCell" class="logReg">
             <div id="registerHeader" class="contentHeader">
                 הרשמה
-            </div>
-           <%-- <div id="registerContent" class="content">
-                <p>חדש באתר ?</p>
-                <p>הרשם עכשיו, זה מהיר ופשוט !</p>
-                <br />
-                <asp:Button ID="registerBtn" CssClass="btn" runat="server" Text="להרשמה" OnClientClick="makeRegisterDetailes()"/>
-            </div>--%>
-            <div id="signUpContent" class="content">
+            </div><div id="signUpContent" class="content">
                 <p>
                     <span class="inputText">
                         שם פרטי :
@@ -43,6 +36,15 @@
                     <asp:TextBox id="emailInput" CssClass="registerInput input" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RegEmailRequiredFieldValidator"  CssClass="validatorStyle" ControlToValidate="emailInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>         
                     <asp:RegularExpressionValidator ID="emailRegularExpressionValidator" ControlToValidate="emailInput" ValidationExpression="([a-zA-Z]{3,8})$" runat="server" ErrorMessage="חייב להכיל 3-8 תווים באנגלית"></asp:RegularExpressionValidator>
+                </p>
+                <p>
+                    <span class="inputText">
+                        דואר אלקטרוני :
+                    </span>
+                    <br />
+                    <asp:TextBox id="realEmailInput" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RealEmailRequiredFieldValidator"  CssClass="validatorStyle" ControlToValidate="realEmailInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>         
+                    <asp:RegularExpressionValidator ID="RealEmailRegexValidator" ControlToValidate="realEmailInput" ValidationExpression="([a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4})$" runat="server" ErrorMessage="דואר אלקטרוני לא חוקי"></asp:RegularExpressionValidator>
                 </p>
                 <p>
                     <span class="inputText">
@@ -88,7 +90,7 @@
                         בחר קטגוריות מועדפות :
                     </span>
                     <br />
-                    <asp:DropDownCheckBoxes id="categoriesListBox" ClientIDMode="Static" CssClass="registerInput input" SelectionMode="Multiple" runat="server" ></asp:DropDownCheckBoxes>
+                    <asp:DropDownCheckBoxes id="categoriesListBox" ClientIDMode="Static" CssClass="registerInput input" runat="server" ></asp:DropDownCheckBoxes>
 
                     <asp:SqlDataSource ID="CategoriesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IKitchenDB %>">
                     </asp:SqlDataSource>
@@ -130,7 +132,7 @@
         <div id="forgotPassPopup" class="divFordialog forgotPassPopup" runat="server">
             <div id="forgotPasswordDialog" title="Basic dialog">
                  <div class="dialogHeader contentHeader">
-                    אחזור סיסמא
+                    יצירת סיסמא חדשה
                 </div>
                  <p>
                     <span class="inputText">
@@ -169,7 +171,7 @@
         <div id="newPasswordPopup"  class="divFordialog newPasswordPopup" runat="server">
             <div id="newPassDialog" title="Basic dialog">
                  <div class="dialogHeader contentHeader">
-                    אחזור סיסמא
+                    יצירת סיסמא חדשה
                 </div>
                  <p>
                     <span class="inputText">
@@ -184,6 +186,15 @@
                     <asp:Label ID="newPassError" runat="server" ClientIDMode="Static"></asp:Label>
                 </p>
                   <asp:Button ID="sendNewPass" ClientIDMode="Static" CssClass="logRegBtn" runat="server" OnClick="sendNewPass_Click" OnClientClick="sendNewPass_Click" Text="שלח" style="margin-left:10%"/>
+            </div>
+        </div>
+    <div id="congratsPopup"  class="divFordialog" runat="server">
+            <div id="congratsDialog" title="Basic dialog">
+                 <div id="congratsHeader" class="dialogHeader contentHeader">
+                    נרשמת בצלחה לאתר !
+                </div>
+                 
+                  <asp:Button ID="goOnBtn" ClientIDMode="Static" CssClass="logRegBtn" runat="server" OnClick="closeCongratsPopup" OnClientClick="closeCongratsPopup" Text="המשך" style="margin-left:10%"/>
             </div>
         </div>
 </asp:Content>

@@ -129,30 +129,54 @@ namespace IKitchen
         {
             if (validRegistration())
             {
-                string fName = firstNameInput.Text.ToString();
-                string lName = lastNameInput.Text.ToString();
-                string email = emailInput.Text.ToString();
-                string pass = regPasswordInput.Text.ToString();
-                int question = listOfQestions.SelectedIndex;
-                string ans = answer.Text.ToString();
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-                string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer)" +
-                                "VALUES ('" + fName + "','" + lName + "','" + email + "','" + pass + "'," + question + ",'" + ans + "')" +
-                                "SELECT SCOPE_IDENTITY();";
-                con.Open();
-                SqlCommand command = new SqlCommand(sql, con);
-                string id = command.ExecuteScalar().ToString();
-                fillFavoritesInDB(id);
-                con.Close();
+                try
+                {
+                    string fName = firstNameInput.Text.ToString();
+                    string lName = lastNameInput.Text.ToString();
+                    string userName = emailInput.Text.ToString();
+                    string pass = regPasswordInput.Text.ToString();
+                    int question = listOfQestions.SelectedIndex;
+                    string ans = answer.Text.ToString();
+                    string email = realEmailInput.Text.ToString();
+                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                    string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer, user_realEmail)" +
+                                    "VALUES ('" + fName + "','" + lName + "','" + userName + "','" + pass + "'," + question + ",'" + ans + "','" + email + "')" +
+                                    "SELECT SCOPE_IDENTITY();";
+                    con.Open();
+                    SqlCommand command = new SqlCommand(sql, con);
+                    string id = command.ExecuteScalar().ToString();
+                    fillFavoritesInDB(id);
+                    
+                    congratsPopup.Style.Add("display", "block");
+
+                    firstNameInput.Text = "";
+                    lastNameInput.Text = "";
+                    emailInput.Text = "";
+                    regPasswordInput.Text = "";
+                    regConfirmPasswordInput.Text = "";
+                    listOfQestions.SelectedIndex = 0;
+                    answer.Text = "";
+                    realEmailInput.Text = "";
+                    con.Close();
+                }
+                catch{
+                    
+                }
                 
             }
+        }
+
+        protected void closeCongratsPopup(object sender, EventArgs e)
+        {
+            congratsPopup.Style.Add("display", "none");
         }
 
         private bool validRegistration()
         {
             return FirstNameRequiredFieldValidator.IsValid && LastNameRequiredFieldValidator.IsValid && RegEmailRequiredFieldValidator.IsValid
                 && emailRegularExpressionValidator.IsValid && RegPasswordRequiredFieldValidator.IsValid && PasswordRegularExpressionValidator.IsValid
-                && RegConfirmPasswordRequiredFieldValidator.IsValid && RegConfirmCompareValidator.IsValid && AnswerRequiredFieldValidator.IsValid;
+                && RegConfirmPasswordRequiredFieldValidator.IsValid && RegConfirmCompareValidator.IsValid && AnswerRequiredFieldValidator.IsValid
+                && RealEmailRequiredFieldValidator.IsValid && RealEmailRegexValidator.IsValid;
         }
 
         private void fillFavoritesInDB(string uid)
@@ -163,21 +187,18 @@ namespace IKitchen
                 if (item.Selected)
                 {
                     sqlInsertFavorites += "Insert Into favorites (fav_user, fav_app) " +
-                                          "Values ('" + uid + "','" + item.Value + "');";
+                                            "Values ('" + uid + "','" + item.Value + "');";
                 }
             }
-
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            con.Open();
-            SqlCommand com = new SqlCommand(sqlInsertFavorites, con);
-            com.ExecuteNonQuery();
-            con.Close();
-        }
-
-        //protected void sendForogtPassDetails()
-        //{
-
-        //}
+            if (sqlInsertFavorites != "")
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                con.Open();
+                SqlCommand com = new SqlCommand(sqlInsertFavorites, con);
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+         }
 
         protected void ForgatPAssDetails_Click(object sender, EventArgs e)
         {

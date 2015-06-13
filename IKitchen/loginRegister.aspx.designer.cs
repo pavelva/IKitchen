@@ -76,6 +76,33 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator emailRegularExpressionValidator;
         
         /// <summary>
+        /// realEmailInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox realEmailInput;
+        
+        /// <summary>
+        /// RealEmailRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RealEmailRequiredFieldValidator;
+        
+        /// <summary>
+        /// RealEmailRegexValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RealEmailRegexValidator;
+        
+        /// <summary>
         /// regPasswordInput control.
         /// </summary>
         /// <remarks>
@@ -353,5 +380,23 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button sendNewPass;
+        
+        /// <summary>
+        /// congratsPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl congratsPopup;
+        
+        /// <summary>
+        /// goOnBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button goOnBtn;
     }
 }
