@@ -38,7 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DropDownCheckBoxes">
+      <HintPath>..\..\..\..\..\Downloads\DropDownList-CheckBox\Bin\DropDownCheckBoxes.dll</HintPath>
+    </Reference>
+    <Reference Include="DropDownCheckBoxes.1.1.0.27408.Fakes">
+      <HintPath>FakesAssemblies\DropDownCheckBoxes.1.1.0.27408.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -598,6 +605,7 @@
     <Content Include="Style\loginRegister.css" />
     <Content Include="Master.Master" />
     <Content Include="Images\big\Thumbs.db" />
+    <Fakes Include="Fakes\DropDownCheckBoxes.fakes" />
     <None Include="Properties\PublishProfiles\IKitchen.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
