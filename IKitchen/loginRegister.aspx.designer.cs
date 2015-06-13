@@ -13,33 +13,6 @@ namespace IKitchen {
     public partial class loginRegister {
         
         /// <summary>
-        /// Head1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
-        
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// registerBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button registerBtn;
-        
-        /// <summary>
         /// firstNameInput control.
         /// </summary>
         /// <remarks>
@@ -92,6 +65,15 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RegEmailRequiredFieldValidator;
+        
+        /// <summary>
+        /// emailRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator emailRegularExpressionValidator;
         
         /// <summary>
         /// regPasswordInput control.
@@ -238,6 +220,24 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.Button loginBtn;
         
         /// <summary>
+        /// forgotPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl forgotPassword;
+        
+        /// <summary>
+        /// forgotPassPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl forgotPassPopup;
+        
+        /// <summary>
         /// emailForgotPass control.
         /// </summary>
         /// <remarks>
@@ -265,6 +265,15 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.TextBox answerForgatPass;
         
         /// <summary>
+        /// forgotPassErrorlabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label forgotPassErrorlabel;
+        
+        /// <summary>
         /// ForgatBtn control.
         /// </summary>
         /// <remarks>
@@ -281,5 +290,41 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button closeDialogBtn;
+        
+        /// <summary>
+        /// newPasswordPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl newPasswordPopup;
+        
+        /// <summary>
+        /// newPassInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox newPassInput;
+        
+        /// <summary>
+        /// newPassError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label newPassError;
+        
+        /// <summary>
+        /// sendNewPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button sendNewPass;
     }
 }
