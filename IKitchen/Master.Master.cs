@@ -63,9 +63,12 @@ namespace IKitchen
                 
             }
 
-            link.Enabled = false;
-            link.ForeColor = Color.FromArgb(255, 106, 0);
-            link.CssClass += " aActive";
+            if (link != null)
+            {
+                link.Enabled = false;
+                link.ForeColor = Color.FromArgb(255, 106, 0);
+                link.CssClass += " aActive";
+            }
         }
         protected void redirect(object sender, EventArgs e)
         {

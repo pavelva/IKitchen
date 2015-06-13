@@ -1,35 +1,21 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="loginRegister.aspx.cs" Inherits="IKitchen.loginRegister" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
-<head id="Head1" runat="server">
-    <title></title>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="loginRegister.aspx.cs" Inherits="IKitchen.loginRegister" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="style/loginRegister.css" rel="stylesheet" type="text/css" />
-
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="Script/logReg.js"></script>
     
-</head>
-<body>
-    <header>
-        <span id="logo">
-            I<span id="logo_content">Kitchen</span>
-        </span>
-    </header>
-    <nav></nav>
-    <div id="line"></div>
-    <form id="form1" runat="server">
-        <div id="registerCell" class="logReg">
+    <script type="text/javascript" src="Script/logReg.js"></script>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div id="registerCell" class="logReg">
             <div id="registerHeader" class="contentHeader">
                 הרשמה
             </div>
-            <div id="registerContent" class="content">
+           <%-- <div id="registerContent" class="content">
                 <p>חדש באתר ?</p>
                 <p>הרשם עכשיו, זה מהיר ופשוט !</p>
                 <br />
-                <asp:Button ID="registerBtn" class="btn" runat="server" Text="להרשמה" OnClientClick="makeRegisterDetailes()"/>
-            </div>
+                <asp:Button ID="registerBtn" CssClass="btn" runat="server" Text="להרשמה" OnClientClick="makeRegisterDetailes()"/>
+            </div>--%>
             <div id="signUpContent" class="content">
                 <p>
                     <span class="inputText">
@@ -49,20 +35,21 @@
                 </p>
                 <p>
                     <span class="inputText">
-                        דואר אלקטרוני :
+                        שם משתמש :
                     </span>
                     <br />
                     <asp:TextBox id="emailInput" CssClass="registerInput input" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RegEmailRequiredFieldValidator" ControlToValidate="emailInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>                    
+                    <asp:RequiredFieldValidator ID="RegEmailRequiredFieldValidator" ControlToValidate="emailInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>         
+                    <asp:RegularExpressionValidator ID="emailRegularExpressionValidator" ControlToValidate="emailInput" ValidationExpression="([a-zA-Z]{3,8})$" runat="server" ErrorMessage="חייב להכיל 3-8 תווים באנגלית"></asp:RegularExpressionValidator>
                 </p>
                 <p>
                     <span class="inputText">
                         סיסמא :
                     </span>
                     <br />
-                    <asp:TextBox id="regPasswordInput" CssClass="registerInput input" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="regPasswordInput" CssClass="registerInput input" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RegPasswordRequiredFieldValidator" ControlToValidate="regPasswordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator" ControlToValidate="regPasswordInput" ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{1,100})$" runat="server" ErrorMessage="סיסמא חייבת להכיל ספרה"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator" ControlToValidate="regPasswordInput" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{5,10}$" runat="server" ErrorMessage="חייב להכיל 5-10 תווים"></asp:RegularExpressionValidator>
                 </p>
                 <p>
                     <span class="inputText">
@@ -94,9 +81,9 @@
                     <asp:TextBox id="answer" CssClass="registerInput input" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="AnswerRequiredFieldValidator" ControlToValidate="answer" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>                    
                 </p>
-                <asp:Button ID="signUpBtn" class="btn" runat="server" Text="הרשם" OnClientClick="registerBtn_Click" OnClick="registerBtn_Click"/>
+                <asp:Button ID="signUpBtn" CssClass="logRegBtn" runat="server" Text="הרשם" OnClientClick="registerBtn_Click" OnClick="registerBtn_Click"/>
+                </div>
             </div>
-        </div>
 
         <div id="loginCell" class="logReg">
             <div id="loginHeader" class="contentHeader">
@@ -120,15 +107,15 @@
                     <asp:RequiredFieldValidator ID="PasswordRequiredFieldValidator" ControlToValidate="passwordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
                 </p>
                     <asp:Label ID="errorLbl" Text="הפרטים אינם נכונים" runat="server"></asp:Label>
-                    <asp:Button ID="loginBtn" CssClass="btn" runat="server" Text="התחבר" OnClientClick="loginBtn_Click" OnClick="loginBtn_Click" />
+                    <asp:Button ID="loginBtn" CssClass="logRegBtn" runat="server" Text="התחבר" OnClientClick="loginBtn_Click" OnClick="loginBtn_Click" />
                 <p>
-                    <span id="forgotPassword" class="inputText" onclick="forgotPasswordPopUp()">
+                    <span id="forgotPassword" class="inputText forgotPassword" onclick="forgotPasswordPopUp()" runat="server">
                         שכחתי סיסמא
                     </span>
                 </p>
             </div>
         </div>
-        <div class="divFordialog">
+        <div id="forgotPassPopup" class="divFordialog forgotPassPopup" runat="server">
             <div id="forgotPasswordDialog" title="Basic dialog">
                  <div class="dialogHeader contentHeader">
                     אחזור סיסמא
@@ -160,10 +147,30 @@
                     <br />
                     <asp:TextBox id="answerForgatPass" CssClass="registerInput input" runat="server"></asp:TextBox>
                 </p>
-                  <asp:Button ID="ForgatBtn" class="btn" runat="server" Text="שלח" style="margin-left:10%"/>
-                    <asp:Button ID="closeDialogBtn" class="btn" runat="server" Text="סגור" OnClientClick="closeDialog()" />
+                <p>
+                    <asp:Label ID="forgotPassErrorlabel" runat="server" ClientIDMode="Static"></asp:Label>
+                </p>
+                  <asp:Button ID="ForgatBtn" CssClass="logRegBtn" runat="server" OnClick="ForgatPAssDetails_Click" OnClientClick="ForgatPAssDetails_Click" Text="שלח" style="margin-left:10%"/>
+                    <asp:Button ID="closeDialogBtn" CssClass="logRegBtn" runat="server" Text="סגור" OnClientClick="closeDialog()" />
             </div>
         </div>
-    </form>
-</body>
-</html>
+        <div id="newPasswordPopup"  class="divFordialog newPasswordPopup" runat="server">
+            <div id="newPassDialog" title="Basic dialog">
+                 <div class="dialogHeader contentHeader">
+                    אחזור סיסמא
+                </div>
+                 <p>
+                    <span class="inputText">
+                        בחר סיסמא חדשה :
+                    </span>
+                    <br />
+                    <asp:TextBox id="newPassInput" CssClass="input" runat="server"></asp:TextBox>
+                </p>
+                <p>
+                    <asp:Label ID="newPassError" runat="server" ClientIDMode="Static"></asp:Label>
+                </p>
+                  <asp:Button ID="sendNewPass" ClientIDMode="Static" CssClass="logRegBtn" runat="server" OnClick="sendNewPass_Click" OnClientClick="sendNewPass_Click" Text="שלח" style="margin-left:10%"/>
+            </div>
+        </div>
+</asp:Content>
+
