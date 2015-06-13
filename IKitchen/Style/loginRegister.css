@@ -53,7 +53,7 @@
     display:block !important;
     text-align:center;
     font-size:1em;
-    height:430px;
+    height:480px;
 }
 
 .inputText {
@@ -96,6 +96,11 @@
     height:23px;
     font-size:0.8em;
     padding-right:2px;
+}
+
+[id ^= categoriesListBox] * {
+    float:right;
+    direction:ltr;
 }
 
 .logRegBtn {
@@ -142,70 +147,58 @@
 
 
 /*--------------------------------Validators----------------------------------------*/
-
+.validatorStyle {
+    font-weight:bold;    
+    color:red;
+    font-size:1em;
+}
 #ContentPlaceHolder1_UserNameRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:82px;
     float:right;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_PasswordRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:133px;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_FirstNameRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:47px;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_LastNameRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:100px;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_RegEmailRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:150px;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_RegPasswordRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:203px;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_RegConfirmPasswordRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:255px;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_AnswerRequiredFieldValidator {
     position:absolute;
     right:25px;
     top:358px;
-    color:red;
-    font-size:1em;
 }
 
 #ContentPlaceHolder1_emailRegularExpressionValidator {
@@ -215,6 +208,7 @@
     color:red;
     font-size:0.8em;
 }
+
 #ContentPlaceHolder1_PasswordRegularExpressionValidator {
     position:absolute;
     right: 110px;
@@ -227,6 +221,14 @@
     position:absolute;
     right:145px;
     top:232px;
+    color:red;
+    font-size:0.8em;
+}
+
+#ContentPlaceHolder1_ForgotPasswordRegularExpressionValidator {
+    position:absolute;
+    right: 645px;
+    top:220px;
     color:red;
     font-size:0.8em;
 }

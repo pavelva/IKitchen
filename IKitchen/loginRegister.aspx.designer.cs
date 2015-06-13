@@ -157,6 +157,24 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator AnswerRequiredFieldValidator;
         
         /// <summary>
+        /// categoriesListBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Saplin.Controls.DropDownCheckBoxes categoriesListBox;
+        
+        /// <summary>
+        /// CategoriesDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource CategoriesDataSource;
+        
+        /// <summary>
         /// signUpBtn control.
         /// </summary>
         /// <remarks>
@@ -308,6 +326,15 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox newPassInput;
+        
+        /// <summary>
+        /// ForgotPasswordRegularExpressionValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ForgotPasswordRegularExpressionValidator;
         
         /// <summary>
         /// newPassError control.

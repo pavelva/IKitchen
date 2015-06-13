@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,11 @@ namespace IKitchen
             passwordInput.Attributes["type"] = "password";
             regPasswordInput.Attributes["type"] = "password";
             regConfirmPasswordInput.Attributes["type"] = "password";
+            newPassInput.Attributes["type"] = "password";
+            if (!Page.IsPostBack)
+            {
+                addCategoriesToListBox();
+            }
             if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null)
             {
                 getUserIDFromDB(Request.Cookies["email"].Value.ToString(), Request.Cookies["pass"].Value.ToString());
@@ -24,6 +30,30 @@ namespace IKitchen
             }
         }
 
+        private void addCategoriesToListBox()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                string sql = "select * from applience";
+                con.Open();
+                SqlCommand command = new SqlCommand(sql, con);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                categoriesListBox.DataSource = dataTable;
+                categoriesListBox.DataTextField = "app_name";
+                categoriesListBox.DataValueField = "app_id";
+                categoriesListBox.DataBind();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                Response.Write("Error occured: " + ex.Message.ToString());
+            }
+        }
+    
         private void goToPageByUserType()
         {
             if (Session["isAdmin"] != null)
