@@ -38,8 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DropDownCheckBoxes">
-      <HintPath>..\..\..\..\..\Downloads\DropDownList-CheckBox\Bin\DropDownCheckBoxes.dll</HintPath>
+    <Reference Include="DropDownCheckBoxes, Version=1.1.0.27408, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DropDownCheckBoxes.dll</HintPath>
     </Reference>
     <Reference Include="DropDownCheckBoxes.1.1.0.27408.Fakes">
       <HintPath>FakesAssemblies\DropDownCheckBoxes.1.1.0.27408.Fakes.dll</HintPath>

@@ -127,7 +127,7 @@ namespace IKitchen
 
         protected void registerBtn_Click(object sender, EventArgs e)
         {
-            if (Page.IsValid)
+            if (validRegistration())
             {
                 string fName = firstNameInput.Text.ToString();
                 string lName = lastNameInput.Text.ToString();
@@ -137,18 +137,47 @@ namespace IKitchen
                 string ans = answer.Text.ToString();
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
                 string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer)" +
-                                "VALUES ('" + fName + "','" + lName + "','" + email + "','" + pass + "'," + question + ",'" + ans + "')";
+                                "VALUES ('" + fName + "','" + lName + "','" + email + "','" + pass + "'," + question + ",'" + ans + "')" +
+                                "SELECT SCOPE_IDENTITY();";
                 con.Open();
                 SqlCommand command = new SqlCommand(sql, con);
-                command.ExecuteNonQuery();
+                string id = command.ExecuteScalar().ToString();
+                fillFavoritesInDB(id);
                 con.Close();
+                
             }
         }
 
-        protected void sendForogtPassDetails()
+        private bool validRegistration()
         {
-
+            return FirstNameRequiredFieldValidator.IsValid && LastNameRequiredFieldValidator.IsValid && RegEmailRequiredFieldValidator.IsValid
+                && emailRegularExpressionValidator.IsValid && RegPasswordRequiredFieldValidator.IsValid && PasswordRegularExpressionValidator.IsValid
+                && RegConfirmPasswordRequiredFieldValidator.IsValid && RegConfirmCompareValidator.IsValid && AnswerRequiredFieldValidator.IsValid;
         }
+
+        private void fillFavoritesInDB(string uid)
+        {
+            string sqlInsertFavorites = "";
+            foreach (ListItem item in (categoriesListBox as ListControl).Items)
+            {
+                if (item.Selected)
+                {
+                    sqlInsertFavorites += "Insert Into favorites (fav_user, fav_app) " +
+                                          "Values ('" + uid + "','" + item.Value + "');";
+                }
+            }
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+            con.Open();
+            SqlCommand com = new SqlCommand(sqlInsertFavorites, con);
+            com.ExecuteNonQuery();
+            con.Close();
+        }
+
+        //protected void sendForogtPassDetails()
+        //{
+
+        //}
 
         protected void ForgatPAssDetails_Click(object sender, EventArgs e)
         {
