@@ -9,7 +9,7 @@
     
     
     <div id="categorys" runat="server">
-        <h2>מוצרים מומךצים לפי ההגדרות שלך</h2>
+        <h2>מוצרים מומלצים לפי ההגדרות שלך</h2>
 
         <asp:ListView runat="server" DataSourceID="categorysProductsDataSource" ID="categorysProductsListView">
             <LayoutTemplate>

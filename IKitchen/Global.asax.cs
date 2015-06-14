@@ -19,7 +19,6 @@ namespace IKitchen
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session.Timeout = 1;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

@@ -55,8 +55,8 @@ namespace IKitchen
 
             string sql = "select top 12 product_id, product_create, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name, product_exist " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
-                                "Where app_id in ('" + string.Join("','", app_ids.Distinct()) + "') " +
-                                " order by app_id";
+                                "Where app_id in ('" + string.Join("','", app_ids.Distinct()) + "') AND product_exist = 'true' " +
+                                " order by product_create DESC";
             
             FillCatalog(sql, buysProductsDataSource);
 
@@ -65,7 +65,8 @@ namespace IKitchen
                                 "Where app_id in (select app_id " +
                                                     "from applience " +
                                                     "where app_id in (select fav_app from favorites where fav_user = " + id +")) " +
-                                " order by app_id";
+                                       "AND product_exist = 'true' " +
+                                " order by product_create DESC";
 
             FillCatalog(sql, categorysProductsDataSource);
         }
@@ -79,30 +80,21 @@ namespace IKitchen
             FillCatalog(sql, DefaultDataSource, true);
         }
 
-        private void FillCatalog(string sql, SqlDataSource dataSource , bool date = false)
+        private void FillCatalog(string sql, SqlDataSource dataSource , bool addParams = false)
         {
             dataSource.SelectCommand = sql;
-            if (date)
+            if (addParams)
             {
                 Parameter param = new Parameter("date");
                 param.DbType = DbType.DateTime;
                 param.DefaultValue = DateTime.Now.AddDays(-7).ToString();
                 dataSource.FilterParameters.Add(param);
-                //dataSource.FilterExpression = "product_create > #{0}#";
 
                 Parameter param_exist = new Parameter("create");
                 param_exist.DbType = DbType.Boolean;
                 param_exist.DefaultValue = true.ToString();
                 dataSource.FilterParameters.Add(param_exist);
                 dataSource.FilterExpression = "product_create > #{0}# AND product_exist = {1}";
-            }
-            else
-            {
-                Parameter param_exist = new Parameter("create");
-                param_exist.DbType = DbType.Boolean;
-                param_exist.DefaultValue = true.ToString();
-                dataSource.FilterParameters.Add(param_exist);
-                dataSource.FilterExpression = "product_exist = {0}";
             }
 
             
