@@ -697,7 +697,6 @@
     <Compile Include="MyPurchases.aspx.designer.cs">
       <DependentUpon>MyPurchases.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
