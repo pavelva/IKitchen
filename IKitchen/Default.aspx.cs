@@ -30,14 +30,16 @@ namespace IKitchen
                 DataTable tblPurchases = new DataTable();
                 adapter.Fill(tblPurchases);
 
-                if (tblPurchases.Rows.Count == 0)
-                    FillDefault();
-                else
-                    FillUserReccomendations(id, tblPurchases);
+                FillDefault();
+                FillUserReccomendations(id, tblPurchases);
 
                 
             }
             else {
+                buys.Style.Add("display", "none");
+                categorys.Style.Add("display", "none");
+                defaultList.Style.Add("display", "block");
+
                 FillDefault();
             }
         }
@@ -51,37 +53,45 @@ namespace IKitchen
                 app_ids.Add(r[1].ToString());
             }
 
-            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name " +
+            string sql = "select top 12 product_id, product_create, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
-                                "Where app_id in ('" + string.Join("','", app_ids) + "')" +
+                                "Where app_id in ('" + string.Join("','", app_ids.Distinct()) + "')" +
                                 " order by app_id";
             
-            FillCatalog(sql);
+            FillCatalog(sql, buysProductsDataSource);
+
+            sql = "select top 12 product_id, product_create, product_model, product_price, product_install_price, product_desc, product_company, app_id, app_name, appType_name, company_name " +
+                                "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
+                                "Where app_id in (select app_id " +
+                                                    "from applience " +
+                                                    "where app_id in (select fav_app from favorites where fav_user = " + id +")) " +
+                                " order by app_id";
+
+            FillCatalog(sql, categorysProductsDataSource, true);
         }
 
         private void FillDefault()
         {
-            string sql = "select product_id, product_create, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name " +
+            string sql = "select top 12 product_id, product_create, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
                                 " order by company_name";
 
-            FillCatalog(sql, true);
+            FillCatalog(sql, DefaultDataSource, true);
         }
 
-        private void FillCatalog(string sql, bool date = false)
+        private void FillCatalog(string sql, SqlDataSource dataSource , bool date = false)
         {
-            DefaultDataSource.SelectCommand = sql;
+            dataSource.SelectCommand = sql;
             if (date)
             {
                 Parameter param = new Parameter("date");
                 param.DbType = DbType.DateTime;
                 param.DefaultValue = DateTime.Now.AddDays(-7).ToString();
-                DefaultDataSource.FilterParameters.Add(param);
-                DefaultDataSource.FilterExpression = "product_create > #{0}#";
+                dataSource.FilterParameters.Add(param);
+                dataSource.FilterExpression = "product_create > #{0}#";
             }
-            
-            DefaultDataSource.DataBind();
 
+            dataSource.DataBind();
         }
     }
 }
