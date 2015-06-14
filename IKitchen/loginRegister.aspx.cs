@@ -22,6 +22,7 @@ namespace IKitchen
             if (!Page.IsPostBack)
             {
                 addCategoriesToListBox();
+                LoadCountriesToDropdownList();
             }
             if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null)
             {
@@ -32,6 +33,23 @@ namespace IKitchen
                 }
                 else
                     goToPageByUserType();
+            }
+        }
+
+        private void LoadCountriesToDropdownList()
+        {
+            try
+            {
+                DataSet dsDept = new DataSet();
+                dsDept.ReadXml(Server.MapPath("countries.xml"));
+                CountryDropDown.DataSource = dsDept;
+                CountryDropDown.DataTextField = "Name";
+                CountryDropDown.DataValueField = "ID";
+                CountryDropDown.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -138,9 +156,10 @@ namespace IKitchen
                     int question = listOfQestions.SelectedIndex;
                     string ans = answer.Text.ToString();
                     string email = realEmailInput.Text.ToString();
+                    string country = CountryDropDown.SelectedItem.Text;
                     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-                    string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer, user_realEmail)" +
-                                    "VALUES ('" + fName + "','" + lName + "','" + userName + "','" + pass + "'," + question + ",'" + ans + "','" + email + "')" +
+                    string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer, user_realEmail, user_country)" +
+                                    "VALUES (N'" + fName + "',N'" + lName + "','" + userName + "','" + pass + "'," + question + ",N'" + ans + "','" + email + "','" + country + "')" +
                                     "SELECT SCOPE_IDENTITY();";
                     con.Open();
                     SqlCommand command = new SqlCommand(sql, con);
@@ -157,6 +176,7 @@ namespace IKitchen
                     listOfQestions.SelectedIndex = 0;
                     answer.Text = "";
                     realEmailInput.Text = "";
+                    CountryDropDown.SelectedIndex = 0;
                     con.Close();
                 }
                 catch{
@@ -205,22 +225,39 @@ namespace IKitchen
             SqlDataReader sqlData = null;
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
             string sql = "select * from users where user_email= '" + emailForgotPass.Text + "' AND user_question= '" + forgotListOfQestions.SelectedValue.ToString() +
-                "' AND user_answer = '" + answerForgatPass.Text + "'";
+                "' AND user_answer = N'" + answerForgatPass.Text + "'";
             con.Open();
             SqlCommand command = new SqlCommand(sql, con);
             sqlData = command.ExecuteReader();
             if (sqlData != null)
             {
-                if (sqlData.Read())
-                {
-                    Session["userForgotId"] = sqlData["user_id"].ToString();
-                    newPasswordPopup.Style.Add("display", "block");
-                    forgotPassPopup.Style.Add("display", "none");
+                var btn = (Button)sender;
+                if(btn.Text.ToString() == "סיסמא חדשה"){
+                    if (sqlData.Read())
+                    {
+                        Session["userForgotId"] = sqlData["user_id"].ToString();
+                        newPasswordPopup.Style.Add("display", "block");
+                        forgotPassPopup.Style.Add("display", "none");
+                    }
+                    else
+                    {
+                        forgotPassPopup.Style.Add("display", "block");
+                        forgotPassErrorlabel.Text = "הפרטים אינם נכונים";
+                    }
                 }
-                else
+                else if (btn.Text.ToString() == "אחזור סיסמא")
                 {
-                    forgotPassPopup.Style.Add("display", "block");
-                    forgotPassErrorlabel.Text = "הפרטים אינם נכונים";
+                    if (sqlData.Read())
+                    {
+                        forgotPassPopup.Style.Add("display", "block");
+                        forgotPassErrorlabel.Text = "הסיסמא שלך היא : " + sqlData["user_password"].ToString();
+                    }
+                    else
+                    {
+                        forgotPassPopup.Style.Add("display", "block");
+                        forgotPassErrorlabel.Text = "הפרטים אינם נכונים";
+                    }
+                    
                 }
             }
             else
@@ -234,6 +271,10 @@ namespace IKitchen
         {
             if (Session["userForgotId"] != null)
             {
+                forgotPassErrorlabel.Text = "";
+                forgotListOfQestions.SelectedIndex = 0;
+                emailForgotPass.Text = "";
+                answerForgatPass.Text = "";
                 forgotPassPopup.Style.Add("display", "none");
                 if (newPassInput.Text != "")
                 {

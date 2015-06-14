@@ -17,4 +17,7 @@ function forgotPasswordPopUp()
 function closeDialog()
 {
     $(".forgotPassPopup").hide();
+    document.getElementById("ContentPlaceHolder1_emailForgotPass").value = "";
+    document.getElementById("ContentPlaceHolder1_answerForgatPass").value = "";
+    document.getElementById("forgotPassErrorlabel").innerText = "";
 }
