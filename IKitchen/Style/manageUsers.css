@@ -7,19 +7,8 @@
     text-align:right;
 }
 
-#manageUserTable {
-    text-align:center;
-}
-.tableRow {
-    width:100%;
-}
-.tableCell {
-    width:20%;
-    border:1px solid black;
-}
-
 #changeUserTypeBtn {
-    width:70%;
+    width:85%;
     height:25px;
     font-size:0.7em;
     margin-right:0 !important;

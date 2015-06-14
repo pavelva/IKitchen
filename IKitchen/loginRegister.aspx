@@ -87,6 +87,16 @@
                 </p>
                 <p>
                     <span class="inputText">
+                        ארץ מגורים :
+                    </span>
+                    <br />
+                    <asp:DropDownList id="CountryDropDown" ClientIDMode="Static" runat="server" ></asp:DropDownList>
+
+                    <asp:XmlDataSource ID="CountryXmlDataSource" runat="server">
+                    </asp:XmlDataSource>
+                </p>
+                <p>
+                    <span class="inputText">
                         בחר קטגוריות מועדפות :
                     </span>
                     <br />
@@ -132,7 +142,7 @@
         <div id="forgotPassPopup" class="divFordialog forgotPassPopup" runat="server">
             <div id="forgotPasswordDialog" title="Basic dialog">
                  <div class="dialogHeader contentHeader">
-                    יצירת סיסמא חדשה
+                    אחזור\יצירת סיסמא
                 </div>
                  <p>
                     <span class="inputText">
@@ -164,8 +174,11 @@
                 <p>
                     <asp:Label ID="forgotPassErrorlabel" runat="server" ClientIDMode="Static"></asp:Label>
                 </p>
-                  <asp:Button ID="ForgatBtn" CssClass="logRegBtn" runat="server" OnClick="ForgatPAssDetails_Click" OnClientClick="ForgatPAssDetails_Click" Text="שלח" style="margin-left:10%"/>
-                    <asp:Button ID="closeDialogBtn" CssClass="logRegBtn" runat="server" Text="סגור" OnClientClick="closeDialog()" />
+                <asp:Button ID="holdPassBtn" CssClass="logRegBtn" runat="server" OnClick="ForgatPAssDetails_Click" OnClientClick="ForgatPAssDetails_Click" Text="אחזור סיסמא" />
+                  <asp:Button ID="ForgatBtn" CssClass="logRegBtn" runat="server" OnClick="ForgatPAssDetails_Click" OnClientClick="ForgatPAssDetails_Click" Text="סיסמא חדשה" style="margin-right:5%"/>
+                <p>
+                    <asp:Button ID="closeDialogBtn" CssClass="logRegBtn" runat="server" Text="סגור" OnClientClick="closeDialog()" style="margin-top:5px"/>
+                    </p>    
             </div>
         </div>
         <div id="newPasswordPopup"  class="divFordialog newPasswordPopup" runat="server">

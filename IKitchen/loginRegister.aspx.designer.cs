@@ -184,6 +184,24 @@ namespace IKitchen {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator AnswerRequiredFieldValidator;
         
         /// <summary>
+        /// CountryDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CountryDropDown;
+        
+        /// <summary>
+        /// CountryXmlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.XmlDataSource CountryXmlDataSource;
+        
+        /// <summary>
         /// categoriesListBox control.
         /// </summary>
         /// <remarks>
@@ -317,6 +335,15 @@ namespace IKitchen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label forgotPassErrorlabel;
+        
+        /// <summary>
+        /// holdPassBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button holdPassBtn;
         
         /// <summary>
         /// ForgatBtn control.

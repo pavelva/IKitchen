@@ -18,6 +18,7 @@
             </asp:TemplateField>
             <asp:BoundField DataField="user_email" HeaderText="שם משתמש" ReadOnly="True" SortExpression="purchseDate" />
             <asp:BoundField DataField="user_realEmail" HeaderText="דואר אלקטרוני" ReadOnly="True" SortExpression="purchseDate" />
+            <asp:BoundField DataField="user_country" HeaderText="מדינה" ReadOnly="True" SortExpression="purchseDate" />
             <asp:TemplateField HeaderText="סוג משתמש">
                 <ItemTemplate>
                     <asp:Label ID="userType" runat="server"><%#Eval("user_isAdmin").ToString() == "True"? "מנהל":"רגיל" %></asp:Label>
