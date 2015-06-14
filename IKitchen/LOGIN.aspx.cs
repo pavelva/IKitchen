@@ -121,7 +121,7 @@ namespace IKitchen
             bool isAdmin = false;
             SqlDataReader sqlData = null; 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            string sql = "select * from users where user_email= '" + email + "' AND user_password= '" + pass + "'";
+            string sql = "select * from users where user_email= '" + email + "' AND user_password= N'" + pass + "'";
             con.Open();
             SqlCommand command = new SqlCommand(sql, con);
             sqlData = command.ExecuteReader();
@@ -159,7 +159,7 @@ namespace IKitchen
                     string country = CountryDropDown.SelectedItem.Text;
                     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
                     string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer, user_realEmail, user_country)" +
-                                    "VALUES (N'" + fName + "',N'" + lName + "','" + userName + "','" + pass + "'," + question + ",N'" + ans + "','" + email + "','" + country + "')" +
+                                    "VALUES (N'" + fName + "',N'" + lName + "','" + userName + "',N'" + pass + "'," + question + ",N'" + ans + "','" + email + "','" + country + "')" +
                                     "SELECT SCOPE_IDENTITY();";
                     con.Open();
                     SqlCommand command = new SqlCommand(sql, con);
@@ -282,14 +282,14 @@ namespace IKitchen
                     if (ForgotPasswordRegularExpressionValidator.IsValid)
                     {
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-                        string sql = "Update users Set user_password = '" + newPassInput.Text + "' Where user_id = " + Session["userForgotId"];
+                        string sql = "Update users Set user_password = N'" + newPassInput.Text + "' Where user_id = " + Session["userForgotId"];
                         con.Open();
                         SqlCommand command = new SqlCommand(sql, con);
                         command.ExecuteNonQuery();
                         Session.Remove("userForgotId");
                         con.Close();
                         newPasswordPopup.Style.Add("display", "none");
-                        Response.Redirect("~/loginRegister.aspx");
+                        Response.Redirect("~/LOGIN.aspx");
                     }
                 }
                 else

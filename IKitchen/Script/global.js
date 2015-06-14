@@ -37,7 +37,7 @@ function addToCart(productId, callback) {
             if (err == 404) {
                 var connect = confirm("יש להתחבר למערכת בכדי להתחיל לעשות קניות\nהאם ברצונך להתחבר כעת?");
                 if (connect == true)
-                    window.location = "loginRegister.aspx";
+                    window.location = "LOGIN.aspx";
             }
             else if (err == 406) {
                 alert("לא ניתן להזמין יותר מעשרה מוצרים מאותו הסוג");

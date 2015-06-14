@@ -14,7 +14,7 @@ namespace IKitchen
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userID"] == null)
-                Response.Redirect("~/loginRegister.aspx");
+                Response.Redirect("~/LOGIN.aspx");
 
             if (Session["cart"] != null)
             {

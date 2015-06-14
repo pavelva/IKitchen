@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="loginRegister.aspx.cs" Inherits="IKitchen.loginRegister" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="LOGIN.aspx.cs" Inherits="IKitchen.loginRegister" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="style/loginRegister.css" rel="stylesheet" type="text/css" />
     
@@ -53,7 +53,7 @@
                     <br />
                     <asp:TextBox ID="regPasswordInput" CssClass="registerInput input" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RegPasswordRequiredFieldValidator"  CssClass="validatorStyle" ControlToValidate="regPasswordInput" runat="server" ErrorMessage="*"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator" ControlToValidate="regPasswordInput" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{5,10}$" runat="server" ErrorMessage="חייב להכיל 5-10 תווים"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator" ControlToValidate="regPasswordInput" ValidationExpression="^[א-תa-zA-Z0-9'@&#.\s]{5,10}$" runat="server" ErrorMessage="חייב להכיל 5-10 תווים"></asp:RegularExpressionValidator>
                 </p>
                 <p>
                     <span class="inputText">
@@ -189,7 +189,7 @@
                  <p>
                     <span class="inputText">
                         בחר סיסמא חדשה :
-                        <asp:RegularExpressionValidator ID="ForgotPasswordRegularExpressionValidator" ControlToValidate="newPassInput" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{5,10}$" runat="server" ErrorMessage="חייב להכיל 5-10 תווים"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="ForgotPasswordRegularExpressionValidator" ControlToValidate="newPassInput" ValidationExpression="^[א-תa-zA-Z0-9'@&#.\s]{5,10}$" runat="server" ErrorMessage="חייב להכיל 5-10 תווים"></asp:RegularExpressionValidator>
                     </span>
                     <br />
                     <asp:TextBox id="newPassInput" CssClass="input" runat="server"></asp:TextBox>
