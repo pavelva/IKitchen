@@ -289,7 +289,7 @@ namespace IKitchen
                         Session.Remove("userForgotId");
                         con.Close();
                         newPasswordPopup.Style.Add("display", "none");
-                        Response.Redirect("~/LOGIN.aspx");
+                        Response.Redirect("~/Login.aspx");
                     }
                 }
                 else

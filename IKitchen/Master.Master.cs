@@ -20,7 +20,7 @@ namespace IKitchen
 
             if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null && Session["userID"] == null)
             {
-                Response.Redirect("~/LOGIN.aspx");
+                Response.Redirect("~/Login.aspx");
             }
 
             else if (Session["userID"] != null)
@@ -35,7 +35,7 @@ namespace IKitchen
                     userCss = "";
 
                 if (Session["firstName"] == null|| Session["lastName"] == null)
-                    Response.Redirect("~/LOGIN.aspx");
+                    Response.Redirect("~/Login.aspx");
                 
 
                 userName.Text = Session["firstName"] + " " + Session["lastName"];

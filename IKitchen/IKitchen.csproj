@@ -69,6 +69,7 @@
     <Content Include="AdminPage.aspx" />
     <Content Include="Cart.aspx" />
     <Content Include="Catalog.aspx" />
+    <Content Include="countries.xml" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\0713XS-FEA.jpg" />
@@ -590,7 +591,7 @@
     <Content Include="Images\VG55AVX.jpg" />
     <Content Include="Images\WQP6-3305.jpg" />
     <Content Include="Item.aspx" />
-    <Content Include="LOGIN.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="manageUsers.aspx" />
     <Content Include="packages.config" />
     <Content Include="Script\catalog.js" />
@@ -606,7 +607,6 @@
     <Content Include="Style\loginRegister.css" />
     <Content Include="Master.Master" />
     <Content Include="Images\big\Thumbs.db" />
-    <Fakes Include="Fakes\DropDownCheckBoxes.fakes" />
     <None Include="Properties\PublishProfiles\IKitchen.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -669,12 +669,12 @@
     <Compile Include="Item.aspx.designer.cs">
       <DependentUpon>Item.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LOGIN.aspx.cs">
-      <DependentUpon>LOGIN.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LOGIN.aspx.designer.cs">
-      <DependentUpon>LOGIN.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="manageUsers.aspx.cs">
       <DependentUpon>manageUsers.aspx</DependentUpon>

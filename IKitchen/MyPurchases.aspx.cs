@@ -15,7 +15,7 @@ namespace IKitchen
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["userID"] == null)
-                Response.Redirect("~/LOGIN.aspx");
+                Response.Redirect("~/Login.aspx");
 
             if (Request.QueryString["sale"] == null)
             {

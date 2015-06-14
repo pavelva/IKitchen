@@ -23,7 +23,7 @@
             <span id="user">
                 <asp:LinkButton ID="userName" CssClass="userName" runat="server" Text="רפי גינת"></asp:LinkButton>
                 <asp:LinkButton ID="logout" runat="server" Text="התנתק" OnClick="disconect"></asp:LinkButton>
-                <asp:LinkButton ID="login" runat="server" Text="התחבר" PostBackUrl="~/LOGIN.aspx" ></asp:LinkButton>
+                <asp:LinkButton ID="login" runat="server" Text="התחבר" PostBackUrl="~/Login.aspx" ></asp:LinkButton>
             </span>
 
         </header>
