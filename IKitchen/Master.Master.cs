@@ -83,9 +83,9 @@ namespace IKitchen
             {
                 Response.Cookies["pass"].Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies["email"].Expires = DateTime.Now.AddDays(-1);
-                Session.RemoveAll();
-                Response.Redirect("Default.aspx");
             }
+            Session.RemoveAll();
+            Response.Redirect("Default.aspx");
         }
 
         protected void btnConver_Click(object sender, EventArgs e)
