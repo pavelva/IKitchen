@@ -28,7 +28,7 @@
 
         </header>
         <nav>
-            <asp:LinkButton CssClass="a user" runat="server" ID="linkDefault" OnClick="redirect" CausesValidation="false">ראשי</asp:LinkButton>
+            <asp:LinkButton CssClass="a anonymous" runat="server" ID="linkDefault" OnClick="redirect" CausesValidation="false">ראשי</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkCatalog" OnClick="redirect" CausesValidation="false">קטלוג</asp:LinkButton>
             <asp:LinkButton CssClass="a user" runat="server" ID="linkCart" OnClick="redirect" CausesValidation="false">סל הקניות שלי</asp:LinkButton>
             <asp:LinkButton CssClass="a user" runat="server" ID="linkMyPurchases" OnClick="redirect" CausesValidation="false">הרכישות שלי</asp:LinkButton>

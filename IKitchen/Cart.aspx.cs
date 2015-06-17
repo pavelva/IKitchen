@@ -142,7 +142,7 @@ namespace IKitchen
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
-            emptyCart();
+            emptyCart(true);
         }
 
         
@@ -184,7 +184,7 @@ namespace IKitchen
 
             con.Close();
 
-            emptyCart();
+            emptyCart(false);
             Response.Redirect("MyPurchases.aspx?sale=" + saleId);
         }
 
@@ -213,7 +213,7 @@ namespace IKitchen
             lblEmpty.Visible = true;
         }
 
-        private void emptyCart()
+        private void emptyCart(Boolean returnToDb)
         {
             totalPrice = 0;
             totalInstall = 0;
@@ -222,15 +222,20 @@ namespace IKitchen
             Dictionary<string, int> products = (Dictionary<string, int>)Session["cart"];
 
             string updateInventory = "";
-            foreach (string pId in products.Keys)
-            {
-                updateInventory += "Update products Set product_inventory = product_inventory + " + products[pId] + " Where product_id = " + pId + "; ";
-            }
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            con.Open();
-            SqlCommand com = new SqlCommand(updateInventory, con);
-            com.ExecuteNonQuery();
+            if (returnToDb)
+            {
+                foreach (string pId in products.Keys)
+                {
+                    updateInventory += "Update products Set product_inventory = product_inventory + " + products[pId] + " Where product_id = " + pId + "; ";
+                }
+
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                con.Open();
+                SqlCommand com = new SqlCommand(updateInventory, con);
+                com.ExecuteNonQuery();
+            }
+            
 
             Session.Remove("cart");
 

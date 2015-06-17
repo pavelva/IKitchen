@@ -75,30 +75,15 @@ namespace IKitchen
         {
             string sql = "select top 12 product_id, product_create, product_model, product_price, product_install_price, product_desc, product_company, app_name, appType_name, company_name, product_exist " +
                                 "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
+                                "where product_create >= dateadd(week, -1, GETDATE()) AND product_exist = 1 " +
                                 "order by company_name";
 
-            FillCatalog(sql, DefaultDataSource, true);
+            FillCatalog(sql, DefaultDataSource);
         }
 
-        private void FillCatalog(string sql, SqlDataSource dataSource , bool addParams = false)
+        private void FillCatalog(string sql, SqlDataSource dataSource)
         {
             dataSource.SelectCommand = sql;
-            if (addParams)
-            {
-                Parameter param = new Parameter("date");
-                param.DbType = DbType.DateTime;
-                param.DefaultValue = DateTime.Now.AddDays(-7).ToString();
-                dataSource.FilterParameters.Add(param);
-
-                Parameter param_exist = new Parameter("create");
-                param_exist.DbType = DbType.Boolean;
-                param_exist.DefaultValue = true.ToString();
-                dataSource.FilterParameters.Add(param_exist);
-                dataSource.FilterExpression = "product_create > #{0}# AND product_exist = {1}";
-            }
-
-            
-
             dataSource.DataBind();
         }
     }

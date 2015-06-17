@@ -17,6 +17,7 @@ namespace IKitchen
         {
             string userCss = ".user{display:none}";
             string adminCss = ".admin{display:none}";
+            string anonymousCss = "";
 
             if (Request.Cookies["email"] != null && Request.Cookies["pass"] != null && Session["userID"] == null)
             {
@@ -30,6 +31,7 @@ namespace IKitchen
                 {
                     linkCatalog.Text = "ניהול מוצרים";
                     adminCss = "";
+                    anonymousCss = ".anonymous{display:none !important}";
                 }
                 else
                     userCss = "";
@@ -48,7 +50,7 @@ namespace IKitchen
                 login.Style.Add("display", "block");
             }
 
-            Page.Header.Controls.Add(new LiteralControl("<style type='text/css'>" + userCss + "\n" + adminCss + "</style>"));
+            Page.Header.Controls.Add(new LiteralControl("<style type='text/css'>" + userCss + "\n" + adminCss +"\n" + anonymousCss +  "</style>"));
 
             string linkID = "link" + Request.Url.AbsolutePath.Replace("/", "").Replace(".aspx", "");
             LinkButton link;
