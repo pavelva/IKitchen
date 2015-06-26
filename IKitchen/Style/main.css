@@ -231,7 +231,7 @@ h4 {
 
 .rest {
     display:inline-block !important;
-    background-image: url("http://parcdispensary.com/wp-content/uploads/2013/09/icon-WorldWideWeb.png");
+    background-image: url("../Images/icon-WorldWideWeb.png");
     background-repeat:no-repeat;
     background-position: 0px 12px;
     background-size:contain;
@@ -239,3 +239,4 @@ h4 {
     height: 32px;
     
 }
+

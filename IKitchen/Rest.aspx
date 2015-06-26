@@ -10,6 +10,7 @@
  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <img id="worldImg" src="Images/icon-WorldWideWeb.png" />
     <input id="autoCompleteInput" placeholder="Enter City Name"/>
     <div id="weather">
         <span id="weatherPlace"></span>
