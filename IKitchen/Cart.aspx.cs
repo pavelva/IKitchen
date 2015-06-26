@@ -11,8 +11,13 @@ namespace IKitchen
 {
     public partial class Cart : System.Web.UI.Page
     {
+        private Store.StoreSoapClient store;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            store = new Store.StoreSoapClient();
+
             if (Session["userID"] == null)
                 Response.Redirect("~/Login.aspx");
 
@@ -149,17 +154,6 @@ namespace IKitchen
 
         protected void btnBuy_Click(object sender, EventArgs e)
         {
-            string sale = "Insert Into sales (sale_userId, sale_date, sale_comments, sale_delivery) " +
-                          "Values (@user, @date, @comments, @delDate) " + 
-                          "SELECT SCOPE_IDENTITY();";
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            con.Open();
-            SqlCommand com = new SqlCommand(sale, con);
-            com.Parameters.AddWithValue("@user", Session["userID"].ToString());
-            com.Parameters.AddWithValue("@date", DateTime.Now);
-            com.Parameters.AddWithValue("@comments", txtComments.Text);
-            com.Parameters.AddWithValue("@delDate", calSale.SelectedDate);
-
             if(calSale.SelectedDate.Date.Equals(DateTime.MinValue))
             {
                 lblError.Visible = true;
@@ -167,23 +161,43 @@ namespace IKitchen
                 return;
             }
 
-            string saleId = com.ExecuteScalar().ToString();
+            //string sale = "Insert Into sales (sale_userId, sale_date, sale_comments, sale_delivery) " +
+            //              "Values (@user, @date, @comments, @delDate) " +
+            //              "SELECT SCOPE_IDENTITY();";
+            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+            //con.Open();
+            //SqlCommand com = new SqlCommand(sale, con);
+            //com.Parameters.AddWithValue("@user", Session["userID"].ToString());
+            //com.Parameters.AddWithValue("@date", DateTime.Now);
+            //com.Parameters.AddWithValue("@comments", txtComments.Text);
+            //com.Parameters.AddWithValue("@delDate", calSale.SelectedDate);
 
-            string products = "";
+            //string saleId = com.ExecuteScalar().ToString();
+
+            //string products = "";
+            //foreach (string pId in ((Dictionary<string, int>)Session["cart"]).Keys)
+            //{
+            //    for (int i = 0; i < ((Dictionary<string, int>)Session["cart"])[pId]; i++)
+            //    {
+            //        products += "Insert Into purchases (purchase_saleId, purchase_productId) " +
+            //                    "Values (" + saleId + ", " + pId + "); ";
+            //    }
+            //}
+
+            //com = new SqlCommand(products, con);
+            //com.ExecuteNonQuery();
+
+            //con.Close();
+
+            List<Store.CartItem> cartItems = new List<Store.CartItem>();
+            
             foreach (string pId in ((Dictionary<string, int>)Session["cart"]).Keys)
             {
-                for (int i = 0; i < ((Dictionary<string, int>)Session["cart"])[pId]; i++)
-                {
-                    products += "Insert Into purchases (purchase_saleId, purchase_productId) " +
-                                "Values (" + saleId + ", " + pId + "); ";
-                }
+                cartItems.Add(new Store.CartItem() { productID = pId, amount = ((Dictionary<string, int>)Session["cart"])[pId] });
             }
 
-            com = new SqlCommand(products, con);
-            com.ExecuteNonQuery();
 
-            con.Close();
-
+            int saleId = store.buy(int.Parse(Session["userID"].ToString()), txtComments.Text, calSale.SelectedDate, cartItems.ToArray());
             emptyCart(false);
             Response.Redirect("MyPurchases.aspx?sale=" + saleId);
         }

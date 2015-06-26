@@ -15,9 +15,11 @@ namespace WebServices.DataTypes
         public int price { get; private set; }
         public int installPrice { get; private set; }
         public string imgURL  {get ; private set; }
+        public int inventory { get; private set; }
+        public bool isExist {get; private set;}
 
         private Item() { }
-        public Item(int productID, string appName, string productModel, string companyName, string desc, int price, int installPrice, string imgURL)
+        public Item(int productID, string appName, string productModel, string companyName, string desc, int price, int installPrice, string imgURL, int inventory, bool isExist)
         {
             this.productID = productID;
             this.appName = appName;
@@ -27,6 +29,8 @@ namespace WebServices.DataTypes
             this.price = price;
             this.installPrice =installPrice;
             this.imgURL = imgURL;
+            this.inventory = inventory;
+            this.isExist = isExist;
         }
     }
 }

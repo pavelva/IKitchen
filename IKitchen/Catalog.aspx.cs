@@ -13,8 +13,13 @@ namespace IKitchen
 {
     public partial class Catalog : System.Web.UI.Page
     {
+        public Products.ProductsSoapClient productsWS;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            productsWS = new Products.ProductsSoapClient();
+
             if(Request.QueryString["func"] != null)
             {
                 switch (Request.QueryString["func"])
@@ -218,51 +223,35 @@ namespace IKitchen
 
         public List<string> extractItems(List<string> apps, List<string> companys)
         {
+            List<string> itemsHtml = new List<string>();
+            Products.ArrayOfString requestApps = new Products.ArrayOfString();
+            Products.ArrayOfString requestCompanys = new Products.ArrayOfString();
 
-            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name, product_inventory, product_exist " +
-                                "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id ";
+            requestApps.AddRange(apps);
+            requestCompanys.AddRange(companys);
 
+            List<Products.Item> items = productsWS.getItems(requestApps, requestCompanys).ToList();
 
-
-            if (apps.Count > 0 || companys.Count > 0)
+            foreach (Products.Item item in items)
             {
-                sql += "Where ";
-                sql += (apps.Count > 0 ? "app_name in (N'" + string.Join("',N'", apps) + "') " + (companys.Count > 0 ? " AND " : "") : "");
-                sql += (companys.Count > 0 ? "company_name in (N'" + string.Join("',N'", companys) + "') " : "");
-            }
-
-            sql += " order by app_name";
-
-            SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            sqlCon.Open();
-            SqlCommand comm = new SqlCommand(sql, sqlCon);
-            SqlDataAdapter adapter = new SqlDataAdapter(comm);
-
-            DataTable tbl = new DataTable();
-            adapter.Fill(tbl);
-
-            List<string> items = new List<string>();
-
-            foreach (DataRow r in tbl.Rows)
-            {
-                if (r[9].ToString().Equals("True"))
+                if (item.isExist)
                 {
-                    string item = "<div class='catalogItem'> " +
+                    string itemHtml = "<div class='catalogItem'> " +
                         "<h3>" +
-                        "<span class='productType' >" + r[5].ToString() + "</span><br /> " +
-                            "<span class='productModel' >" + r[1].ToString() + "</span> " +
-                            "<span class='productCompany' >" + r[7].ToString() + "</span> " +
+                        "<span class='productType' >" + item.appName + "</span><br /> " +
+                            "<span class='productModel' >" + item.productModel + "</span> " +
+                            "<span class='productCompany' >" + item.companyName + "</span> " +
                         "</h3>" +
-                    "<span class='productImg' > <img src='Images/Big/" + r[1].ToString() + ".jpg' /></span> " +
-                    addButtons(int.Parse(r[8].ToString()), r[0].ToString()) +
-                    "<span class='productId' style='display:none'>" + r[0].ToString() + "</span>" +
+                    "<span class='productImg' > <img src='" + item.imgURL + "' /></span> " +
+                    addButtons(item.inventory, item.productID.ToString()) +
+                    "<span class='productId' style='display:none'>" + item.productID + "</span>" +
                     "</div>";
 
-                    items.Add(item);
+                    itemsHtml.Add(itemHtml);
                 }
             }
 
-            return items;
+            return itemsHtml;
         }
 
         private string addButtons(int quantity, string pId)

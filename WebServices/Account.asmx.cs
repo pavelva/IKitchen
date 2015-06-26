@@ -49,6 +49,48 @@ namespace WebServices
 
             return user;
         }
+
+        [WebMethod]
+        public int register(string fName, string lName, string userName, string pass, int question, string ans, string email, string country, List<string> categories)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer, user_realEmail, user_country)" +
+                                "VALUES (N'" + fName + "',N'" + lName + "','" + userName + "',N'" + pass + "'," + question + ",N'" + ans + "','" + email + "','" + country + "')" +
+                                "SELECT SCOPE_IDENTITY();";
+                con.Open();
+                SqlCommand command = new SqlCommand(sql, con);
+                int id = int.Parse(command.ExecuteScalar().ToString());
+                fillFavoritesInDB(id, categories);
+
+                return id;
+            }
+            catch
+            {
+                return -1;
+            }
+            
+        }
+
+        private void fillFavoritesInDB(int uid, List<string> categories)
+        {
+            string sqlInsertFavorites = "";
+            foreach (string cat in categories)
+            {
+                sqlInsertFavorites += "Insert Into favorites (fav_user, fav_app) " +
+                                        "Values ('" + uid + "','" + cat + "');";
+            }
+
+            if (sqlInsertFavorites != "")
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
+                con.Open();
+                SqlCommand com = new SqlCommand(sqlInsertFavorites, con);
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+        }
     }
 
 }

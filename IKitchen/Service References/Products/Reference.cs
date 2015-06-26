@@ -43,6 +43,10 @@ namespace IKitchen.Products {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string imgURLField;
         
+        private int inventoryField;
+        
+        private bool isExistField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -157,6 +161,32 @@ namespace IKitchen.Products {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public int inventory {
+            get {
+                return this.inventoryField;
+            }
+            set {
+                if ((this.inventoryField.Equals(value) != true)) {
+                    this.inventoryField = value;
+                    this.RaisePropertyChanged("inventory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public bool isExist {
+            get {
+                return this.isExistField;
+            }
+            set {
+                if ((this.isExistField.Equals(value) != true)) {
+                    this.isExistField = value;
+                    this.RaisePropertyChanged("isExist");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -165,6 +195,13 @@ namespace IKitchen.Products {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -177,6 +214,13 @@ namespace IKitchen.Products {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getItem", ReplyAction="*")]
         System.Threading.Tasks.Task<IKitchen.Products.getItemResponse> getItemAsync(IKitchen.Products.getItemRequest request);
+        
+        // CODEGEN: Generating message contract since element name apps from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getItems", ReplyAction="*")]
+        IKitchen.Products.getItemsResponse getItems(IKitchen.Products.getItemsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getItems", ReplyAction="*")]
+        System.Threading.Tasks.Task<IKitchen.Products.getItemsResponse> getItemsAsync(IKitchen.Products.getItemsRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -247,6 +291,78 @@ namespace IKitchen.Products {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getItemsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getItems", Namespace="http://tempuri.org/", Order=0)]
+        public IKitchen.Products.getItemsRequestBody Body;
+        
+        public getItemsRequest() {
+        }
+        
+        public getItemsRequest(IKitchen.Products.getItemsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getItemsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public IKitchen.Products.ArrayOfString apps;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public IKitchen.Products.ArrayOfString companys;
+        
+        public getItemsRequestBody() {
+        }
+        
+        public getItemsRequestBody(IKitchen.Products.ArrayOfString apps, IKitchen.Products.ArrayOfString companys) {
+            this.apps = apps;
+            this.companys = companys;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getItemsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getItemsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public IKitchen.Products.getItemsResponseBody Body;
+        
+        public getItemsResponse() {
+        }
+        
+        public getItemsResponse(IKitchen.Products.getItemsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getItemsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public IKitchen.Products.Item[] getItemsResult;
+        
+        public getItemsResponseBody() {
+        }
+        
+        public getItemsResponseBody(IKitchen.Products.Item[] getItemsResult) {
+            this.getItemsResult = getItemsResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ProductsSoapChannel : IKitchen.Products.ProductsSoap, System.ServiceModel.IClientChannel {
     }
@@ -297,6 +413,33 @@ namespace IKitchen.Products {
             inValue.Body = new IKitchen.Products.getItemRequestBody();
             inValue.Body.productId = productId;
             return ((IKitchen.Products.ProductsSoap)(this)).getItemAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        IKitchen.Products.getItemsResponse IKitchen.Products.ProductsSoap.getItems(IKitchen.Products.getItemsRequest request) {
+            return base.Channel.getItems(request);
+        }
+        
+        public IKitchen.Products.Item[] getItems(IKitchen.Products.ArrayOfString apps, IKitchen.Products.ArrayOfString companys) {
+            IKitchen.Products.getItemsRequest inValue = new IKitchen.Products.getItemsRequest();
+            inValue.Body = new IKitchen.Products.getItemsRequestBody();
+            inValue.Body.apps = apps;
+            inValue.Body.companys = companys;
+            IKitchen.Products.getItemsResponse retVal = ((IKitchen.Products.ProductsSoap)(this)).getItems(inValue);
+            return retVal.Body.getItemsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<IKitchen.Products.getItemsResponse> IKitchen.Products.ProductsSoap.getItemsAsync(IKitchen.Products.getItemsRequest request) {
+            return base.Channel.getItemsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<IKitchen.Products.getItemsResponse> getItemsAsync(IKitchen.Products.ArrayOfString apps, IKitchen.Products.ArrayOfString companys) {
+            IKitchen.Products.getItemsRequest inValue = new IKitchen.Products.getItemsRequest();
+            inValue.Body = new IKitchen.Products.getItemsRequestBody();
+            inValue.Body.apps = apps;
+            inValue.Body.companys = companys;
+            return ((IKitchen.Products.ProductsSoap)(this)).getItemsAsync(inValue);
         }
     }
 }

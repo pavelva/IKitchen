@@ -104,6 +104,13 @@ namespace IKitchen.Account {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Account.AccountSoap")]
     public interface AccountSoap {
@@ -114,6 +121,13 @@ namespace IKitchen.Account {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/login", ReplyAction="*")]
         System.Threading.Tasks.Task<IKitchen.Account.loginResponse> loginAsync(IKitchen.Account.loginRequest request);
+        
+        // CODEGEN: Generating message contract since element name fName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/register", ReplyAction="*")]
+        IKitchen.Account.registerResponse register(IKitchen.Account.registerRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/register", ReplyAction="*")]
+        System.Threading.Tasks.Task<IKitchen.Account.registerResponse> registerAsync(IKitchen.Account.registerRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -188,6 +202,106 @@ namespace IKitchen.Account {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class registerRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="register", Namespace="http://tempuri.org/", Order=0)]
+        public IKitchen.Account.registerRequestBody Body;
+        
+        public registerRequest() {
+        }
+        
+        public registerRequest(IKitchen.Account.registerRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class registerRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string fName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string lName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string pass;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public int question;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string ans;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string email;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string country;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public IKitchen.Account.ArrayOfString categories;
+        
+        public registerRequestBody() {
+        }
+        
+        public registerRequestBody(string fName, string lName, string userName, string pass, int question, string ans, string email, string country, IKitchen.Account.ArrayOfString categories) {
+            this.fName = fName;
+            this.lName = lName;
+            this.userName = userName;
+            this.pass = pass;
+            this.question = question;
+            this.ans = ans;
+            this.email = email;
+            this.country = country;
+            this.categories = categories;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class registerResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="registerResponse", Namespace="http://tempuri.org/", Order=0)]
+        public IKitchen.Account.registerResponseBody Body;
+        
+        public registerResponse() {
+        }
+        
+        public registerResponse(IKitchen.Account.registerResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class registerResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int registerResult;
+        
+        public registerResponseBody() {
+        }
+        
+        public registerResponseBody(int registerResult) {
+            this.registerResult = registerResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface AccountSoapChannel : IKitchen.Account.AccountSoap, System.ServiceModel.IClientChannel {
     }
@@ -240,6 +354,47 @@ namespace IKitchen.Account {
             inValue.Body.userName = userName;
             inValue.Body.pass = pass;
             return ((IKitchen.Account.AccountSoap)(this)).loginAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        IKitchen.Account.registerResponse IKitchen.Account.AccountSoap.register(IKitchen.Account.registerRequest request) {
+            return base.Channel.register(request);
+        }
+        
+        public int register(string fName, string lName, string userName, string pass, int question, string ans, string email, string country, IKitchen.Account.ArrayOfString categories) {
+            IKitchen.Account.registerRequest inValue = new IKitchen.Account.registerRequest();
+            inValue.Body = new IKitchen.Account.registerRequestBody();
+            inValue.Body.fName = fName;
+            inValue.Body.lName = lName;
+            inValue.Body.userName = userName;
+            inValue.Body.pass = pass;
+            inValue.Body.question = question;
+            inValue.Body.ans = ans;
+            inValue.Body.email = email;
+            inValue.Body.country = country;
+            inValue.Body.categories = categories;
+            IKitchen.Account.registerResponse retVal = ((IKitchen.Account.AccountSoap)(this)).register(inValue);
+            return retVal.Body.registerResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<IKitchen.Account.registerResponse> IKitchen.Account.AccountSoap.registerAsync(IKitchen.Account.registerRequest request) {
+            return base.Channel.registerAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<IKitchen.Account.registerResponse> registerAsync(string fName, string lName, string userName, string pass, int question, string ans, string email, string country, IKitchen.Account.ArrayOfString categories) {
+            IKitchen.Account.registerRequest inValue = new IKitchen.Account.registerRequest();
+            inValue.Body = new IKitchen.Account.registerRequestBody();
+            inValue.Body.fName = fName;
+            inValue.Body.lName = lName;
+            inValue.Body.userName = userName;
+            inValue.Body.pass = pass;
+            inValue.Body.question = question;
+            inValue.Body.ans = ans;
+            inValue.Body.email = email;
+            inValue.Body.country = country;
+            inValue.Body.categories = categories;
+            return ((IKitchen.Account.AccountSoap)(this)).registerAsync(inValue);
         }
     }
 }
