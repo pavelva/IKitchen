@@ -594,6 +594,7 @@
     <Content Include="Login.aspx" />
     <Content Include="manageUsers.aspx" />
     <Content Include="packages.config" />
+    <Content Include="Rest.aspx" />
     <Content Include="Script\catalog.js" />
     <Content Include="Script\global.js" />
     <Content Include="Script\item.js" />
@@ -619,7 +620,6 @@
     <Content Include="Style\main.css" />
     <Content Include="Style\manageUsers.css" />
     <Content Include="Style\MyPurchases.css" />
-    <Content Include="test.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -698,12 +698,12 @@
     <Compile Include="MyPurchases.aspx.designer.cs">
       <DependentUpon>MyPurchases.aspx</DependentUpon>
     </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
+    <Compile Include="Rest.aspx.cs">
+      <DependentUpon>Rest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
+    <Compile Include="Rest.aspx.designer.cs">
+      <DependentUpon>Rest.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
