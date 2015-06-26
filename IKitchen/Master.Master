@@ -29,7 +29,7 @@
         </header>
         <nav>
             <asp:LinkButton CssClass="a rest" ClientIDMode="Static" runat="server" ID="linkRest" OnClick="redirect" CausesValidation="false">
-                
+                   <img id="imgWorld" src="/Images/icon-WorldWideWeb.png" />
             </asp:LinkButton>
             <asp:LinkButton CssClass="a anonymous" runat="server" ID="linkDefault" OnClick="redirect" CausesValidation="false">ראשי</asp:LinkButton>
             <asp:LinkButton CssClass="a" runat="server" ID="linkCatalog" OnClick="redirect" CausesValidation="false">קטלוג</asp:LinkButton>
