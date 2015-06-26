@@ -73,6 +73,10 @@ namespace IKitchen
                 link.Enabled = false;
                 link.ForeColor = Color.FromArgb(255, 106, 0);
                 link.CssClass += " aActive";
+                if (link.ID == "linkRest")
+                {
+                    link.Style.Add("opacity", "0.5");
+                }
             }
         }
         protected void redirect(object sender, EventArgs e)
