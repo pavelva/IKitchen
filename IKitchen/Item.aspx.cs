@@ -11,48 +11,41 @@ namespace IKitchen
 {
     public partial class Item : System.Web.UI.Page
     {
+        Products.ProductsSoapClient products;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            products = new Products.ProductsSoapClient();
+
             if (Request.QueryString["item"] != null)
             {
-                extractItem();
+                extractItem(int.Parse(Request.QueryString["item"].ToString()));
             }
             else
                 Response.Redirect("~/Catalog.aspx");
         }
 
-        private void extractItem()
+        private void extractItem(int productID)
         {
-            string sql = "select product_id, product_model, product_price, product_install_price, product_desc, app_name, appType_name, company_name " +
-                                "from ((products Join applience on product_type = app_id) Join applience_types on product_type2 = appType_id) Join companys on product_company = company_id " +
-                                "Where product_id = " + Request.QueryString["item"].ToString();
+            Products.Item responseItem = products.getItem(productID);
 
-            sql += " order by app_name";
-
-            SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            sqlCon.Open(); 
-            SqlCommand comm = new SqlCommand(sql, sqlCon);
-            SqlDataReader reader = comm.ExecuteReader();
-
-            if (reader.Read())
+            if (responseItem != null)
             {
-                app.Text = reader["app_name"].ToString();
-                type.Text = reader["product_model"].ToString() + " " + reader["company_name"].ToString();
-                desc.InnerHtml = "<div id='desc'>" + reader["product_desc"].ToString() + "</div>";
-                price.Text = reader["product_price"].ToString();
-                installPrice.Text = reader["product_install_price"].ToString();
-                img.ImageUrl = "Images/Big/" + reader["product_model"].ToString() + ".jpg";
+                app.Text = responseItem.appName;
+                type.Text = responseItem.productModel + " " + responseItem.companyName;
+                desc.InnerHtml = "<div id='desc'>" + responseItem.desc + "</div>";
+                price.Text = responseItem.price.ToString();
+                installPrice.Text = responseItem.installPrice.ToString();
+                img.ImageUrl = "Images/Big/" + responseItem.productModel + ".jpg";
                 currencyPrice.Text = "ש\"ח";
                 currencyInstall.Text = "ש\"ח";
-                productId.Value = reader["product_id"].ToString();
+                productId.Value = responseItem.productID.ToString();
             }
             else
             {
                 item.Style.Add("display", "none");
                 error.Style.Add("display", "block");
             }
-
-            sqlCon.Close();
         }
 
         public void backToCatalog(object sender, EventArgs e)

@@ -53,7 +53,7 @@
                 <asp:Label ID="lblTxt" runat="server">סכום:</asp:Label>
                 <asp:TextBox ID="txtConvert" CssClass="txt" runat="server"></asp:TextBox>
 
-                <asp:Button ID="btnConver" Text="המר" runat="server" OnClick="btnConver_Click" />
+                <asp:Button ID="btnConver" Text="המר" runat="server" OnClick="btnConver_Click" CausesValidation="false" />
 
                 <asp:Label ID="lblResultHeader" runat="server">המרה:</asp:Label>
                 <asp:TextBox ID="txtResult" CssClass="txt" runat="server" Enabled="false"></asp:TextBox>

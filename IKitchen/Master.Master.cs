@@ -13,8 +13,11 @@ namespace IKitchen
 {
     public partial class Master : System.Web.UI.MasterPage
     {
+        private Convertor.ConvertorSoapClient convertor;
         protected void Page_Load(object sender, EventArgs e)
         {
+            convertor = new Convertor.ConvertorSoapClient();
+
             string userCss = ".user{display:none}";
             string adminCss = ".admin{display:none}";
             string anonymousCss = "";
@@ -110,21 +113,21 @@ namespace IKitchen
                 return;
             }
 
-            txtResult.Text = Convert(from, to, amount).ToString("f2");
+            txtResult.Text = convertor.convert(from, to, amount).ToString("f2");
         }
 
-        private double Convert(string from, string to, double amount)
-        {
-            if (from == "shekel" && to != from)
-            {
-                return amount / 3.85;
-            }
-            else if (from == "dollar" && to != from)
-            {
-                return amount * 3.85;
-            }
-            else
-                return amount;
-        }
+        //private double Convert(string from, string to, double amount)
+        //{
+        //    if (from == "shekel" && to != from)
+        //    {
+        //        return amount / 3.85;
+        //    }
+        //    else if (from == "dollar" && to != from)
+        //    {
+        //        return amount * 3.85;
+        //    }
+        //    else
+        //        return amount;
+        //}
     }
 }

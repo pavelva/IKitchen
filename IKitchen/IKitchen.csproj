@@ -47,6 +47,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -599,6 +601,59 @@
     <Content Include="Script\global.js" />
     <Content Include="Script\item.js" />
     <Content Include="Script\main.js" />
+    <None Include="Service References\Account\Account.disco" />
+    <None Include="Service References\Account\configuration91.svcinfo" />
+    <None Include="Service References\Account\configuration.svcinfo" />
+    <Content Include="Service References\Account\IKitchen.Account.loginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Account\IKitchen.Account.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Account\IKitchen.Account.registerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Account\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Convertor\Convertor.disco" />
+    <None Include="Service References\Convertor\configuration91.svcinfo" />
+    <None Include="Service References\Convertor\configuration.svcinfo" />
+    <Content Include="Service References\Convertor\IKitchen.Convertor.convertResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Convertor\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\Products\IKitchen.Products.getItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Products\IKitchen.Products.Item.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Products\IKitchen.Products.getItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Convertor\Convertor.wsdl" />
+    <None Include="Service References\Products\Products.disco" />
+    <None Include="Service References\Products\configuration91.svcinfo" />
+    <None Include="Service References\Products\configuration.svcinfo" />
+    <None Include="Service References\Products\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\Store\IKitchen.Store.buyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Store\Store.disco" />
+    <None Include="Service References\Store\configuration91.svcinfo" />
+    <None Include="Service References\Store\configuration.svcinfo" />
+    <None Include="Service References\Store\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Script\rest.js" />
     <Content Include="Style\about.css" />
     <Content Include="Style\cart.css" />
@@ -610,6 +665,9 @@
     <Content Include="Master.Master" />
     <Content Include="Images\big\Thumbs.db" />
     <None Include="Properties\PublishProfiles\IKitchen.pubxml" />
+    <None Include="Service References\Account\Account.wsdl" />
+    <None Include="Service References\Products\Products.wsdl" />
+    <None Include="Service References\Store\Store.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -707,8 +765,36 @@
     <Compile Include="Rest.aspx.designer.cs">
       <DependentUpon>Rest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Account\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Convertor\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Products\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Store\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Account\" />
+    <WCFMetadataStorage Include="Service References\Convertor\" />
+    <WCFMetadataStorage Include="Service References\Products\" />
+    <WCFMetadataStorage Include="Service References\Store\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -13,8 +13,12 @@ namespace IKitchen
 {
     public partial class loginRegister : System.Web.UI.Page
     {
+        private Account.AccountSoapClient account;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            account = new Account.AccountSoapClient();
+
             this.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
             passwordInput.Attributes["type"] = "password";
             regPasswordInput.Attributes["type"] = "password";
@@ -116,75 +120,62 @@ namespace IKitchen
 
         protected int getUserIDFromDB(string email, string pass)
         {
-            int id = -1;
-            string fName = "";
-            string lName = "";
-            bool isAdmin = false;
-            SqlDataReader sqlData = null; 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            string sql = "select * from users where user_email= '" + email + "' AND user_password= N'" + pass + "'";
-            con.Open();
-            SqlCommand command = new SqlCommand(sql, con);
-            sqlData = command.ExecuteReader();
-            if (sqlData != null)
+
+            Account.User u = account.login(email, pass);
+
+            if (u != null)
             {
-                if (sqlData.Read())
-                {
-                    id = int.Parse(sqlData["user_id"].ToString());
-                    fName = sqlData["user_firstName"].ToString();
-                    lName = sqlData["user_lastName"].ToString();
-                    isAdmin = bool.Parse(sqlData["user_isAdmin"].ToString());
-                    Session.Add("firstName", fName);
-                    Session.Add("lastName", lName);
-                    Session.Add("userID", id);
-                    Session.Add("isAdmin", isAdmin);
-                }
+                Session.Add("firstName", u.firstName);
+                Session.Add("lastName", u.lastName);
+                Session.Add("userID", u.userID);
+                Session.Add("isAdmin", u.isAdmin);
+
+                return u.userID;
             }
-            con.Close();
-            return id;
+            
+            return -1;
         }
 
         protected void registerBtn_Click(object sender, EventArgs e)
         {
             if (validRegistration())
             {
-                try
-                {
-                    string fName = firstNameInput.Text.ToString();
-                    string lName = lastNameInput.Text.ToString();
-                    string userName = emailInput.Text.ToString();
-                    string pass = regPasswordInput.Text.ToString();
-                    int question = listOfQestions.SelectedIndex;
-                    string ans = answer.Text.ToString();
-                    string email = realEmailInput.Text.ToString();
-                    string country = CountryDropDown.SelectedItem.Text;
-                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-                    string sql = "INSERT INTO users (user_firstName, user_LastName, user_email, user_password, user_question, user_answer, user_realEmail, user_country)" +
-                                    "VALUES (N'" + fName + "',N'" + lName + "','" + userName + "',N'" + pass + "'," + question + ",N'" + ans + "','" + email + "','" + country + "')" +
-                                    "SELECT SCOPE_IDENTITY();";
-                    con.Open();
-                    SqlCommand command = new SqlCommand(sql, con);
-                    string id = command.ExecuteScalar().ToString();
-                    fillFavoritesInDB(id);
-                    
-                    congratsPopup.Style.Add("display", "block");
+                string fName = firstNameInput.Text.ToString();
+                string lName = lastNameInput.Text.ToString();
+                string userName = emailInput.Text.ToString();
+                string pass = regPasswordInput.Text.ToString();
+                int question = listOfQestions.SelectedIndex;
+                string ans = answer.Text.ToString();
+                string email = realEmailInput.Text.ToString();
+                string country = CountryDropDown.SelectedItem.Text;
 
-                    firstNameInput.Text = "";
-                    lastNameInput.Text = "";
-                    emailInput.Text = "";
-                    regPasswordInput.Text = "";
-                    regConfirmPasswordInput.Text = "";
-                    listOfQestions.SelectedIndex = 0;
-                    answer.Text = "";
-                    realEmailInput.Text = "";
-                    CountryDropDown.SelectedIndex = 0;
-                    con.Close();
+                Account.ArrayOfString categories = new Account.ArrayOfString();
+
+                foreach (ListItem item in (categoriesListBox as ListControl).Items)
+                {
+                    if (item.Selected)
+                        categories.Add(item.Value);
                 }
-                catch{
-                    
-                }
-                
+
+                account.register(fName, lName, userName, pass, question, ans, email, country, categories);
+
+                congratsPopup.Style.Add("display", "block");
+
+                resetRegisterPanel();
             }
+        }
+
+        private void resetRegisterPanel()
+        {
+            firstNameInput.Text = "";
+            lastNameInput.Text = "";
+            emailInput.Text = "";
+            regPasswordInput.Text = "";
+            regConfirmPasswordInput.Text = "";
+            listOfQestions.SelectedIndex = 0;
+            answer.Text = "";
+            realEmailInput.Text = "";
+            CountryDropDown.SelectedIndex = 0;
         }
 
         protected void closeCongratsPopup(object sender, EventArgs e)
@@ -199,27 +190,6 @@ namespace IKitchen
                 && RegConfirmPasswordRequiredFieldValidator.IsValid && RegConfirmCompareValidator.IsValid && AnswerRequiredFieldValidator.IsValid
                 && RealEmailRequiredFieldValidator.IsValid && RealEmailRegexValidator.IsValid;
         }
-
-        private void fillFavoritesInDB(string uid)
-        {
-            string sqlInsertFavorites = "";
-            foreach (ListItem item in (categoriesListBox as ListControl).Items)
-            {
-                if (item.Selected)
-                {
-                    sqlInsertFavorites += "Insert Into favorites (fav_user, fav_app) " +
-                                            "Values ('" + uid + "','" + item.Value + "');";
-                }
-            }
-            if (sqlInsertFavorites != "")
-            {
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-                con.Open();
-                SqlCommand com = new SqlCommand(sqlInsertFavorites, con);
-                com.ExecuteNonQuery();
-                con.Close();
-            }
-         }
 
         protected void ForgatPAssDetails_Click(object sender, EventArgs e)
         {
