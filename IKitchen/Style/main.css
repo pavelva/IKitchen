@@ -231,12 +231,17 @@ h4 {
 
 .rest {
     display:inline-block !important;
-    background-image: url("../Images/icon-WorldWideWeb.png");
+    position:relative;
+    /*background-image: url("../Images/icon-WorldWideWeb.png");*/
     background-repeat:no-repeat;
-    background-position: 0px 12px;
-    background-size:contain;
+    /*background-position: 0px 180%;
+    background-size:contain;*/
     width: 25px;
-    height: 32px;
-    
+    height: 32px;    
 }
 
+#imgWorld{
+    width:100%;
+    position:absolute;
+    top:35%;
+}
