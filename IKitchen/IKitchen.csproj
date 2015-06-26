@@ -599,6 +599,7 @@
     <Content Include="Script\global.js" />
     <Content Include="Script\item.js" />
     <Content Include="Script\main.js" />
+    <Content Include="Script\rest.js" />
     <Content Include="Style\about.css" />
     <Content Include="Style\cart.css" />
     <Content Include="Style\default.css" />
@@ -620,6 +621,7 @@
     <Content Include="Style\main.css" />
     <Content Include="Style\manageUsers.css" />
     <Content Include="Style\MyPurchases.css" />
+    <Content Include="Style\rest.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
