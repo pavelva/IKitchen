@@ -1,5 +1,8 @@
 ﻿var WEATHERURL = "http://api.worldweatheronline.com/free/v2/weather.ashx";
 var key = "44cc220383a9679ba0d2e16f57655";
+
+var WIKIURL = "http://en.wikipedia.org/w/api.php";
+
 $(document).ready(function () {
     autocompleteSource = new google.maps.places.Autocomplete(
         (document.getElementById('autoCompleteInput')),
@@ -13,6 +16,7 @@ $(document).ready(function () {
         var locationText = "The Weather In " + location + " Is : ";
         var url = WEATHERURL + location;
         
+
         $.ajax({
             type: "GET",
             url: WEATHERURL,
@@ -28,9 +32,37 @@ $(document).ready(function () {
                 $("#weatherImage").css("background-image", "url(" + $(data).find("current_condition").find("weatherIconUrl").text() + ")").show();
             },
             error: function (err) {
-                alert(123);
+                $("#weatherPlace").text("There Was An Error. Please Try Again").show();
             }
         });
+
+        var cityName = location.substring(0, location.indexOf(","));
+        
+        $.ajax({
+            type: "GET",
+            url: WIKIURL,
+            data: {
+                format: "json",
+                action: "query",
+                prop: "extracts",
+                exintro: "",
+                explaintext: "",
+                redirects: "",
+                titles: cityName,
+                callback: "?"
+            },
+            dataType: "json",
+            success: function(data){
+                alert("OK");
+                //var aboutCityObj = JSON.parse(data);
+                //alert(aboutCityObj.query.pages.find("title"));
+            },
+            error: function (err) {
+                alert("NOT OK");
+                //$("#weatherPlace").text("There Was An Error. Please Try Again").show();
+            }
+        });
+
     });
 });
 

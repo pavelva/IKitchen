@@ -15,5 +15,6 @@
     <div id="weather">
         <span id="weatherPlace"></span>
         <div id="weatherImage"></div>
+        <div id="aboutCity"></div>
     </div>
 </asp:Content>
