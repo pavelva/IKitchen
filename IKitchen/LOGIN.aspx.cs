@@ -12,8 +12,12 @@ namespace IKitchen
 {
     public partial class loginRegister : System.Web.UI.Page
     {
+        private Account.AccountSoapClient account;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            account = new Account.AccountSoapClient();
+
             this.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
             passwordInput.Attributes["type"] = "password";
             regPasswordInput.Attributes["type"] = "password";
@@ -115,32 +119,20 @@ namespace IKitchen
 
         protected int getUserIDFromDB(string email, string pass)
         {
-            int id = -1;
-            string fName = "";
-            string lName = "";
-            bool isAdmin = false;
-            SqlDataReader sqlData = null; 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            string sql = "select * from users where user_email= '" + email + "' AND user_password= N'" + pass + "'";
-            con.Open();
-            SqlCommand command = new SqlCommand(sql, con);
-            sqlData = command.ExecuteReader();
-            if (sqlData != null)
+
+            Account.User u = account.login(email, pass);
+
+            if (u != null)
             {
-                if (sqlData.Read())
-                {
-                    id = int.Parse(sqlData["user_id"].ToString());
-                    fName = sqlData["user_firstName"].ToString();
-                    lName = sqlData["user_lastName"].ToString();
-                    isAdmin = bool.Parse(sqlData["user_isAdmin"].ToString());
-                    Session.Add("firstName", fName);
-                    Session.Add("lastName", lName);
-                    Session.Add("userID", id);
-                    Session.Add("isAdmin", isAdmin);
-                }
+                Session.Add("firstName", u.firstName);
+                Session.Add("lastName", u.lastName);
+                Session.Add("userID", u.userID);
+                Session.Add("isAdmin", u.isAdmin);
+
+                return u.userID;
             }
-            con.Close();
-            return id;
+            
+            return -1;
         }
 
         protected void registerBtn_Click(object sender, EventArgs e)
