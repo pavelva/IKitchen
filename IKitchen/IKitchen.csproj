@@ -602,9 +602,11 @@
     <Content Include="Script\global.js" />
     <Content Include="Script\item.js" />
     <Content Include="Script\main.js" />
-    <None Include="Service References\Account\Account.disco" />
+    <None Include="Properties\PublishProfiles\IKitchenAss4.pubxml" />
+    <None Include="Service References\Account\Account1.wsdl" />
     <None Include="Service References\Account\configuration91.svcinfo" />
     <None Include="Service References\Account\configuration.svcinfo" />
+    <None Include="Service References\Account\Account1.disco" />
     <Content Include="Service References\Account\IKitchen.Account.loginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -618,12 +620,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\Convertor\Convertor.disco" />
     <None Include="Service References\Convertor\configuration91.svcinfo" />
     <None Include="Service References\Convertor\configuration.svcinfo" />
+    <None Include="Service References\Convertor\Convertor1.disco" />
     <Content Include="Service References\Convertor\IKitchen.Convertor.convertResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\Convertor\Convertor1.wsdl" />
     <None Include="Service References\Convertor\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -637,18 +640,17 @@
     <Content Include="Service References\Products\IKitchen.Products.getItemsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\Convertor\Convertor.wsdl" />
-    <None Include="Service References\Products\Products.disco" />
     <None Include="Service References\Products\configuration91.svcinfo" />
     <None Include="Service References\Products\configuration.svcinfo" />
+    <None Include="Service References\Products\Products1.wsdl" />
     <None Include="Service References\Products\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\Products\Products1.disco" />
     <Content Include="Service References\Store\IKitchen.Store.buyResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\Store\Store.disco" />
     <None Include="Service References\Store\configuration91.svcinfo" />
     <None Include="Service References\Store\configuration.svcinfo" />
     <None Include="Service References\Store\Reference.svcmap">
@@ -656,6 +658,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Script\rest.js" />
+    <None Include="Service References\Store\Store1.disco" />
     <Content Include="Style\about.css" />
     <Content Include="Style\cart.css" />
     <Content Include="Style\default.css" />
@@ -666,9 +669,7 @@
     <Content Include="Master.Master" />
     <Content Include="Images\big\Thumbs.db" />
     <None Include="Properties\PublishProfiles\IKitchen.pubxml" />
-    <None Include="Service References\Account\Account.wsdl" />
-    <None Include="Service References\Products\Products.wsdl" />
-    <None Include="Service References\Store\Store.wsdl" />
+    <None Include="Service References\Store\Store1.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -58,10 +58,10 @@
   </wsdl:binding>
   <wsdl:service name="Convertor">
     <wsdl:port name="ConvertorSoap" binding="tns:ConvertorSoap">
-      <soap:address location="http://localhost:21284/Convertor.asmx" />
+      <soap:address location="http://ikitchenws.azurewebsites.net/Convertor.asmx" />
     </wsdl:port>
     <wsdl:port name="ConvertorSoap12" binding="tns:ConvertorSoap12">
-      <soap12:address location="http://localhost:21284/Convertor.asmx" />
+      <soap12:address location="http://ikitchenws.azurewebsites.net/Convertor.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

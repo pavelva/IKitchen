@@ -123,10 +123,10 @@
   </wsdl:binding>
   <wsdl:service name="Products">
     <wsdl:port name="ProductsSoap" binding="tns:ProductsSoap">
-      <soap:address location="http://localhost:21284/Products.asmx" />
+      <soap:address location="http://ikitchenws.azurewebsites.net/Products.asmx" />
     </wsdl:port>
     <wsdl:port name="ProductsSoap12" binding="tns:ProductsSoap12">
-      <soap12:address location="http://localhost:21284/Products.asmx" />
+      <soap12:address location="http://ikitchenws.azurewebsites.net/Products.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

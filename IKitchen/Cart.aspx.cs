@@ -161,34 +161,6 @@ namespace IKitchen
                 return;
             }
 
-            //string sale = "Insert Into sales (sale_userId, sale_date, sale_comments, sale_delivery) " +
-            //              "Values (@user, @date, @comments, @delDate) " +
-            //              "SELECT SCOPE_IDENTITY();";
-            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["IKitchenDB"].ConnectionString);
-            //con.Open();
-            //SqlCommand com = new SqlCommand(sale, con);
-            //com.Parameters.AddWithValue("@user", Session["userID"].ToString());
-            //com.Parameters.AddWithValue("@date", DateTime.Now);
-            //com.Parameters.AddWithValue("@comments", txtComments.Text);
-            //com.Parameters.AddWithValue("@delDate", calSale.SelectedDate);
-
-            //string saleId = com.ExecuteScalar().ToString();
-
-            //string products = "";
-            //foreach (string pId in ((Dictionary<string, int>)Session["cart"]).Keys)
-            //{
-            //    for (int i = 0; i < ((Dictionary<string, int>)Session["cart"])[pId]; i++)
-            //    {
-            //        products += "Insert Into purchases (purchase_saleId, purchase_productId) " +
-            //                    "Values (" + saleId + ", " + pId + "); ";
-            //    }
-            //}
-
-            //com = new SqlCommand(products, con);
-            //com.ExecuteNonQuery();
-
-            //con.Close();
-
             List<Store.CartItem> cartItems = new List<Store.CartItem>();
             
             foreach (string pId in ((Dictionary<string, int>)Session["cart"]).Keys)

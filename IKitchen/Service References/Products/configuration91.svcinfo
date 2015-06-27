@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="tM3C2ZqvqptefPjUWUyvrFSJYGw=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="T448YF+/IHbpQTfnHwDrX2/jnO4=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ProductsSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ProductsSoap" contract="Products.ProductsSoap" bindingType="basicHttpBinding" address="http://localhost:21284/Products.asmx" bindingConfiguration="ProductsSoap">
+    <endpoint name="ProductsSoap" contract="Products.ProductsSoap" bindingType="basicHttpBinding" address="http://ikitchenws.azurewebsites.net/Products.asmx" bindingConfiguration="ProductsSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:21284/Products.asmx</serializedValue>
+          <serializedValue>http://ikitchenws.azurewebsites.net/Products.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -70,10 +70,10 @@
   </wsdl:binding>
   <wsdl:service name="Store">
     <wsdl:port name="StoreSoap" binding="tns:StoreSoap">
-      <soap:address location="http://localhost:21284/Store.asmx" />
+      <soap:address location="http://ikitchenws.azurewebsites.net/Store.asmx" />
     </wsdl:port>
     <wsdl:port name="StoreSoap12" binding="tns:StoreSoap12">
-      <soap12:address location="http://localhost:21284/Store.asmx" />
+      <soap12:address location="http://ikitchenws.azurewebsites.net/Store.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:21284/Products.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://ikitchenws.azurewebsites.net/Products.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Products.disco" MetadataType="Disco" ID="194a7b75-bdcd-47d8-bb8f-cdb573d0b620" SourceId="1" SourceUrl="http://localhost:21284/Products.asmx?disco" />
-    <MetadataFile FileName="Products.wsdl" MetadataType="Wsdl" ID="f9c352a5-635c-4207-88b5-6cd0f938b11c" SourceId="1" SourceUrl="http://localhost:21284/Products.asmx?wsdl" />
+    <MetadataFile FileName="Products1.wsdl" MetadataType="Wsdl" ID="37188d2a-fd5f-4e15-a79a-9b6650e3e892" SourceId="1" SourceUrl="http://ikitchenws.azurewebsites.net/Products.asmx?wsdl" />
+    <MetadataFile FileName="Products1.disco" MetadataType="Disco" ID="5868c272-41b8-4037-8c06-fbd01401ae17" SourceId="1" SourceUrl="http://ikitchenws.azurewebsites.net/Products.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

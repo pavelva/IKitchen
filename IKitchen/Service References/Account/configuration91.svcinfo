@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="velfCflzoDi/XAIOV0LgRv4NggU=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="IXROvKaqMlqo9DzXtHJdzy889nE=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="AccountSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="AccountSoap" contract="Account.AccountSoap" bindingType="basicHttpBinding" address="http://localhost:21284/Account.asmx" bindingConfiguration="AccountSoap">
+    <endpoint name="AccountSoap" contract="Account.AccountSoap" bindingType="basicHttpBinding" address="http://ikitchenws.azurewebsites.net/Account.asmx" bindingConfiguration="AccountSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:21284/Account.asmx</serializedValue>
+          <serializedValue>http://ikitchenws.azurewebsites.net/Account.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

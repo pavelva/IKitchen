@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:21284/Convertor.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://ikitchenws.azurewebsites.net/Convertor.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Convertor.wsdl" MetadataType="Wsdl" ID="9ea9e57e-77f3-4fce-908a-ea03b5658226" SourceId="1" SourceUrl="http://localhost:21284/Convertor.asmx?wsdl" />
-    <MetadataFile FileName="Convertor.disco" MetadataType="Disco" ID="c6ea094a-4418-40ac-b4f0-880f790639a6" SourceId="1" SourceUrl="http://localhost:21284/Convertor.asmx?disco" />
+    <MetadataFile FileName="Convertor1.disco" MetadataType="Disco" ID="26656fd7-5db2-4782-999d-266ef1748de0" SourceId="1" SourceUrl="http://ikitchenws.azurewebsites.net/Convertor.asmx?disco" />
+    <MetadataFile FileName="Convertor1.wsdl" MetadataType="Wsdl" ID="4fefd234-58be-4348-8fcc-f363cf8f13ba" SourceId="1" SourceUrl="http://ikitchenws.azurewebsites.net/Convertor.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

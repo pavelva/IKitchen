@@ -120,10 +120,10 @@
   </wsdl:binding>
   <wsdl:service name="Account">
     <wsdl:port name="AccountSoap" binding="tns:AccountSoap">
-      <soap:address location="http://localhost:21284/Account.asmx" />
+      <soap:address location="http://ikitchenws.azurewebsites.net/Account.asmx" />
     </wsdl:port>
     <wsdl:port name="AccountSoap12" binding="tns:AccountSoap12">
-      <soap12:address location="http://localhost:21284/Account.asmx" />
+      <soap12:address location="http://ikitchenws.azurewebsites.net/Account.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
