@@ -8,7 +8,6 @@ $(document).ready(function () {
         (document.getElementById('autoCompleteInput')),
        {
            types: ['(cities)'],
-           componentRestrictions: { country: 'il' }
        });
 
     google.maps.event.addListener(autocompleteSource, 'place_changed', function () {
@@ -28,7 +27,7 @@ $(document).ready(function () {
             dataType: "xml",
             success: function (data) {
                 $("#aboutCity").hide();
-                var temperature = $(data).find("hourly").find("tempC").text().substring(0, 2) + " C";
+                var temperature = $(data).find("current_condition").find("temp_C").text() + " C";
                 $("#weatherPlace").text(locationText + temperature).show();
                 $("#weatherImage").css("background-image", "url(" + $(data).find("current_condition").find("weatherIconUrl").text() + ")").show();
                 if(location.indexOf(",") != -1){
